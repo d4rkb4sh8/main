@@ -1,0 +1,12 @@
+[38;5;246;03m# locate[39;00m
+[38;5;246;03m# Find filenames quickly.[39;00m
+[38;5;246;03m# More information: <https://manned.org/locate>.[39;00m
+
+[38;5;246;03m# Look for pattern in the database. Note: the database is recomputed periodically (usually weekly or daily):[39;00m
+[38;5;252mlocate[39m[38;5;252m [39m[38;5;252mpattern[39m
+
+[38;5;246;03m# Look for a file by its exact filename (a pattern containing no globbing characters is interpreted as `*pattern*`):[39;00m
+[38;5;252mlocate[39m[38;5;252m [39m[38;5;252m*/filename[39m
+
+[38;5;246;03m# Recompute the database. You need to do it if you want to find recently added files:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mupdatedb[39m

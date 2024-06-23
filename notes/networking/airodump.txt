@@ -1,0 +1,10 @@
+[38;5;246;03m# airodump-ng[39;00m
+[38;5;246;03m# Capture packets and display information about wireless networks.[39;00m
+[38;5;246;03m# Part of `aircrack-ng`.[39;00m
+[38;5;246;03m# More information: <https://www.aircrack-ng.org/doku.php?id=airodump-ng>.[39;00m
+
+[38;5;246;03m# Capture packets and display information about a wireless network:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mairodump-ng[39m[38;5;252m [39m[38;5;252minterface[39m
+
+[38;5;246;03m# Capture packets and display information about a wireless network given the MAC address and channel, and save the output to a file:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mairodump-ng[39m[38;5;252m [39m[38;5;252m--channel[39m[38;5;252m [39m[38;5;252mchannel[39m[38;5;252m [39m[38;5;252m--write[39m[38;5;252m [39m[38;5;252mpath/to/file[39m[38;5;252m [39m[38;5;252m--bssid[39m[38;5;252m [39m[38;5;252mmac[39m[38;5;252m [39m[38;5;252minterface[39m

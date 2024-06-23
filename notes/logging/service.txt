@@ -1,0 +1,16 @@
+[38;5;246;03m# service[39;00m
+[38;5;246;03m# Manage services by running init scripts.[39;00m
+[38;5;246;03m# The full script path should be omitted (`/etc/init.d/` is assumed).[39;00m
+[38;5;246;03m# More information: <https://manned.org/service>.[39;00m
+
+[38;5;246;03m# List the name and status of all services:[39;00m
+[38;5;252mservice[39m[38;5;252m [39m[38;5;252m--status-all[39m
+
+[38;5;246;03m# Start/Stop/Restart/Reload service (start/stop should always be available):[39;00m
+[38;5;252mservice[39m[38;5;252m [39m[38;5;252mservice_name[39m[38;5;252m [39m[38;5;252mstart[39m[38;5;252m|[39m[38;5;252mstop[39m[38;5;252m|[39m[38;5;252mrestart[39m[38;5;252m|[39m[38;5;252mreload[39m
+
+[38;5;246;03m# Do a full restart (runs script twice with start and stop):[39;00m
+[38;5;252mservice[39m[38;5;252m [39m[38;5;252mservice_name[39m[38;5;252m [39m[38;5;252m--full-restart[39m
+
+[38;5;246;03m# Show the current status of a service:[39;00m
+[38;5;252mservice[39m[38;5;252m [39m[38;5;252mservice_name[39m[38;5;252m [39m[38;5;252mstatus[39m

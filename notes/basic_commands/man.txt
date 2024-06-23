@@ -1,0 +1,38 @@
+[48;5;8m[24m cheat:man [24m[0m
+[38;5;246;03m# To convert a man page to pdf:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252mbash[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mps2pdf[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252mbash.pdf[39m
+
+[38;5;246;03m# To view the ascii chart:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;67m7[39m[38;5;252m [39m[38;5;252mascii[39m
+
+[38;5;246;03m# To see config:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m/private/etc/man.conf[39m
+
+[38;5;246;03m# To check the existence of a keyword in all of man pages:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;252m-k[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mkeyword>[39m
+
+[48;5;8m[24m tldr:man [24m[0m
+[38;5;246;03m# man[39;00m
+[38;5;246;03m# Format and display manual pages.[39;00m
+[38;5;246;03m# More information: <https://www.man7.org/linux/man-pages/man1/man.1.html>.[39;00m
+
+[38;5;246;03m# Display the man page for a command:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;31mcommand[39m
+
+[38;5;246;03m# Display the man page for a command from section 7:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;67m7[39m[38;5;252m [39m[38;5;31mcommand[39m
+
+[38;5;246;03m# List all available sections for a command:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;31mcommand[39m
+
+[38;5;246;03m# Display the path searched for manpages:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;252m--path[39m
+
+[38;5;246;03m# Display the location of a manpage rather than the manpage itself:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;252m-w[39m[38;5;252m [39m[38;5;31mcommand[39m
+
+[38;5;246;03m# Display the man page using a specific locale:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;31mcommand[39m[38;5;252m [39m[38;5;252m--locale[39m[38;5;252m=[39m[38;5;252mlocale[39m
+
+[38;5;246;03m# Search for manpages containing a search string:[39;00m
+[38;5;252mman[39m[38;5;252m [39m[38;5;252m-k[39m[38;5;252m [39m[38;5;214m"search_string"[39m

@@ -1,0 +1,21 @@
+[38;5;246;03m# binwalk[39;00m
+[38;5;246;03m# Firmware Analysis Tool.[39;00m
+[38;5;246;03m# More information: <https://github.com/ReFirmLabs/binwalk>.[39;00m
+
+[38;5;246;03m# Scan a binary file:[39;00m
+[38;5;252mbinwalk[39m[38;5;252m [39m[38;5;252mpath/to/binary[39m
+
+[38;5;246;03m# Extract files from a binary, specifying the output directory:[39;00m
+[38;5;252mbinwalk[39m[38;5;252m [39m[38;5;252m--extract[39m[38;5;252m [39m[38;5;252m--directory[39m[38;5;252m [39m[38;5;252moutput_directory[39m[38;5;252m [39m[38;5;252mpath/to/binary[39m
+
+[38;5;246;03m# Recursively extract files from a binary limiting the recursion depth to 2:[39;00m
+[38;5;252mbinwalk[39m[38;5;252m [39m[38;5;252m--extract[39m[38;5;252m [39m[38;5;252m--matryoshka[39m[38;5;252m [39m[38;5;252m--depth[39m[38;5;252m [39m[38;5;67m2[39m[38;5;252m [39m[38;5;252mpath/to/binary[39m
+
+[38;5;246;03m# Extract files from a binary with the specified file signature:[39;00m
+[38;5;252mbinwalk[39m[38;5;252m [39m[38;5;252m--dd[39m[38;5;252m [39m[38;5;214m'png image:png'[39m[38;5;252m [39m[38;5;252mpath/to/binary[39m
+
+[38;5;246;03m# Analyze the entropy of a binary, saving the plot with the same name as the binary and `.png` extension appended:[39;00m
+[38;5;252mbinwalk[39m[38;5;252m [39m[38;5;252m--entropy[39m[38;5;252m [39m[38;5;252m--save[39m[38;5;252m [39m[38;5;252mpath/to/binary[39m
+
+[38;5;246;03m# Combine entropy, signature and opcodes analysis in a single command:[39;00m
+[38;5;252mbinwalk[39m[38;5;252m [39m[38;5;252m--entropy[39m[38;5;252m [39m[38;5;252m--signature[39m[38;5;252m [39m[38;5;252m--opcodes[39m[38;5;252m [39m[38;5;252mpath/to/binary[39m

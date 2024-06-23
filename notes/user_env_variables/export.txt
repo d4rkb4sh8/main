@@ -1,0 +1,23 @@
+[48;5;8m[24m cheat:export [24m[0m
+[38;5;246;03m# To show current shell attributes:[39;00m
+[38;5;31mexport[39m
+
+[38;5;246;03m# To export an environment variable:[39;00m
+[38;5;31mexport[39m[38;5;252m [39m[38;5;87mVARNAME[39m[38;5;252m=[39m[38;5;214m"value"[39m
+
+[48;5;8m[24m tldr:export [24m[0m
+[38;5;246;03m# export[39;00m
+[38;5;246;03m# Command to mark shell variables in the current environment to be exported with any newly forked child processes.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/bash/manual/bash.html#index-export>.[39;00m
+
+[38;5;246;03m# Set a new environment variable:[39;00m
+[38;5;31mexport[39m[38;5;252m [39m[38;5;87mVARIABLE[39m[38;5;252m=[39m[38;5;252mvalue[39m
+
+[38;5;246;03m# Remove an environment variable:[39;00m
+[38;5;31mexport[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;252mVARIABLE[39m
+
+[38;5;246;03m# Mark a shell function for export:[39;00m
+[38;5;31mexport[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252mFUNCTION_NAME[39m
+
+[38;5;246;03m# Append something to the PATH variable:[39;00m
+[38;5;31mexport[39m[38;5;252m [39m[38;5;87mPATH[39m[38;5;252m=[39m[38;5;87m$PATH[39m[38;5;252m:path/to/append[39m

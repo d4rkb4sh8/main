@@ -1,0 +1,98 @@
+[48;5;8m[24m cheat.sheets:tar [24m[0m
+[38;5;246;03m# tar[39;00m
+[38;5;246;03m# GNU version of the tar archiving utility[39;00m
+
+[38;5;246;03m# An approach to backing up the current user's HOME, using tar(1) and Gzip[39;00m
+[38;5;246;03m# compression. Permissions (modes) will be preserved. The filename format will[39;00m
+[38;5;246;03m# be: UID:GID_DATE.tgz[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# Replace 'DEVICE' with whichever device is applicable to you, but note that it[39;00m
+[38;5;246;03m# must be in the '/media/USER' (where USER is the username) directory, else[39;00m
+[38;5;246;03m# this won't work, unless you edit the formatting section of `printf`.[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-czvpf[39m[38;5;252m [39m[38;5;214m"[39m[38;5;70;01m$([39;00m[38;5;31mprintf[39m[38;5;252m [39m[38;5;214m'/media/%s/%s/%d:%d_%(%F)T.tgz'[39m[38;5;252m [39m[38;5;214m"[39m[38;5;87m$USER[39m[38;5;214m"[39m[38;5;252m [39m[38;5;214m'DEVICE'[39m[38;5;252m [39m[38;5;214m${[39m[38;5;87mUID[39m[38;5;70;01m:-[39;00m[38;5;214m`[39m[38;5;252mid[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;214m`[39m[38;5;214m}[39m[38;5;252m [39m[38;5;214m${[39m[38;5;87mGID[39m[38;5;70;01m:-[39;00m[38;5;214m`[39m[38;5;252mid[39m[38;5;252m [39m[38;5;252m-g[39m[38;5;214m`[39m[38;5;214m}[39m[38;5;252m [39m[38;5;252m-1[39m[38;5;70;01m)[39;00m[38;5;214m"[39m[38;5;252m [39m[38;5;214m"[39m[38;5;87m$HOME[39m[38;5;214m"[39m
+
+[38;5;246;03m# Delete file 'xdm' from the archive given to the `-f` flag. This only works on[39;00m
+[38;5;246;03m# non-compressed archives, unfortunately, but those can always be uncompressed[39;00m
+[38;5;246;03m# first, then altered with the `--delete` flag, after which you can recompress.[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m--delete[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252mxdm_edited.tar.gz[39m[38;5;252m [39m[38;5;252mxdm[39m
+
+[38;5;246;03m# Extract the contents of the given archive (which is not compressed) to the[39;00m
+[38;5;246;03m# destination given to the `-C` flag; not many seem to know of this flag.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# If a destination (path given to `-C`) is not provided, the CWD will be used.[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-C[39m[38;5;252m [39m[38;5;252m/mnt[39m[38;5;252m [39m[38;5;252m-xvf[39m[38;5;252m [39m[38;5;252mTarball.tar[39m
+
+[48;5;8m[24m cheat:tar [24m[0m
+[38;5;252m---[39m
+[38;5;252mtags:[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252m [39m[38;5;252mcompression[39m[38;5;252m [39m[38;5;252m][39m
+[38;5;252m---[39m
+[38;5;246;03m# To extract an uncompressed archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-xvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar[39m
+
+[38;5;246;03m# To extract a .tar in specified directory:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-xvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar[39m[38;5;252m [39m[38;5;252m-C[39m[38;5;252m [39m[38;5;252m/path/to/destination/[39m
+
+[38;5;246;03m# To create an uncompressed archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-cvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar[39m[38;5;252m [39m[38;5;252m/path/to/foo/[39m
+
+[38;5;246;03m# To extract a .tgz or .tar.gz archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-xzvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tgz[39m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-xzvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar.gz[39m
+
+[38;5;246;03m# To create a .tgz or .tar.gz archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-czvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tgz[39m[38;5;252m [39m[38;5;252m/path/to/foo/[39m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-czvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar.gz[39m[38;5;252m [39m[38;5;252m/path/to/foo/[39m
+
+[38;5;246;03m# To list the content of an .tgz or .tar.gz archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-tzvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tgz[39m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-tzvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar.gz[39m
+
+[38;5;246;03m# To extract a .tar.bz2 archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-xjvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar.bz2[39m
+
+[38;5;246;03m# To create a .tar.bz2 archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-cjvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar.bz2[39m[38;5;252m [39m[38;5;252m/path/to/foo/[39m
+
+[38;5;246;03m# To list the content of an .tar.bz2 archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-tjvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tar.bz2[39m
+
+[38;5;246;03m# To create a .tgz archive and exclude all jpg,gif,... from the tgz:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-czvf[39m[38;5;252m [39m[38;5;252m/path/to/foo.tgz[39m[38;5;252m [39m[38;5;252m--exclude[39m[38;5;252m=[39m[38;5;214m\*[39m[38;5;252m.[39m[38;5;252m{[39m[38;5;252mjpg,gif,png,wmv,flv,tar.gz,zip[39m[38;5;252m}[39m[38;5;252m [39m[38;5;252m/path/to/foo/[39m
+
+[38;5;246;03m# To use parallel (multi-threaded) implementation of compression algorithms:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-z[39m[38;5;252m [39m[38;5;252m...[39m[38;5;252m [39m[38;5;252m->[39m[38;5;252m [39m[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-Ipigz[39m[38;5;252m [39m[38;5;252m...[39m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-j[39m[38;5;252m [39m[38;5;252m...[39m[38;5;252m [39m[38;5;252m->[39m[38;5;252m [39m[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-Ipbzip2[39m[38;5;252m [39m[38;5;252m...[39m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-J[39m[38;5;252m [39m[38;5;252m...[39m[38;5;252m [39m[38;5;252m->[39m[38;5;252m [39m[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-Ipixz[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# To append a new file to an old tar archive:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252m-rf[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252marchive.tar>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mnew-file-to-append>[39m
+
+[48;5;8m[24m tldr:tar [24m[0m
+[38;5;246;03m# tar[39;00m
+[38;5;246;03m# Archiving utility.[39;00m
+[38;5;246;03m# Often combined with a compression method, such as gzip or bzip2.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/tar>.[39;00m
+
+[38;5;246;03m# [c]reate an archive and write it to a [f]ile:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mcf[39m[38;5;252m [39m[38;5;252mpath/to/target.tar[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# [c]reate a g[z]ipped archive and write it to a [f]ile:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mczf[39m[38;5;252m [39m[38;5;252mpath/to/target.tar.gz[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# [c]reate a g[z]ipped archive from a directory using relative paths:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mczf[39m[38;5;252m [39m[38;5;252mpath/to/target.tar.gz[39m[38;5;252m [39m[38;5;252m--directory[39m[38;5;252m=[39m[38;5;252mpath/to/directory[39m[38;5;252m [39m[38;5;252m.[39m
+
+[38;5;246;03m# E[x]tract a (compressed) archive [f]ile into the current directory [v]erbosely:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mxvf[39m[38;5;252m [39m[38;5;252mpath/to/source.tar[39m[38;5;252m[[39m[38;5;252m.gz[39m[38;5;252m|[39m[38;5;252m.bz2[39m[38;5;252m|[39m[38;5;252m.xz[39m[38;5;252m][39m
+
+[38;5;246;03m# E[x]tract a (compressed) archive [f]ile into the target directory:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mxf[39m[38;5;252m [39m[38;5;252mpath/to/source.tar[39m[38;5;252m[[39m[38;5;252m.gz[39m[38;5;252m|[39m[38;5;252m.bz2[39m[38;5;252m|[39m[38;5;252m.xz[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m--directory[39m[38;5;252m=[39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# [c]reate a compressed archive and write it to a [f]ile, using [a]rchive suffix to determine the compression program:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mcaf[39m[38;5;252m [39m[38;5;252mpath/to/target.tar.xz[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Lis[t] the contents of a tar [f]ile [v]erbosely:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mtvf[39m[38;5;252m [39m[38;5;252mpath/to/source.tar[39m
+
+[38;5;246;03m# E[x]tract files matching a pattern from an archive [f]ile:[39;00m
+[38;5;252mtar[39m[38;5;252m [39m[38;5;252mxf[39m[38;5;252m [39m[38;5;252mpath/to/source.tar[39m[38;5;252m [39m[38;5;252m--wildcards[39m[38;5;252m [39m[38;5;214m"*.html"[39m

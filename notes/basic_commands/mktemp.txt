@@ -1,0 +1,12 @@
+[38;5;246;03m# mktemp[39;00m
+[38;5;246;03m# Create a temporary file or directory.[39;00m
+[38;5;246;03m# More information: <https://ss64.com/osx/mktemp.html>.[39;00m
+
+[38;5;246;03m# Create an empty temporary file and print the absolute path to it:[39;00m
+[38;5;252mmktemp[39m
+
+[38;5;246;03m# Create an empty temporary file with a given suffix and print the absolute path to file:[39;00m
+[38;5;252mmktemp[39m[38;5;252m [39m[38;5;252m--suffix[39m[38;5;252m [39m[38;5;214m".ext"[39m
+
+[38;5;246;03m# Create a temporary directory and print the absolute path to it:[39;00m
+[38;5;252mmktemp[39m[38;5;252m [39m[38;5;252m-d[39m

@@ -1,0 +1,47 @@
+[48;5;8m[24m cheat.sheets:cat [24m[0m
+[38;5;246;03m# POSIX way in which to cat(1); see cat(1posix).[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mFILE_1[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mFILE_2[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m...[39m[38;5;252m][39m
+
+[38;5;246;03m# Output a file, expanding any escape sequences (default). Using this short[39;00m
+[38;5;246;03m# one-liner let's you view the boot log how it was show at boot-time.[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m/var/log/boot.log[39m
+
+[38;5;246;03m# This is an ever-popular useless use of cat.[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m/etc/passwd[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;214m'^root'[39m
+[38;5;246;03m# The sane way:[39;00m
+[38;5;252mgrep[39m[38;5;252m [39m[38;5;214m'^root'[39m[38;5;252m [39m[38;5;252m/etc/passwd[39m
+
+[38;5;246;03m# If in bash(1), this is often (but not always) a useless use of cat(1).[39;00m
+[38;5;87mBuffer[39m[38;5;252m=[39m[38;5;214m`[39m[38;5;252mcat[39m[38;5;252m [39m[38;5;252m/etc/passwd[39m[38;5;214m`[39m
+[38;5;246;03m# The sane way:[39;00m
+[38;5;87mBuffer[39m[38;5;252m=[39m[38;5;214m`[39m[38;5;252m<[39m[38;5;252m [39m[38;5;252m/etc/passwd[39m[38;5;214m`[39m
+
+[48;5;8m[24m cheat:cat [24m[0m
+[38;5;246;03m# To display the contents of a file:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To display file contents with line numbers[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To display file contents with line numbers (blank lines excluded)[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m-b[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[48;5;8m[24m tldr:cat [24m[0m
+[38;5;246;03m# cat[39;00m
+[38;5;246;03m# Print and concatenate files.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/cat>.[39;00m
+
+[38;5;246;03m# Print the contents of a file to the standard output:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Concatenate several files into an output file:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mpath/to/output_file[39m
+
+[38;5;246;03m# Append several files to an output file:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m[38;5;252m [39m[38;5;252m>>[39m[38;5;252m [39m[38;5;252mpath/to/output_file[39m
+
+[38;5;246;03m# Copy the contents of a file into an output file without buffering:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252m/dev/tty12[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252m/dev/tty13[39m
+
+[38;5;246;03m# Write `stdin` to a file:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mpath/to/file[39m

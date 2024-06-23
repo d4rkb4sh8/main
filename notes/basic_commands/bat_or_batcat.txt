@@ -1,0 +1,39 @@
+[48;5;8m[24m cheat:bat [24m[0m
+[38;5;246;03m# Display a single file on the terminal:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# Display multiple files at once:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# Show and highlight non-printable characters:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m-A[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# Display all supported languages:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m--list-languages[39m
+
+[38;5;246;03m# Set the language for syntax highlighting:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m--language[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mlanguage>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile.[39m[38;5;252m<[39m[38;5;252mlanguage[39m[38;5;252m [39m[38;5;252mextension>>[39m
+
+[48;5;8m[24m tldr:bat [24m[0m
+[38;5;246;03m# bat[39;00m
+[38;5;246;03m# Print and concatenate files.[39;00m
+[38;5;246;03m# A `cat` clone with syntax highlighting and Git integration.[39;00m
+[38;5;246;03m# More information: <https://github.com/sharkdp/bat>.[39;00m
+
+[38;5;246;03m# Print the contents of a file to the standard output:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Concatenate several files into the target file:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252mfile1[39m[38;5;252m [39m[38;5;252mfile2[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mtarget_file[39m
+
+[38;5;246;03m# Append several files into the target file:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252mfile1[39m[38;5;252m [39m[38;5;252mfile2[39m[38;5;252m [39m[38;5;252m>>[39m[38;5;252m [39m[38;5;252mtarget_file[39m
+
+[38;5;246;03m# Number all output lines:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m--number[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Syntax highlight a JSON file:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m--language[39m[38;5;252m [39m[38;5;252mjson[39m[38;5;252m [39m[38;5;252mfile.json[39m
+
+[38;5;246;03m# Display all supported languages:[39;00m
+[38;5;252mbat[39m[38;5;252m [39m[38;5;252m--list-languages[39m

@@ -1,0 +1,13 @@
+[38;5;246;03m# userdel[39;00m
+[38;5;246;03m# Remove a user account or remove a user from a group.[39;00m
+[38;5;246;03m# See also: `users`, `useradd`, `usermod`.[39;00m
+[38;5;246;03m# More information: <https://manned.org/userdel>.[39;00m
+
+[38;5;246;03m# Remove a user:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252muserdel[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Remove a user in other root directory:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252muserdel[39m[38;5;252m [39m[38;5;252m--root[39m[38;5;252m [39m[38;5;252mpath/to/other/root[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Remove a user along with the home directory and mail spool:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252muserdel[39m[38;5;252m [39m[38;5;252m--remove[39m[38;5;252m [39m[38;5;252musername[39m

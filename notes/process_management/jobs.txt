@@ -1,0 +1,29 @@
+[48;5;8m[24m cheat:jobs [24m[0m
+[38;5;246;03m# To see the background running commands:[39;00m
+[38;5;31mjobs[39m
+
+[38;5;246;03m# To see the background running commands with PID:[39;00m
+[38;5;31mjobs[39m[38;5;252m [39m[38;5;252m-l[39m
+
+[38;5;246;03m# To see the running jobs only:[39;00m
+[38;5;31mjobs[39m[38;5;252m [39m[38;5;252m-r[39m
+
+[38;5;246;03m# To see stopped jobs only:[39;00m
+[38;5;31mjobs[39m[38;5;252m [39m[38;5;252m-s[39m
+
+[48;5;8m[24m tldr:jobs [24m[0m
+[38;5;246;03m# jobs[39;00m
+[38;5;246;03m# Display status of jobs in the current session.[39;00m
+[38;5;246;03m# More information: <https://manned.org/jobs>.[39;00m
+
+[38;5;246;03m# Show status of all jobs:[39;00m
+[38;5;31mjobs[39m
+
+[38;5;246;03m# Show status of a particular job:[39;00m
+[38;5;31mjobs[39m[38;5;252m [39m[38;5;252m%job_id[39m
+
+[38;5;246;03m# Show status and process IDs of all jobs:[39;00m
+[38;5;31mjobs[39m[38;5;252m [39m[38;5;252m-l[39m
+
+[38;5;246;03m# Show process IDs of all jobs:[39;00m
+[38;5;31mjobs[39m[38;5;252m [39m[38;5;252m-p[39m

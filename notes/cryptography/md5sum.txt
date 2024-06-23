@@ -1,0 +1,21 @@
+[38;5;246;03m# md5sum[39;00m
+[38;5;246;03m# Calculate MD5 cryptographic checksums.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/md5sum>.[39;00m
+
+[38;5;246;03m# Calculate the MD5 checksum for a file:[39;00m
+[38;5;252mmd5sum[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Calculate MD5 checksums for multiple files:[39;00m
+[38;5;252mmd5sum[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m
+
+[38;5;246;03m# Calculate an MD5 checksum from `stdin`:[39;00m
+[38;5;252msome_command[39m[38;5;214m"[39m[38;5;214m | md5sum[39m
+
+[38;5;214m# Read a file of MD5SUMs and verify all files have matching checksums:[39m
+[38;5;214mmd5sum --check path/to/file.md5[39m
+
+[38;5;214m# Only show a message for missing files or when verification fails:[39m
+[38;5;214mmd5sum --check --quiet path/to/file.md5[39m
+
+[38;5;214m# Only show a message for files for which verification fails, ignoring missing files:[39m
+[38;5;214mmd5sum --ignore-missing --check --quiet path/to/file.md5[39m

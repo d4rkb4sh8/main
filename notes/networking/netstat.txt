@@ -1,0 +1,60 @@
+[48;5;8m[24m cheat:netstat [24m[0m
+[38;5;252m---[39m
+[38;5;252mtags:[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252m [39m[38;5;252mnetworking[39m[38;5;252m [39m[38;5;252m][39m
+[38;5;252m---[39m
+[38;5;246;03m# WARNING ! netstat is deprecated. Look below.[39;00m
+
+[38;5;246;03m# To view which users/processes are listening to which ports:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m-lnptu[39m
+
+[38;5;246;03m# To view routing table (use -n flag to disable DNS lookups):[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m-r[39m
+
+[38;5;246;03m# Which process is listening to port <port>[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m-pln[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mport>[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mawk[39m[38;5;252m [39m[38;5;214m'{print $NF}'[39m
+
+[38;5;246;03m# Example output: 1507/python[39;00m
+
+[38;5;246;03m# Fast display of ipv4 tcp listening programs[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m-vtlnp[39m[38;5;252m [39m[38;5;252m--listening[39m[38;5;252m [39m[38;5;252m-4[39m
+
+[38;5;246;03m# WARNING ! netstat is deprecated.[39;00m
+[38;5;246;03m# Replace it by:[39;00m
+[38;5;252mss[39m
+
+[38;5;246;03m# For netstat -r[39;00m
+[38;5;252mip[39m[38;5;252m [39m[38;5;252mroute[39m
+
+[38;5;246;03m# For netstat -i[39;00m
+[38;5;252mip[39m[38;5;252m [39m[38;5;252m-s[39m[38;5;252m [39m[38;5;252mlink[39m
+
+[38;5;246;03m# For netstat -g[39;00m
+[38;5;252mip[39m[38;5;252m [39m[38;5;252mmaddr[39m
+
+[48;5;8m[24m tldr:netstat [24m[0m
+[38;5;246;03m# netstat[39;00m
+[38;5;246;03m# Displays network-related information such as open connections, open socket ports, etc.[39;00m
+[38;5;246;03m# More information: <https://man7.org/linux/man-pages/man8/netstat.8.html>.[39;00m
+
+[38;5;246;03m# List all ports:[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--all[39m
+
+[38;5;246;03m# List all listening ports:[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--listening[39m
+
+[38;5;246;03m# List listening TCP ports:[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--tcp[39m
+
+[38;5;246;03m# Display PID and program names:[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--program[39m
+
+[38;5;246;03m# List information continuously:[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--continuous[39m
+
+[38;5;246;03m# List routes and do not resolve IP addresses to hostnames:[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--route[39m[38;5;252m [39m[38;5;252m--numeric[39m
+
+[38;5;246;03m# List listening TCP and UDP ports (+ user and process if you're root):[39;00m
+[38;5;252mnetstat[39m[38;5;252m [39m[38;5;252m--listening[39m[38;5;252m [39m[38;5;252m--program[39m[38;5;252m [39m[38;5;252m--numeric[39m[38;5;252m [39m[38;5;252m--tcp[39m[38;5;252m [39m[38;5;252m--udp[39m[38;5;252m [39m[38;5;252m--extend[39m
+sudo netstat -tupln
+# very useful use sudo to see more info

@@ -1,0 +1,18 @@
+[38;5;246;03m# gunzip[39;00m
+[38;5;246;03m# Extract file(s) from a gzip (.gz) archive.[39;00m
+[38;5;246;03m# More information: <https://manned.org/gunzip>.[39;00m
+
+[38;5;246;03m# Extract a file from an archive, replacing the original file if it exists:[39;00m
+[38;5;252mgunzip[39m[38;5;252m [39m[38;5;252marchive.tar.gz[39m
+
+[38;5;246;03m# Extract a file to a target destination:[39;00m
+[38;5;252mgunzip[39m[38;5;252m [39m[38;5;252m--stdout[39m[38;5;252m [39m[38;5;252marchive.tar.gz[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252marchive.tar[39m
+
+[38;5;246;03m# Extract a file and keep the archive file:[39;00m
+[38;5;252mgunzip[39m[38;5;252m [39m[38;5;252m--keep[39m[38;5;252m [39m[38;5;252marchive.tar.gz[39m
+
+[38;5;246;03m# List the contents of a compressed file:[39;00m
+[38;5;252mgunzip[39m[38;5;252m [39m[38;5;252m--list[39m[38;5;252m [39m[38;5;252mfile.txt.gz[39m
+
+[38;5;246;03m# Decompress an archive from `stdin`:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252mpath/to/archive.gz[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mgunzip[39m

@@ -1,2 +1,1 @@
-# main
-main repo
+All notes can be read with cat or bat/batcat

@@ -1,0 +1,30 @@
+[48;5;8m[24m cheat.sheets:lsb_release [24m[0m
+[38;5;246;03m# lsb_release[39;00m
+[38;5;246;03m# Print distribution-specific information[39;00m
+
+[38;5;246;03m# Output the current distribution's ID. In Debian/Ubuntu, you'll see this an[39;00m
+[38;5;246;03m# example of this command and these flags being used in the default GRUB[39;00m
+[38;5;246;03m# configuration file, found at '/etc/default/grub'.[39;00m
+[38;5;252mlsb_release[39m[38;5;252m [39m[38;5;252m-si[39m
+
+[38;5;246;03m# Output the current distribution's description. This should basically show[39;00m
+[38;5;246;03m# the full name and version of the description, minus the codename. For[39;00m
+[38;5;246;03m# example, in Ubuntu 18.04, the returned value is: Ubuntu 18.04.5 LTS[39;00m
+[38;5;252mlsb_release[39m[38;5;252m [39m[38;5;252m-sd[39m
+
+[48;5;8m[24m tldr:lsb_release [24m[0m
+[38;5;246;03m# lsb_release[39;00m
+[38;5;246;03m# Provides certain LSB (Linux Standard Base) and distribution-specific information.[39;00m
+[38;5;246;03m# More information: <https://manned.org/lsb_release>.[39;00m
+
+[38;5;246;03m# Print all available information:[39;00m
+[38;5;252mlsb_release[39m[38;5;252m [39m[38;5;252m-a[39m
+
+[38;5;246;03m# Print a description (usually the full name) of the operating system:[39;00m
+[38;5;252mlsb_release[39m[38;5;252m [39m[38;5;252m-d[39m
+
+[38;5;246;03m# Print only the operating system name (ID), suppressing the field name:[39;00m
+[38;5;252mlsb_release[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;252m-s[39m
+
+[38;5;246;03m# Print the release number and codename of the distribution, suppressing the field names:[39;00m
+[38;5;252mlsb_release[39m[38;5;252m [39m[38;5;252m-rcs[39m

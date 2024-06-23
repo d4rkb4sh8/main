@@ -1,0 +1,59 @@
+[48;5;8m[24m cheat.sheets:read [24m[0m
+[38;5;246;03m# read (The Bash Built-in)[39;00m
+[38;5;246;03m# Read a line from the standard input and split it into fields[39;00m
+
+[38;5;246;03m# Standard approach to prompting the user for a single-character response, such[39;00m
+[38;5;246;03m# as a simple 'Y' or 'N' response. Using Bash's `read`, you can save time and[39;00m
+[38;5;246;03m# lines by having the prompt taken care of by `read` itself.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# The use of the `-e` flag tells read to return a new line afterwards. As the[39;00m
+[38;5;246;03m# `help read` output says:[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m#   use Readline to obtain the line in an interactive shell[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# Because we're using the `-n 1` flag and argument, we'll want `-e`, as the[39;00m
+[38;5;246;03m# user will not get a chance to press the Enter or Return key which would[39;00m
+[38;5;246;03m# otherwise give us that new line.[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;67m1[39m[38;5;252m [39m[38;5;252m-e[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;214m'Prompt: '[39m
+
+[38;5;246;03m# A while read loop in Bash is easily one of the best features, when properly[39;00m
+[38;5;246;03m# utilized; it often makes the use of tools like grep(1), sed(1), and even[39;00m
+[38;5;246;03m# awk(1) redundant, depending on the functionality required. This can offer[39;00m
+[38;5;246;03m# more efficiency, depending on what's needed and the amount of data to parse.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# In this example, the [I]nput [F]ield [S]eperator is set to `=` for only the[39;00m
+[38;5;246;03m# `read` built-in, and the `-a` flag is used to split the input, per the[39;00m
+[38;5;246;03m# provided IFS, into an array. This then means the first index is the key and[39;00m
+[38;5;246;03m# the second index the value, which is ideal when parsing configuration files.[39;00m
+[38;5;70;01mwhile[39;00m[38;5;252m [39m[38;5;87mIFS[39m[38;5;252m=[39m[38;5;214m'='[39m[38;5;252m [39m[38;5;31mread[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252mLine[39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdo[39;00m
+[38;5;252m	[39m[38;5;252mCOMMANDS[39m
+[38;5;70;01mdone[39;00m[38;5;252m [39m[38;5;252m<[39m[38;5;252m [39m[38;5;252mINPUT_FILE[39m
+
+[48;5;8m[24m tldr:read [24m[0m
+[38;5;246;03m# read[39;00m
+[38;5;246;03m# BASH builtin for retrieving data from standard input.[39;00m
+[38;5;246;03m# More information: <https://manned.org/read.1p>.[39;00m
+
+[38;5;246;03m# Store data that you type from the keyboard:[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252mvariable[39m
+
+[38;5;246;03m# Store each of the next lines you enter as values of an array:[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252marray[39m
+
+[38;5;246;03m# Specify the number of maximum characters to be read:[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;252mcharacter_count[39m[38;5;252m [39m[38;5;252mvariable[39m
+
+[38;5;246;03m# Use a specific character as a delimiter instead of a new line:[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252mnew_delimiter[39m[38;5;252m [39m[38;5;252mvariable[39m
+
+[38;5;246;03m# Do not let backslash (\\) act as an escape character:[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252mvariable[39m
+
+[38;5;246;03m# Display a prompt before the input:[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;214m"Enter your input here: "[39m[38;5;252m [39m[38;5;252mvariable[39m
+
+[38;5;246;03m# Do not echo typed characters (silent mode):[39;00m
+[38;5;31mread[39m[38;5;252m [39m[38;5;252m-s[39m[38;5;252m [39m[38;5;252mvariable[39m
+
+[38;5;246;03m# Read `stdin` and perform an action on every line:[39;00m
+[38;5;70;01mwhile[39;00m[38;5;252m [39m[38;5;31mread[39m[38;5;252m [39m[38;5;252mline[39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdo[39;00m[38;5;252m [39m[38;5;31mecho[39m[38;5;252m [39m[38;5;214m"[39m[38;5;87m$line[39m[38;5;214m"[39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdone[39;00m

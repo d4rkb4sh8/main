@@ -1,0 +1,31 @@
+[48;5;8m[24m cheat:shred [24m[0m
+[38;5;246;03m# To shred a file (5 passes) and verbose output:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;67m5[39m[38;5;252m [39m[38;5;252m-v[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To shred a file (5 passes) and a final overwrite of zeroes:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;67m5[39m[38;5;252m [39m[38;5;252m-vz[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To do the above, and then truncate and rm the file:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;67m5[39m[38;5;252m [39m[38;5;252m-vzu[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To shred a partition:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;67m5[39m[38;5;252m [39m[38;5;252m-vz[39m[38;5;252m [39m[38;5;252m/dev/sda[39m
+
+[38;5;246;03m# Remember that shred may not behave as expected on journaled file systems if file data is being journaled.[39;00m
+
+[48;5;8m[24m tldr:shred [24m[0m
+[38;5;246;03m# shred[39;00m
+[38;5;246;03m# Overwrite files to securely delete data.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/shred>.[39;00m
+
+[38;5;246;03m# Overwrite a file:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Overwrite a file, leaving zeroes instead of random data:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m--zero[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Overwrite a file 25 times:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m-n25[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Overwrite a file and remove it:[39;00m
+[38;5;252mshred[39m[38;5;252m [39m[38;5;252m--remove[39m[38;5;252m [39m[38;5;252mpath/to/file[39m

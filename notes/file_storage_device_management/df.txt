@@ -1,0 +1,51 @@
+[48;5;8m[24m cheat.sheets:df [24m[0m
+[38;5;246;03m# df[39;00m
+[38;5;246;03m# Report file system disk space usage[39;00m
+
+[38;5;246;03m# Print free disk space in a [h]uman-readable format.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-h[39m
+
+[38;5;246;03m# Free disk space for [t]ype EXT2 file systems.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252mext2[39m
+
+[38;5;246;03m# Free disk space for filesystems, e[x]cluding EXT2.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-x[39m[38;5;252m [39m[38;5;252mext2[39m
+
+[38;5;246;03m# Show [i]node usage.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-i[39m
+
+[38;5;246;03m# Show information about a distinct filesystem path.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mPATH[39m[38;5;252m][39m
+
+[38;5;246;03m# List [a]ll filesystems, + unreadable, duplicates, pseudo, and inaccessible.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-a[39m
+
+[38;5;246;03m# Fetch a grand total of disk usage.[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m--total[39m
+
+[48;5;8m[24m cheat:df [24m[0m
+[38;5;246;03m# To print free disk space in a human-readable format:[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-h[39m
+
+[38;5;246;03m# To print the disk for a given path:[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mpath>[39m
+
+[48;5;8m[24m tldr:df [24m[0m
+[38;5;246;03m# df[39;00m
+[38;5;246;03m# Gives an overview of the filesystem disk space usage.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/df>.[39;00m
+
+[38;5;246;03m# Display all filesystems and their disk usage:[39;00m
+[38;5;252mdf[39m
+
+[38;5;246;03m# Display all filesystems and their disk usage in human-readable form:[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-h[39m
+
+[38;5;246;03m# Display the filesystem and its disk usage containing the given file or directory:[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252mpath/to/file_or_directory[39m
+
+[38;5;246;03m# Display statistics on the number of free inodes:[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-i[39m
+
+[38;5;246;03m# Display filesystems but exclude the specified types:[39;00m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-x[39m[38;5;252m [39m[38;5;252msquashfs[39m[38;5;252m [39m[38;5;252m-x[39m[38;5;252m [39m[38;5;252mtmpfs[39m

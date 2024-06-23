@@ -1,0 +1,51 @@
+[48;5;8m[24m cheat:lsblk [24m[0m
+[38;5;246;03m# To show all available block devices along with their partitioning schemes:[39;00m
+[38;5;252mlsblk[39m
+
+[38;5;246;03m# To show SCSI devices:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--scsi[39m
+
+[38;5;246;03m# To show a specific device:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m/dev/sda[39m
+
+[38;5;246;03m# To verify TRIM support:[39;00m
+[38;5;246;03m# Check the values of DISC-GRAN (discard granularity) and DISC-MAX (discard max bytes) columns.[39;00m
+[38;5;246;03m# Non-zero values indicate TRIM support[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--discard[39m
+
+[38;5;246;03m# To fetch info about filesystems:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--fs[39m
+
+[38;5;246;03m# For JSON, LIST or TREE output formats use the following flags:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--json[39m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--list[39m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--tree[39m[38;5;252m [39m[38;5;246;03m# default view[39;00m
+
+[48;5;8m[24m tldr:lsblk [24m[0m
+[38;5;246;03m# lsblk[39;00m
+[38;5;246;03m# Lists information about devices.[39;00m
+[38;5;246;03m# More information: <https://manned.org/lsblk>.[39;00m
+
+[38;5;246;03m# List all storage devices in a tree-like format:[39;00m
+[38;5;252mlsblk[39m
+
+[38;5;246;03m# Also list empty devices:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m-a[39m
+
+[38;5;246;03m# Print the SIZE column in bytes rather than in a human-readable format:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m-b[39m
+
+[38;5;246;03m# Output info about filesystems:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m-f[39m
+
+[38;5;246;03m# Use ASCII characters for tree formatting:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m-i[39m
+
+[38;5;246;03m# Output info about block-device topology:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m-t[39m
+
+[38;5;246;03m# Exclude the devices specified by the comma-separated list of major device numbers:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m-e[39m[38;5;252m [39m[38;5;67m1[39m[38;5;252m,7[39m
+
+[38;5;246;03m# Display a customized summary using a comma-separated list of columns:[39;00m
+[38;5;252mlsblk[39m[38;5;252m [39m[38;5;252m--output[39m[38;5;252m [39m[38;5;252mNAME,SERIAL,MODEL,TRAN,TYPE,SIZE,FSTYPE,MOUNTPOINT[39m

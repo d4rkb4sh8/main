@@ -1,0 +1,49 @@
+[48;5;8m[24m cheat:cp [24m[0m
+[38;5;246;03m# To copy a file:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m~/Desktop/foo.txt[39m[38;5;252m [39m[38;5;252m~/Downloads/foo.txt[39m
+
+[38;5;246;03m# To copy a directory:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252m~/Desktop/cruise_pics/[39m[38;5;252m [39m[38;5;252m~/Pictures/[39m
+
+[38;5;246;03m# To create a copy but ask to overwrite if the destination file already exists:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;252m~/Desktop/foo.txt[39m[38;5;252m [39m[38;5;252m~/Documents/foo.txt[39m
+
+[38;5;246;03m# To create a backup file with date:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252mfoo.txt[39m[38;5;252m{[39m[38;5;252m,.[39m[38;5;214m"[39m[38;5;70;01m$([39;00m[38;5;252mdate[39m[38;5;252m [39m[38;5;252m+%Y%m%d-%H%M%S[39m[38;5;70;01m)[39;00m[38;5;214m"[39m[38;5;252m}[39m
+
+[38;5;246;03m# To copy a symlink that points to a directory (and is thus soft) and not[39;00m
+[38;5;246;03m# 'expand' the symlink (aka, preserve its nature as a symlink):[39;00m
+[38;5;246;03m# Note this does NOT work (note trailing '/'):  cp -P /path/to/symlink-dir/[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-P[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252msymlink-dir>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-dir>[39m
+
+[38;5;246;03m# To copy sparsely:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m--sparse[39m[38;5;252m=[39m[38;5;252malways[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252msrc>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest>[39m
+
+[48;5;8m[24m tldr:cp [24m[0m
+[38;5;246;03m# cp[39;00m
+[38;5;246;03m# Copy files and directories.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/cp>.[39;00m
+
+[38;5;246;03m# Copy a file to another location:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252mpath/to/source_file.ext[39m[38;5;252m [39m[38;5;252mpath/to/target_file.ext[39m
+
+[38;5;246;03m# Copy a file into another directory, keeping the filename:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252mpath/to/source_file.ext[39m[38;5;252m [39m[38;5;252mpath/to/target_parent_directory[39m
+
+[38;5;246;03m# Recursively copy a directory's contents to another location (if the destination exists, the directory is copied inside it):[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-R[39m[38;5;252m [39m[38;5;252mpath/to/source_directory[39m[38;5;252m [39m[38;5;252mpath/to/target_directory[39m
+
+[38;5;246;03m# Copy a directory recursively, in verbose mode (shows files as they are copied):[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-vR[39m[38;5;252m [39m[38;5;252mpath/to/source_directory[39m[38;5;252m [39m[38;5;252mpath/to/target_directory[39m
+
+[38;5;246;03m# Copy multiple files at once to a directory:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252mpath/to/destination_directory[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Copy text files to another location, in interactive mode (prompts user before overwriting):[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;252m*.txt[39m[38;5;252m [39m[38;5;252mpath/to/target_directory[39m
+
+[38;5;246;03m# Follow symbolic links before copying:[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-L[39m[38;5;252m [39m[38;5;252mlink[39m[38;5;252m [39m[38;5;252mpath/to/target_directory[39m
+
+[38;5;246;03m# Use the first argument as the destination directory (useful for `xargs ... | cp -t <DEST_DIR>`):[39;00m
+[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252mpath/to/target_directory[39m[38;5;252m [39m[38;5;252mpath/to/file_or_directory1[39m[38;5;252m [39m[38;5;252mpath/to/file_or_directory2[39m[38;5;252m [39m[38;5;252m...[39m

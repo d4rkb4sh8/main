@@ -1,0 +1,15 @@
+[38;5;246;03m# chgrp[39;00m
+[38;5;246;03m# Change group ownership of files and directories.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/chgrp>.[39;00m
+
+[38;5;246;03m# Change the owner group of a file/directory:[39;00m
+[38;5;252mchgrp[39m[38;5;252m [39m[38;5;252mgroup[39m[38;5;252m [39m[38;5;252mpath/to/file_or_directory[39m
+
+[38;5;246;03m# Recursively change the owner group of a directory and its contents:[39;00m
+[38;5;252mchgrp[39m[38;5;252m [39m[38;5;252m-R[39m[38;5;252m [39m[38;5;252mgroup[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# Change the owner group of a symbolic link:[39;00m
+[38;5;252mchgrp[39m[38;5;252m [39m[38;5;252m-h[39m[38;5;252m [39m[38;5;252mgroup[39m[38;5;252m [39m[38;5;252mpath/to/symlink[39m
+
+[38;5;246;03m# Change the owner group of a file/directory to match a reference file:[39;00m
+[38;5;252mchgrp[39m[38;5;252m [39m[38;5;252m--reference[39m[38;5;252m=[39m[38;5;252mpath/to/reference_file[39m[38;5;252m [39m[38;5;252mpath/to/file_or_directory[39m

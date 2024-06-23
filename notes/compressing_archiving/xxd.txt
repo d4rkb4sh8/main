@@ -1,0 +1,34 @@
+[48;5;8m[24m cheat:xxd [24m[0m
+[38;5;246;03m# To convert bin/string to hex:[39;00m
+[38;5;31mecho[39m[38;5;252m [39m[38;5;214m'42 is the solution'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-p[39m
+[38;5;246;03m# output: 34322069732074686520736f6c7574696f6e0a[39;00m
+
+[38;5;246;03m# To convert hex to bin/string:[39;00m
+[38;5;31mecho[39m[38;5;252m [39m[38;5;214m'34322069732074686520736f6c7574696f6e0a'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252m-p[39m
+[38;5;246;03m# output: 42 is the solution[39;00m
+
+[48;5;8m[24m tldr:xxd [24m[0m
+[38;5;246;03m# xxd[39;00m
+[38;5;246;03m# Create a hexadecimal representation (hexdump) from a binary file, or vice-versa.[39;00m
+[38;5;246;03m# More information: <https://manned.org/xxd>.[39;00m
+
+[38;5;246;03m# Generate a hexdump from a binary file and display the output:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252minput_file[39m
+
+[38;5;246;03m# Generate a hexdump from a binary file and save it as a text file:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252minput_file[39m[38;5;252m [39m[38;5;252moutput_file[39m
+
+[38;5;246;03m# Display a more compact output, replacing consecutive zeros (if any) with a star:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252minput_file[39m
+
+[38;5;246;03m# Display the output with 10 columns of one octet (byte) each:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;67m10[39m[38;5;252m [39m[38;5;252minput_file[39m
+
+[38;5;246;03m# Display output only up to a length of 32 bytes:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;67m32[39m[38;5;252m [39m[38;5;252minput_file[39m
+
+[38;5;246;03m# Display the output in plain mode, without any gaps between the columns:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252minput_file[39m
+
+[38;5;246;03m# Revert a plaintext hexdump back into binary, and save it as a binary file:[39;00m
+[38;5;252mxxd[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252minput_file[39m[38;5;252m [39m[38;5;252moutput_file[39m

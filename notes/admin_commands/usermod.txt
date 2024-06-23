@@ -1,0 +1,30 @@
+[48;5;8m[24m cheat:usermod [24m[0m
+[38;5;246;03m# Add user to sudo group[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252musermod[39m[38;5;252m [39m[38;5;252m-aG[39m[38;5;252m [39m[38;5;252msudo[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252musername>[39m
+
+[48;5;8m[24m tldr:usermod [24m[0m
+[38;5;246;03m# usermod[39;00m
+[38;5;246;03m# Modifies a user account.[39;00m
+[38;5;246;03m# See also: `users`, `useradd`, `userdel`.[39;00m
+[38;5;246;03m# More information: <https://manned.org/usermod>.[39;00m
+
+[38;5;246;03m# Change a username:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252musermod[39m[38;5;252m [39m[38;5;252m--login[39m[38;5;252m [39m[38;5;252mnew_username[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Change a user id:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252musermod[39m[38;5;252m [39m[38;5;252m--uid[39m[38;5;252m [39m[38;5;252mid[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Change a user shell:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252musermod[39m[38;5;252m [39m[38;5;252m--shell[39m[38;5;252m [39m[38;5;252mpath/to/shell[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Add a user to supplementary groups (mind the lack of whitespace):[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252musermod[39m[38;5;252m [39m[38;5;252m--append[39m[38;5;252m [39m[38;5;252m--groups[39m[38;5;252m [39m[38;5;252mgroup1,group2,...[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Change a user home directory:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252musermod[39m[38;5;252m [39m[38;5;252m--move-home[39m[38;5;252m [39m[38;5;252m--home[39m[38;5;252m [39m[38;5;252mpath/to/new_home[39m[38;5;252m [39m[38;5;252musername[39m
+
+# Lock account 
+usermod -L username
+
+# Unlock account
+usermod -U username

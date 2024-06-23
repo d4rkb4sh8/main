@@ -1,0 +1,7 @@
+[38;5;246;03m# aireplay-ng[39;00m
+[38;5;246;03m# Inject packets into a wireless network.[39;00m
+[38;5;246;03m# Part of `aircrack-ng`.[39;00m
+[38;5;246;03m# More information: <https://www.aircrack-ng.org/doku.php?id=aireplay-ng>.[39;00m
+
+[38;5;246;03m# Send a specific number of disassociate packets given an access point's MAC address, a client's MAC address and an interface:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252maireplay-ng[39m[38;5;252m [39m[38;5;252m--deauth[39m[38;5;252m [39m[38;5;252mcount[39m[38;5;252m [39m[38;5;252m--bssid[39m[38;5;252m [39m[38;5;252map_mac[39m[38;5;252m [39m[38;5;252m--dmac[39m[38;5;252m [39m[38;5;252mclient_mac[39m[38;5;252m [39m[38;5;252minterface[39m

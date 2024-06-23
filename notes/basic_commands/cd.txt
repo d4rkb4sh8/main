@@ -1,0 +1,41 @@
+[48;5;8m[24m cheat:cd [24m[0m
+[38;5;246;03m# Go to the given directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# Go to home directory of current user:[39;00m
+[38;5;31mcd[39m
+
+[38;5;246;03m# Go up to the parent of the current directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m..[39m
+
+[38;5;246;03m# Go to the previously chosen directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m-[39m
+
+[38;5;246;03m# Go to a physical dir instead of default -L:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m-P[39m[38;5;252m [39m[38;5;252mpath/to/dir[39m
+
+[38;5;246;03m# Some people alias cd="cd -P" and pwd="pwd -P"[39;00m
+[38;5;246;03m# So that `ls ..` and `cd ..; ls .` yield the same thing.[39;00m
+
+[48;5;8m[24m tldr:cd [24m[0m
+[38;5;246;03m# cd[39;00m
+[38;5;246;03m# Change the current working directory.[39;00m
+[38;5;246;03m# More information: <https://manned.org/cd>.[39;00m
+
+[38;5;246;03m# Go to the specified directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# Go up to the parent of the current directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m..[39m
+
+[38;5;246;03m# Go to the home directory of the current user:[39;00m
+[38;5;31mcd[39m
+
+[38;5;246;03m# Go to the home directory of the specified user:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m~username[39m
+
+[38;5;246;03m# Go to the previously chosen directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m-[39m
+
+[38;5;246;03m# Go to the root directory:[39;00m
+[38;5;31mcd[39m[38;5;252m [39m[38;5;252m/[39m

@@ -1,0 +1,39 @@
+As systems have become more and more secure, exploits have had to become more and more specialized. For instance, you may
+need to know the following to successfully exploit a system:
+
+1. The operating system;
+2. The service pack of the operating system;
+3. What ports are open on the target system;
+4. What services are running on the target system;
+5. What applications are running on the target system; and
+6. What language is used on the target system.
+
+Fingerprinting - is the process of enumerating the following attributes of a target:
+1. Users
+2. Hosts
+3. Network Topology
+4. Operating Systems
+5. Services
+The hacker can gather all of this information in a multitude of ways. Generally, our discipline categorizes
+these as either active or passive.
+
+Passive Reconnaissance - is the process of learning about the target without ever directly interacting with it.
+
+Active Reconnaissance - as you probably already guessed, is information gathered while actively
+interacting with the target.
+
+Password Cracking - is a specialty that—when successful—can render significant rewards to the
+practitioner.
+
+Exploitation - If we have failed with password-cracking, the next step is to attempt exploitation. Based on the
+information garnered in the reconnaissance phase, we can develop a strategy for exploitation. Exploitation
+is usually accomplished because of a flaw in the operating system or application.
+
+Post-Exploitation - is what happens after the hack, or exploitation. The hack gets the attacker inside the
+system, but access is generally just the beginning. Post-exploitation can include grabbing passwords,
+accessing the database, turning on and accessing the microphone or webcam, etc. It may also include
+pivoting to compromise other parts of the network.
+
+Covering Tracks - Once the exploitation is complete, and the post-exploitation havoc has been done (taking or reading
+documents, turning on the microphone, pivoting to other systems, etc.), the final task for the hacker is to
+cover their tracks.

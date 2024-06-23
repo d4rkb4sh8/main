@@ -1,0 +1,39 @@
+[48;5;8m[24m cheat:tail [24m[0m
+[38;5;246;03m# To show the last 10 lines of <file>:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To show the last <number> lines of <file>:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mnumber>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To show the last lines of <file> starting with <number>:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;252m+[39m[38;5;252m<[39m[38;5;252mnumber>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To show the last <number> bytes of <file>:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mnumber>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To show the last 10 lines of <file> and to wait for <file> to grow:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[48;5;8m[24m tldr:tail [24m[0m
+[38;5;246;03m# tail[39;00m
+[38;5;246;03m# Display the last part of a file.[39;00m
+[38;5;246;03m# See also: `head`.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/tail>.[39;00m
+
+[38;5;246;03m# Show last 'count' lines in file:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m--lines[39m[38;5;252m [39m[38;5;252mcount[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Print a file from a specific line number:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m--lines[39m[38;5;252m [39m[38;5;252m+count[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Print a specific count of bytes from the end of a given file:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m--bytes[39m[38;5;252m [39m[38;5;252mcount[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Print the last lines of a given file and keep reading file until `Ctrl + C`:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m--follow[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Keep reading file until `Ctrl + C`, even if the file is inaccessible:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m--retry[39m[38;5;252m [39m[38;5;252m--follow[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Show last 'num' lines in 'file' and refresh every 'n' seconds:[39;00m
+[38;5;252mtail[39m[38;5;252m [39m[38;5;252m--lines[39m[38;5;252m [39m[38;5;252mcount[39m[38;5;252m [39m[38;5;252m--sleep-interval[39m[38;5;252m [39m[38;5;252mseconds[39m[38;5;252m [39m[38;5;252m--follow[39m[38;5;252m [39m[38;5;252mpath/to/file[39m

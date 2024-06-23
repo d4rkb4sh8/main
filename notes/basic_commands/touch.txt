@@ -1,0 +1,27 @@
+[48;5;8m[24m cheat:touch [24m[0m
+[38;5;246;03m# To change a file's modification time:[39;00m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mtime>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252m12am[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;214m"yesterday 6am"[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;214m"2 days ago 10:00"[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;214m"tomorrow 04:00"[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To put the timestamp of a file on another:[39;00m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mrefrence-file>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mtarget-file>[39m
+
+[48;5;8m[24m tldr:touch [24m[0m
+[38;5;246;03m# touch[39;00m
+[38;5;246;03m# Create files and set access/modification times.[39;00m
+[38;5;246;03m# More information: <https://manned.org/man/freebsd-13.1/touch>.[39;00m
+
+[38;5;246;03m# Create specific files:[39;00m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Set the file [a]ccess or [m]odification times to the current one and don't [c]reate file if it doesn't exist:[39;00m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m|[39m[38;5;252mm[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Set the file [t]ime to a specific value and don't [c]reate file if it doesn't exist:[39;00m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252mYYYYMMDDHHMM.SS[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Set the file time of a specific file to the time of anothe[r] file and don't [c]reate file if it doesn't exist:[39;00m
+[38;5;252mtouch[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252m~/.emacs[39m[38;5;252m [39m[38;5;252mpath/to/file1[39m[38;5;252m [39m[38;5;252mpath/to/file2[39m[38;5;252m [39m[38;5;252m...[39m

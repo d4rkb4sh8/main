@@ -1,0 +1,233 @@
+[48;5;8m[24m cheat.sheets:find [24m[0m
+[38;5;246;03m# find[39;00m
+[38;5;246;03m# Search for files in a directory hierarchy[39;00m
+
+[38;5;246;03m# Find files by case-insensitive extension, such as `.jpg`, `.JPG`, & `.jpG`).[39;00m
+[38;5;246;03m# By default, find(1) uses glob pathname pattern matching. To avoid shell[39;00m
+[38;5;246;03m# interpretation, the glob either must be expanded or the string quoted.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# Period is optional; it's implied unless a path is provided. find(1) works[39;00m
+[38;5;246;03m# recursively unless otherwise directed (IE: `-maxdepth [N]`).[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m'*.jpg'[39m
+
+[38;5;246;03m# Find directories.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m
+
+[38;5;246;03m# Find files. Specifically files; not directories, links, FIFOs, etc.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m
+
+[38;5;246;03m# Find files set to the provided octal mode (permissions).[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-perm[39m[38;5;252m [39m[38;5;67m777[39m
+
+[38;5;246;03m# Find files with setuid bit set, keeping to the same filesystem.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-xdev[39m[38;5;252m [39m[38;5;214m\([39m[38;5;252m [39m[38;5;252m-perm[39m[38;5;252m [39m[38;5;252m-4000[39m[38;5;252m [39m[38;5;214m\)[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;252mls[39m[38;5;252m [39m[38;5;252m-l[39m
+[38;5;246;03m# The above is a useful demonstration of some pitfalls into which a user can[39;00m
+[38;5;246;03m# fall, where the below is the above but corrected. Here is why:[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m#   * The `.` (current working directory) is assumed when no path is provided.[39;00m
+[38;5;246;03m#   * Group syntax (parentheses) was used, but nothing was actually grouped.[39;00m
+[38;5;246;03m#   * A lot of people have their ls(1) command aliased in many ways, -[39;00m
+[38;5;246;03m#     potentially causing problems with the output and how xargs(1) handles it.[39;00m
+[38;5;246;03m#     By escaping the command, we temporarily override any aliases and even[39;00m
+[38;5;246;03m#     functions by the same name.[39;00m
+[38;5;246;03m#   * At least in my experience, the prior xargs(1) is not as reliable.[39;00m
+[38;5;246;03m#   * The `-print0` and `xargs -0` is great, but unnecessary (except when?).[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# However, it might be more preferred to simply use find(1)'s own `-printf`[39;00m
+[38;5;246;03m# flag, in order to avoid the need for xargs(1) and ls(1), which should be many[39;00m
+[38;5;246;03m# times faster, and allows for more specificity.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m-perm[39m[38;5;252m [39m[38;5;252m-4000[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-I[39m[38;5;252m [39m[38;5;214m'{}'[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;214m\l[39m[38;5;252ms[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;214m'{}'[39m
+
+[38;5;246;03m# Find and remove files with case-sensitive extension of `.txt`.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mPATH[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mrm[39m[38;5;252m [39m[38;5;214m'{}'[39m[38;5;252m [39m[38;5;214m\;[39m
+[38;5;246;03m# The above is much more efficiently written as shown below, as find(1) has its[39;00m
+[38;5;246;03m# own built-in delete function, not to mention a single rm(1) process was[39;00m
+[38;5;246;03m# previously executed for each file processed, which is comparatively slow.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mPATH[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m-delete[39m
+
+[38;5;246;03m# Find files with extension '.txt' and look for a string into them.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m./path/[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;214m'string'[39m
+
+[38;5;246;03m# Find files with size bigger than 5 Mb and sort them by size.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m+5M[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;252mls[39m[38;5;252m [39m[38;5;252m-Ssh[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msort[39m[38;5;252m [39m[38;5;252m-z[39m
+
+[38;5;246;03m# Find files bigger thank 2 MB and list them.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m+20000k[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mls[39m[38;5;252m [39m[38;5;252m-lh[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mawk[39m[38;5;252m [39m[38;5;214m'{ print $9 ": " $5 }'[39m
+[38;5;246;03m# Alternative, faster approach* to the above.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# Why it's faster:[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m#   * No need for an external process, like ls(1).[39;00m
+[38;5;246;03m#   * The use of `;` with the `-exec` flag executes an ls(1) process for each[39;00m
+[38;5;246;03m#     file found, which is comparatively very slow.[39;00m
+[38;5;246;03m#   * The `printf` feature is built in and special to awk(1).[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# That said, awk(1) or gawk(1) is doing a little more here, in order to get[39;00m
+[38;5;246;03m# somewhat of a human-readable file size, but its impact is likely negligible.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m+20000k[39m[38;5;252m [39m[38;5;252m-printf[39m[38;5;252m [39m[38;5;214m'%s %P\n'[39m[38;5;252m [39m[38;5;252m|[39m
+[38;5;252m    [39m[38;5;252mawk[39m[38;5;252m [39m[38;5;214m"{printf(\"%'dM %s\n\", \$1 / (1024 * 1024), \$2)}"[39m
+
+[38;5;246;03m# Find files modified more than 7 days ago and list file information.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-mtime[39m[38;5;252m [39m[38;5;252m+7d[39m[38;5;252m [39m[38;5;252m-ls[39m
+
+[38;5;246;03m# Find symlinks owned by the given user, then list file information.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252ml[39m[38;5;252m [39m[38;5;252m-user[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mNAME[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m-ls[39m
+[38;5;246;03m# The following may be the syntax used on a Mac, however this is not valid on[39;00m
+[38;5;246;03m# Linux, or at least version 4.7.0. All flags in GNU find(1) are one `-` only.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252ml[39m[38;5;252m [39m[38;5;252m--user[39m[38;5;252m=[39m[38;5;252m[[39m[38;5;252mNAME[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m-ls[39m
+
+[38;5;246;03m# Search for and delete empty directories.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m[38;5;252m [39m[38;5;252m-empty[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mrmdir[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m
+[38;5;246;03m# A far more efficient approach to the above. If no path is provided, then the[39;00m
+[38;5;246;03m# current working directory (CWD) is assumed, making the `.` superfluous.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m[38;5;252m [39m[38;5;252m-empty[39m[38;5;252m [39m[38;5;252m-delete[39m
+
+[38;5;246;03m# Search for directories named `build` at a maximum depth of 2 directories.[39;00m
+[38;5;246;03m# This means that find will not recursively search beyond two levels.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-maxdepth[39m[38;5;252m [39m[38;5;67m2[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;252mbuild[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m
+
+[38;5;246;03m# Search all files which are not in a `.git` directory. Depending on the shell[39;00m
+[38;5;246;03m# used, the bang (`!`) may need to be escaped, to avoid shell interpretation.[39;00m
+[38;5;246;03m# Alternatively, although non-POSIX, the `-not` flag can be used.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;214m\![39m[38;5;252m [39m[38;5;252m-iwholename[39m[38;5;252m [39m[38;5;214m'*.git*'[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m
+
+[38;5;246;03m# Find all files that have the same inode (indicating hard link) as FILE. All[39;00m
+[38;5;246;03m# output going to STDERR (typically error messages) will also be redirected to[39;00m
+[38;5;246;03m# `/dev/null`, a special pseudo-file where data is sent to die.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-samefile[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mFILE[39m[38;5;252m][39m[38;5;252m [39m[38;5;67m2[39m[38;5;252m>/dev/null[39m
+
+[38;5;246;03m# Find all files in the current directory and modify their permissions.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mchmod[39m[38;5;252m [39m[38;5;67m644[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# Find files with extension `.txt` and edit all of them with vim(1).[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# The use of `+` (escaped to avoid shell interpretation) with `-exec` means[39;00m
+[38;5;246;03m# that only one process (in this case, `vim`) per `exec`ution is used. If `;`[39;00m
+[38;5;246;03m# is instead used (would also need escaping), then one `vim` process would be[39;00m
+[38;5;246;03m# used per file.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mvim[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\+[39m
+
+[38;5;246;03m# Find files with extension `.png`, then rename their extension to `.jpg`. It's[39;00m
+[38;5;246;03m# highly important that `\;` is used here, instead of `\+`, otherwise it'd make[39;00m
+[38;5;246;03m# a right mess of the files, due to the way in which mv(1) works.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m'*.png'[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mbash[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;214m'mv "$0" "${0%.*}.jpg"'[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# Use logic and grouping to delete extension-specific files.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;214m\([39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m"*.jpg"[39m[38;5;252m [39m[38;5;252m-or[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m"*.sfv"[39m[38;5;252m [39m[38;5;252m-or[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m"*.xspf"[39m[38;5;252m [39m[38;5;214m\)[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-delete[39m
+
+[38;5;246;03m# List executable files, by basename, found within PATH.[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;214m${[39m[38;5;87mPATH[39m[38;5;252m//[39m[38;5;252m:[39m[38;5;252m/ [39m[38;5;214m}[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-executable[39m[38;5;252m [39m[38;5;252m-printf[39m[38;5;252m [39m[38;5;214m"%P\n"[39m
+
+[48;5;8m[24m cheat:find [24m[0m
+[38;5;246;03m# To find files following symlinks (otherwise the symlinks are not followed):[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m-L[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m
+
+[38;5;246;03m# To find files by case-insensitive extension (ex: .jpg, .JPG, .jpG):[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m"*.jpg"[39m
+
+[38;5;246;03m# To find directories:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m
+
+[38;5;246;03m# To find files:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m
+
+[38;5;246;03m# To find files by octal permission:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-perm[39m[38;5;252m [39m[38;5;67m777[39m
+
+[38;5;246;03m# To find files with setuid bit set:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-xdev[39m[38;5;252m [39m[38;5;214m\([39m[38;5;252m [39m[38;5;252m-perm[39m[38;5;252m [39m[38;5;252m-4000[39m[38;5;252m [39m[38;5;214m\)[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;252mls[39m[38;5;252m [39m[38;5;252m-l[39m
+
+[38;5;246;03m# To find files newer than 1 day old and copy elsewhere (remove -p flag in xargs to not be asked):[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-ctime[39m[38;5;252m [39m[38;5;252m-1[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252mcp[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdir>[39m
+[38;5;246;03m# or:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-ctime[39m[38;5;252m [39m[38;5;252m-1[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252m-J[39m[38;5;252m [39m[38;5;252m%[39m[38;5;252m [39m[38;5;252mcp[39m[38;5;252m [39m[38;5;252m%[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdir>[39m
+
+[38;5;246;03m# To find files with extension '.txt' and remove them:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m./path/[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m-delete[39m
+
+[38;5;246;03m# To find files with tilde as postfix and remove them:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m./path/[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*~'[39m[38;5;252m [39m[38;5;252m-delete[39m
+
+[38;5;246;03m# To find files with extension '.txt' and dump their contents:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m./path/[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mcat[39m[38;5;252m [39m[38;5;214m'{}'[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# To find files with extension '.txt' and look for a string into them:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m./path/[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.txt'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;214m'string'[39m
+
+[38;5;246;03m# To find files with size bigger than 5 Mebibyte and sort them by size:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m+5M[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-print0[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mxargs[39m[38;5;252m [39m[38;5;252m-0[39m[38;5;252m [39m[38;5;252mls[39m[38;5;252m [39m[38;5;252m-Ssh[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msort[39m[38;5;252m [39m[38;5;252m-z[39m
+
+[38;5;246;03m# To find files bigger than 2 Megabyte and list them:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m+200000000c[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mls[39m[38;5;252m [39m[38;5;252m-lh[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mawk[39m[38;5;252m [39m[38;5;214m'{ print $9 ": " $5 }'[39m
+
+[38;5;246;03m# To find files modified more than 7 days ago and list file information:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-mtime[39m[38;5;252m [39m[38;5;252m+7d[39m[38;5;252m [39m[38;5;252m-ls[39m
+
+[38;5;246;03m# To find symlinks owned by a user and list file information:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252ml[39m[38;5;252m [39m[38;5;252m-user[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252musername-or-userid>[39m[38;5;252m [39m[38;5;252m-ls[39m
+
+[38;5;246;03m# To search for and delete empty directories:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m[38;5;252m [39m[38;5;252m-empty[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mrmdir[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# To search for directories named build at a max depth of 2 directories:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-maxdepth[39m[38;5;252m [39m[38;5;67m2[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;252mbuild[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m
+
+[38;5;246;03m# To search all files who are not in .git directory:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m![39m[38;5;252m [39m[38;5;252m-iwholename[39m[38;5;252m [39m[38;5;214m'*.git*'[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m
+
+[38;5;246;03m# To find all files that have the same node (hard link) as MY_FILE_HERE:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-samefile[39m[38;5;252m [39m[38;5;252mMY_FILE_HERE[39m[38;5;252m [39m[38;5;67m2[39m[38;5;252m>/dev/null[39m
+
+[38;5;246;03m# To find all files in the current directory and modify their permissions:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mchmod[39m[38;5;252m [39m[38;5;67m644[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# To find all files changed in last 2 days:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-ctime[39m[38;5;252m [39m[38;5;252m-48h[39m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-ctime[39m[38;5;252m [39m[38;5;252m-2[39m
+[38;5;246;03m# Or created in last 2 days:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-Btime[39m[38;5;252m [39m[38;5;252m-2[39m
+[38;5;246;03m# Or accessed in last 2 days:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-atime[39m[38;5;252m [39m[38;5;252m-2[39m
+
+[38;5;246;03m# To find and rename (imperfect) all files and dirs that have a comma in the[39;00m
+[38;5;246;03m# name (dry-run):[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*,*'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;70;01mwhile[39;00m[38;5;252m [39m[38;5;31mread[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdo[39;00m[38;5;252m [39m[38;5;31mecho[39m[38;5;252m [39m[38;5;252mmv[39m[38;5;252m [39m[38;5;214m"[39m[38;5;87m$f[39m[38;5;214m"[39m[38;5;252m [39m[38;5;214m"[39m[38;5;214m${[39m[38;5;87mf[39m[38;5;252m//,/[39m[38;5;214m}[39m[38;5;214m"[39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdone[39;00m
+
+[38;5;246;03m# To find all broken links. Note -L returns a file unless it is a broken link:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m-L[39m[38;5;252m [39m[38;5;252m/usr/ports/packages[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252ml[39m
+
+[38;5;246;03m# To find and run multiple shell commands (without multiple execs):[39;00m
+[38;5;246;03m# See: https://stackoverflow.com/questions/5119946/find-exec-with-multiple-commands[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m.[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252msh[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;214m"echo '{}'; cat '{}';"[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# To find files that are newer than a file:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mpath>[39m[38;5;252m [39m[38;5;252m-newer[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mtarget-file>[39m
+
+[48;5;8m[24m tldr:find [24m[0m
+[38;5;246;03m# find[39;00m
+[38;5;246;03m# Find files or directories under the given directory tree, recursively.[39;00m
+[38;5;246;03m# More information: <https://manned.org/find>.[39;00m
+
+[38;5;246;03m# Find files by extension:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.ext'[39m
+
+[38;5;246;03m# Find files matching multiple path/name patterns:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-path[39m[38;5;252m [39m[38;5;214m'**/path/**/*.ext'[39m[38;5;252m [39m[38;5;252m-or[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*pattern*'[39m
+
+[38;5;246;03m# Find directories matching a given name, in case-insensitive mode:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252md[39m[38;5;252m [39m[38;5;252m-iname[39m[38;5;252m [39m[38;5;214m'*lib*'[39m
+
+[38;5;246;03m# Find files matching a given pattern, excluding specific paths:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.py'[39m[38;5;252m [39m[38;5;252m-not[39m[38;5;252m [39m[38;5;252m-path[39m[38;5;252m [39m[38;5;214m'*/site-packages/*'[39m
+
+[38;5;246;03m# Find files matching a given size range, limiting the recursive depth to "1"::[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-maxdepth[39m[38;5;252m [39m[38;5;67m1[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m+500k[39m[38;5;252m [39m[38;5;252m-size[39m[38;5;252m [39m[38;5;252m-10M[39m
+
+[38;5;246;03m# Run a command for each file (use `{}` within the command to access the filename):[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-name[39m[38;5;252m [39m[38;5;214m'*.ext'[39m[38;5;252m [39m[38;5;252m-exec[39m[38;5;252m [39m[38;5;252mwc[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252m{[39m[38;5;252m}[39m[38;5;252m [39m[38;5;214m\;[39m
+
+[38;5;246;03m# Find files modified in the last 7 days:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-daystart[39m[38;5;252m [39m[38;5;252m-mtime[39m[38;5;252m [39m[38;5;252m-7[39m
+
+[38;5;246;03m# Find empty (0 byte) files and delete them:[39;00m
+[38;5;252mfind[39m[38;5;252m [39m[38;5;252mroot_path[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m [39m[38;5;252mf[39m[38;5;252m [39m[38;5;252m-empty[39m[38;5;252m [39m[38;5;252m-delete[39m

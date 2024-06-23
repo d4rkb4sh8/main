@@ -1,0 +1,24 @@
+[38;5;246;03m# nslookup[39;00m
+[38;5;246;03m# Query name server(s) for various domain records.[39;00m
+[38;5;246;03m# More information: <https://manned.org/nslookup>.[39;00m
+
+[38;5;246;03m# Query your system's default name server for an IP address (A record) of the domain:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252mexample.com[39m
+
+[38;5;246;03m# Query a given name server for a NS record of the domain:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m=[39m[38;5;252mNS[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;67m8[39m[38;5;252m.8.8.8[39m
+
+[38;5;246;03m# Query for a reverse lookup (PTR record) of an IP address:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m=[39m[38;5;252mPTR[39m[38;5;252m [39m[38;5;67m54[39m[38;5;252m.240.162.118[39m
+
+[38;5;246;03m# Query for ANY available records using TCP protocol:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252m-vc[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m=[39m[38;5;252mANY[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m
+
+[38;5;246;03m# Query a given name server for the whole zone file (zone transfer) of the domain using TCP protocol:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252m-vc[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m=[39m[38;5;252mAXFR[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252mname_server[39m
+
+[38;5;246;03m# Query for a mail server (MX record) of the domain, showing details of the transaction:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m=[39m[38;5;252mMX[39m[38;5;252m [39m[38;5;252m-debug[39m[38;5;252m [39m[38;5;252mexample.com[39m
+
+[38;5;246;03m# Query a given name server on a specific port number for a TXT record of the domain:[39;00m
+[38;5;252mnslookup[39m[38;5;252m [39m[38;5;252m-port[39m[38;5;252m=[39m[38;5;252mport_number[39m[38;5;252m [39m[38;5;252m-type[39m[38;5;252m=[39m[38;5;252mTXT[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252mname_server[39m

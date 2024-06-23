@@ -1,0 +1,42 @@
+[48;5;8m[24m cheat:ps [24m[0m
+[38;5;246;03m# To list every process on the system:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252maux[39m
+
+[38;5;246;03m# To list a process tree:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252maxjf[39m
+
+[38;5;246;03m# To list every process owned by foouser:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252m-aufoouser[39m
+
+[38;5;246;03m# To list every process with a user-defined format:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252m-eo[39m[38;5;252m [39m[38;5;252mpid,user,command[39m
+
+[38;5;246;03m# Exclude grep from your grepped output of ps.[39;00m
+[38;5;246;03m# Add [] to the first letter. Ex: sshd -> [s]shd[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252maux[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;214m'[h]ttpd'[39m
+
+[48;5;8m[24m tldr:ps [24m[0m
+[38;5;246;03m# ps[39;00m
+[38;5;246;03m# Information about running processes.[39;00m
+[38;5;246;03m# More information: <https://manned.org/ps>.[39;00m
+
+[38;5;246;03m# List all running processes:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252maux[39m
+
+[38;5;246;03m# List all running processes including the full command string:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252mauxww[39m
+
+[38;5;246;03m# Search for a process that matches a string:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252maux[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;252mstring[39m
+
+[38;5;246;03m# List all processes of the current user in extra full format:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252m--user[39m[38;5;252m [39m[38;5;70;01m$([39;00m[38;5;252mid[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;70;01m)[39;00m[38;5;252m [39m[38;5;252m-F[39m
+
+[38;5;246;03m# List all processes of the current user as a tree:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252m--user[39m[38;5;252m [39m[38;5;70;01m$([39;00m[38;5;252mid[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;70;01m)[39;00m[38;5;252m [39m[38;5;252mf[39m
+
+[38;5;246;03m# Get the parent PID of a process:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252m-o[39m[38;5;252m [39m[38;5;87mppid[39m[38;5;252m=[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252mpid[39m
+
+[38;5;246;03m# Sort processes by memory consumption:[39;00m
+[38;5;252mps[39m[38;5;252m [39m[38;5;252m--sort[39m[38;5;252m [39m[38;5;252msize[39m

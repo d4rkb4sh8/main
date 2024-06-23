@@ -1,0 +1,58 @@
+[48;5;8m[24m cheat.sheets:sed [24m[0m
+[38;5;246;03m# sed[39;00m
+[38;5;246;03m# A stream editor. Used to perform basic text transformations[39;00m
+
+[38;5;246;03m# Preview a file edit, via substitution.[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;214m's/Name=Xfce Session/Name=Xfce_Session/'[39m[38;5;252m [39m[38;5;252mFILE[39m
+
+[38;5;246;03m# Replace the same string more than once per line (g flag)[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;214m's/Name=Xfce Session/Name=Xfce_Session/g'[39m[38;5;252m [39m[38;5;252mFILE[39m
+
+[38;5;246;03m# Edit a file (adding -i flag), in-place; changes are made to the file(s).[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;214m's/Name=Xfce Session/Name=Xfce_Session/'[39m[38;5;252m [39m[38;5;252mFILE[39m
+
+[38;5;246;03m# It can become necessary to escape special characters in your string.[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;214m's/\/path\/to\/somewhere\//\/path\/to\/anotherplace\//'[39m[38;5;252m [39m[38;5;252mFILE[39m
+
+[38;5;246;03m# Change your sed delimiter to a pipe to avoid escaping slashes.[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;214m's|/path/to/somewhere/|/path/to/anotherplace/|'[39m[38;5;252m [39m[38;5;252mFILE[39m
+
+[48;5;8m[24m cheat:sed [24m[0m
+[38;5;246;03m# To replace all occurrences of "day" with "night" and write to stdout:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;214m's/day/night/g'[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To replace all occurrences of "day" with "night" within <file>:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;214m's/day/night/g'[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To replace all occurrences of "day" with "night" on stdin:[39;00m
+[38;5;31mecho[39m[38;5;252m [39m[38;5;214m'It is daytime'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;214m's/day/night/g'[39m
+
+[38;5;246;03m# To remove leading spaces:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;214m's/^\s+//g'[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To remove empty lines and print results to stdout:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;214m'/^$/d'[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To replace newlines in multiple lines:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;214m':a;N;$!ba;s/\n//g'[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mfile>[39m
+
+[38;5;246;03m# To insert a line before a matching pattern:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;214m'/Once upon a time/i\Chapter 1'[39m
+
+[38;5;246;03m# To add a line after a matching pattern:[39;00m
+[38;5;252msed[39m[38;5;252m [39m[38;5;214m'/happily ever after/a\The end.'[39m
+
+[48;5;8m[24m tldr:sed [24m[0m
+[38;5;246;03m# sed[39;00m
+[38;5;246;03m# Edit text in a scriptable manner.[39;00m
+[38;5;246;03m# See also: `awk`, `ed`.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/sed/manual/sed.html>.[39;00m
+
+[38;5;246;03m# Replace all `apple` (basic regex) occurrences with `mango` (basic regex) in all input lines and print the result to `stdout`:[39;00m
+[38;5;31mcommand[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;214m's/apple/mango/g'[39m
+
+[38;5;246;03m# Execute a specific script [f]ile and print the result to `stdout`:[39;00m
+[38;5;31mcommand[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252mpath/to/script.sed[39m
+
+[38;5;246;03m# Print just a first line to `stdout`:[39;00m
+[38;5;31mcommand[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msed[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;214m'1p'[39m

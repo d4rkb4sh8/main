@@ -1,0 +1,44 @@
+[48;5;8m[24m cheat:gzip [24m[0m
+[38;5;252m---[39m
+[38;5;252mtags:[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252m [39m[38;5;252mcompression[39m[38;5;252m [39m[38;5;252m][39m
+[38;5;252m---[39m
+[38;5;246;03m# To create a *.gz compressed file[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252mtest.txt[39m
+
+[38;5;246;03m# To create a *.gz compressed file to a specific location using -c option (standard out)[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252mtest.txt[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mtest_custom.txt.gz[39m
+
+[38;5;246;03m# To uncompress a *.gz file[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252mtest.txt.gz[39m
+
+[38;5;246;03m# Display compression ratio of the compressed file using gzip -l[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252m*.gz[39m
+
+[38;5;246;03m# Recursively compress all the files under a specified directory[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252mdocuments_directory[39m
+
+[38;5;246;03m# To create a *.gz compressed file and keep the original[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252m [39m[38;5;252mtest.txt[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mtest.txt.gz[39m
+
+[48;5;8m[24m tldr:gzip [24m[0m
+[38;5;246;03m# gzip[39;00m
+[38;5;246;03m# Compress/uncompress files with gzip compression (LZ77).[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/gzip/manual/gzip.html>.[39;00m
+
+[38;5;246;03m# Compress a file, replacing it with a gzipped compressed version:[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252mfile.ext[39m
+
+[38;5;246;03m# Decompress a file, replacing it with the original uncompressed version:[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252mfile.ext.gz[39m
+
+[38;5;246;03m# Compress a file, keeping the original file:[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m--keep[39m[38;5;252m [39m[38;5;252mfile.ext[39m
+
+[38;5;246;03m# Compress a file specifying the output filename:[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252mfile.ext[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mcompressed_file.ext.gz[39m
+
+[38;5;246;03m# Decompress a gzipped file specifying the output filename:[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252mfile.ext.gz[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252muncompressed_file.ext[39m
+
+[38;5;246;03m# Specify the compression level. 1=Fastest (Worst), 9=Slowest (Best), Default level is 6:[39;00m
+[38;5;252mgzip[39m[38;5;252m [39m[38;5;252m-9[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252mfile.ext[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mcompressed_file.ext.gz[39m

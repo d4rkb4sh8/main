@@ -1,0 +1,49 @@
+[48;5;8m[24m cheat:uname [24m[0m
+[38;5;246;03m# To print all system information:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-a[39m
+[38;5;246;03m# Linux system-hostname 3.2.0-4-amd64 #1 SMP Debian 3.2.32-1 x86_64 GNU/Linux[39;00m
+
+[38;5;246;03m# To print the hostname:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-n[39m
+[38;5;246;03m# system-hostname[39;00m
+
+[38;5;246;03m# To print the kernel release:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-r[39m
+[38;5;246;03m# 3.2.0-4-amd64[39;00m
+
+[38;5;246;03m# To print the kernel version, with more specific information:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-v[39m
+[38;5;246;03m# #1 SMP Debian 3.2.32-1[39;00m
+
+[38;5;246;03m# To print the hardware instruction set:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-m[39m
+[38;5;246;03m# x86_64[39;00m
+
+[38;5;246;03m# To print the kernel name:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-s[39m
+[38;5;246;03m# Linux[39;00m
+
+[38;5;246;03m# To print the operating system:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m-o[39m
+[38;5;246;03m# GNU/Linux[39;00m
+
+[48;5;8m[24m tldr:uname [24m[0m
+[38;5;246;03m# uname[39;00m
+[38;5;246;03m# Print details about the current machine and the operating system running on it.[39;00m
+[38;5;246;03m# See also `lsb_release`.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/uname>.[39;00m
+
+[38;5;246;03m# Print kernel name:[39;00m
+[38;5;252muname[39m
+
+[38;5;246;03m# Print system architecture and processor information:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m--machine[39m[38;5;252m [39m[38;5;252m--processor[39m
+
+[38;5;246;03m# Print kernel name, kernel release and kernel version:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m--kernel-name[39m[38;5;252m [39m[38;5;252m--kernel-release[39m[38;5;252m [39m[38;5;252m--kernel-version[39m
+
+[38;5;246;03m# Print system hostname:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m--nodename[39m
+
+[38;5;246;03m# Print all available system information:[39;00m
+[38;5;252muname[39m[38;5;252m [39m[38;5;252m--all[39m

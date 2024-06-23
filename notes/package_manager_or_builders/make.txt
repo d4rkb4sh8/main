@@ -1,0 +1,28 @@
+[38;5;246;03m# make[39;00m
+[38;5;246;03m# Task runner for targets described in Makefile.[39;00m
+[38;5;246;03m# Mostly used to control the compilation of an executable from source code.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/make/manual/make.html>.[39;00m
+
+[38;5;246;03m# Call the first target specified in the Makefile (usually named "all"):[39;00m
+[38;5;252mmake[39m
+
+[38;5;246;03m# Call a specific target:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252mtarget[39m
+
+[38;5;246;03m# Call a specific target, executing 4 jobs at a time in parallel:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252m-j4[39m[38;5;252m [39m[38;5;252mtarget[39m
+
+[38;5;246;03m# Use a specific Makefile:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252m--file[39m[38;5;252m [39m[38;5;252mpath/to/file[39m
+
+[38;5;246;03m# Execute make from another directory:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252m--directory[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# Force making of a target, even if source files are unchanged:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252m--always-make[39m[38;5;252m [39m[38;5;252mtarget[39m
+
+[38;5;246;03m# Override a variable defined in the Makefile:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252mtarget[39m[38;5;252m [39m[38;5;87mvariable[39m[38;5;252m=[39m[38;5;252mnew_value[39m
+
+[38;5;246;03m# Override variables defined in the Makefile by the environment:[39;00m
+[38;5;252mmake[39m[38;5;252m [39m[38;5;252m--environment-overrides[39m[38;5;252m [39m[38;5;252mtarget[39m

@@ -1,0 +1,222 @@
+[48;5;8m[24m cheat:http [24m[0m
+[38;5;246;03m# Custom HTTP method HTTP headers and JSON data:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;252mX-API-Token:123[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;252mJohn[39m
+
+[38;5;246;03m# Submitting forms:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;87mhello[39m[38;5;252m=[39m[38;5;252mWorld[39m
+
+[38;5;246;03m# See the request that is being sent using one of the output options:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-v[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# Use Github API to post a comment on an issue with authentication:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252mUSERNAME[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mhttps://api.github.com/repos/jkbrzt/httpie/issues/83/comments[39m[38;5;252m [39m[38;5;87mbody[39m[38;5;252m=[39m[38;5;214m'HTTPie is awesome!'[39m
+
+[38;5;246;03m# Upload a file using redirected input:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252m [39m[38;5;252mfile.json[39m
+
+[38;5;246;03m# Download a file and save it via redirected output:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org/file[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mfile[39m
+
+[38;5;246;03m# Download a file wget style:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--download[39m[38;5;252m [39m[38;5;252mexample.org/file[39m
+
+[38;5;246;03m# Use named sessions_ to make certain aspects or the communication[39;00m
+[38;5;246;03m# persistent between requests to the same host:[39;00m
+[38;5;246;03m# http --session=logged-in -a username:password httpbin.org/get API-Key:123[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252mlogged-in[39m[38;5;252m [39m[38;5;252mhttpbin.org/headers[39m
+
+[38;5;246;03m# Set a custom Host header to work around missing DNS records:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mlocalhost:8000[39m[38;5;252m [39m[38;5;252mHost:example.com[39m
+
+[38;5;246;03m# Simple JSON example:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;252mJohn[39m[38;5;252m [39m[38;5;87memail[39m[38;5;252m=[39m[38;5;252mjohn@example.org[39m
+
+[38;5;246;03m# Non-string fields use the := separator, which allows you to embed raw[39;00m
+[38;5;246;03m# JSON into the resulting object. Text and raw JSON files can also be[39;00m
+[38;5;246;03m# embedded into fields using =@ and :=@:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mapi.example.com/person/1[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;252mJohn[39m[38;5;252m [39m[38;5;252mage:[39m[38;5;252m=[39m[38;5;67m29[39m[38;5;252m [39m[38;5;252mmarried:[39m[38;5;252m=[39m[38;5;31mfalse[39m[38;5;252m [39m[38;5;252mhobbies:[39m[38;5;252m=[39m[38;5;214m'["http", "pies"]'[39m[38;5;252m [39m[38;5;87mdescription[39m[38;5;252m=[39m[38;5;252m@about-john.txt[39m[38;5;252m [39m[38;5;252mbookmarks:[39m[38;5;252m=[39m[38;5;252m@bookmarks.json[39m
+
+[38;5;246;03m# Send JSON data stored in a file:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mapi.example.com/person/1[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252m [39m[38;5;252mperson.json[39m
+
+[38;5;246;03m# Regular Forms[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--form[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mapi.example.org/person/1[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;214m'John Smith'[39m[38;5;252m [39m[38;5;87memail[39m[38;5;252m=[39m[38;5;252mjohn@example.org[39m[38;5;252m [39m[38;5;87mcv[39m[38;5;252m=[39m[38;5;252m@~/Documents/cv.txt[39m
+
+[38;5;246;03m# File Upload Forms[39;00m
+[38;5;246;03m# If one or more file fields is present, the serialization and content[39;00m
+[38;5;246;03m# type is multipart/form-data:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.com/jobs[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;214m'John Smith'[39m[38;5;252m [39m[38;5;252mcv@~/Documents/cv.pdf[39m
+
+[38;5;246;03m# To set custom headers you can use the Header:Value notation:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m  [39m[38;5;252mUser-Agent:Bacon/1.0[39m[38;5;252m  [39m[38;5;214m'Cookie:valued-visitor=yes;foo=bar'[39m[38;5;252m [39m[38;5;252mX-Foo:Bar[39m[38;5;252m  [39m[38;5;252mReferer:http://httpie.org/[39m
+
+[38;5;246;03m# Basic auth:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252musername:password[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# Digest auth:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--auth-type[39m[38;5;252m=[39m[38;5;252mdigest[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252musername:password[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# With password prompt:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252musername[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# Authorization information from your ~/.netrc file is honored as well:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m~/.netrc[39m
+[38;5;252m    [39m[38;5;252mmachine[39m[38;5;252m [39m[38;5;252mhttpbin.org[39m
+[38;5;252m    [39m[38;5;252mlogin[39m[38;5;252m [39m[38;5;252mhttpie[39m
+[38;5;252m    [39m[38;5;246;03m# password test[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mhttpbin.org/basic-auth/httpie/test[39m
+
+[38;5;246;03m# You can specify proxies to be used through the --proxy argument for each[39;00m
+[38;5;246;03m# protocol (which is included in the value in case of redirects across[39;00m
+[38;5;246;03m# protocols):[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--proxy[39m[38;5;252m=[39m[38;5;252mhttp:http://10.10.1.10:3128[39m[38;5;252m [39m[38;5;252m--proxy[39m[38;5;252m=[39m[38;5;252mhttps:https://10.10.1.10:1080[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# With Basic authentication:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--proxy[39m[38;5;252m=[39m[38;5;252mhttp:http://user:pass@10.10.1.10:3128[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# To skip the HOST'S SSL CERTIFICATE VERIFICATION, you can pass[39;00m
+[38;5;246;03m# --verify=no (default is yes):[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--verify[39m[38;5;252m=[39m[38;5;252mno[39m[38;5;252m [39m[38;5;252mhttps://example.org[39m
+
+[38;5;246;03m# You can also use --verify=<CA_BUNDLE_PATH> to set a CUSTOM CA BUNDLE path:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--verify[39m[38;5;252m=[39m[38;5;252m/ssl/custom_ca_bundle[39m[38;5;252m [39m[38;5;252mhttps://example.org[39m
+
+[38;5;246;03m# To use a CLIENT SIDE CERTIFICATE for the SSL communication, you can pass[39;00m
+[38;5;246;03m# the path of the cert file with --cert:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--cert[39m[38;5;252m=[39m[38;5;252mclient.pem[39m[38;5;252m [39m[38;5;252mhttps://example.org[39m
+
+[38;5;246;03m# If the PRIVATE KEY is not contained in the cert file you may pass the[39;00m
+[38;5;246;03m# path of the key file with --cert-key:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--cert[39m[38;5;252m=[39m[38;5;252mclient.crt[39m[38;5;252m [39m[38;5;252m--cert-key[39m[38;5;252m=[39m[38;5;252mclient.key[39m[38;5;252m [39m[38;5;252mhttps://example.org[39m
+
+[38;5;246;03m# You can control what should be printed via several options:[39;00m
+[38;5;252m  [39m[38;5;246;03m# --headers, -h   Only the response headers are printed.[39;00m
+[38;5;252m  [39m[38;5;246;03m# --body, -b      Only the response body is printed.[39;00m
+[38;5;252m  [39m[38;5;246;03m# --verbose, -v   Print the whole HTTP exchange (request and response).[39;00m
+[38;5;252m  [39m[38;5;246;03m# --print, -p     Selects parts of the HTTP exchange.[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--verbose[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mhttpbin.org/put[39m[38;5;252m [39m[38;5;87mhello[39m[38;5;252m=[39m[38;5;252mworld[39m
+
+[38;5;246;03m# Print request and response headers:[39;00m
+[38;5;252m  [39m[38;5;246;03m# Character   Stands for[39;00m
+[38;5;252m  [39m[38;5;246;03m# ----------- -------------------[39;00m
+[38;5;252m  [39m[38;5;246;03m# H           Request headers.[39;00m
+[38;5;252m  [39m[38;5;246;03m# B           Request body.[39;00m
+[38;5;252m  [39m[38;5;246;03m# h           Response headers.[39;00m
+[38;5;252m  [39m[38;5;246;03m# b           Response body.[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--print[39m[38;5;252m=[39m[38;5;252mHh[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mhttpbin.org/put[39m[38;5;252m [39m[38;5;87mhello[39m[38;5;252m=[39m[38;5;252mworld[39m
+
+[38;5;246;03m# Let's say that there is an API that returns the whole resource when it[39;00m
+[38;5;246;03m# is updated, but you are only interested in the response headers to see[39;00m
+[38;5;246;03m# the status code after an update:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--headers[39m[38;5;252m [39m[38;5;252mPATCH[39m[38;5;252m [39m[38;5;252mexample.org/Really-Huge-Resource[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;214m'New Name'[39m
+
+[38;5;246;03m# Redirect from a file:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mexample.com/person/1[39m[38;5;252m [39m[38;5;252mX-API-Token:123[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252m [39m[38;5;252mperson.json[39m
+
+[38;5;246;03m# Or the output of another program:[39;00m
+[38;5;252mgrep[39m[38;5;252m [39m[38;5;214m'401 Unauthorized'[39m[38;5;252m [39m[38;5;252m/var/log/httpd/error_log[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.org/intruders[39m
+
+[38;5;246;03m# You can use echo for simple data:[39;00m
+[38;5;31mecho[39m[38;5;252m [39m[38;5;214m'{"name": "John"}'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPATCH[39m[38;5;252m [39m[38;5;252mexample.com/person/1[39m[38;5;252m [39m[38;5;252mX-API-Token:123[39m
+
+[38;5;246;03m# You can even pipe web services together using HTTPie:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mGET[39m[38;5;252m [39m[38;5;252mhttps://api.github.com/repos/jkbrzt/httpie[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mhttpbin.org/post[39m
+
+[38;5;246;03m# You can use cat to enter multiline data on the terminal:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.com[39m
+[38;5;252m    [39m[38;5;252m<[39m[38;5;252mpaste>[39m
+[38;5;252m    [39m[38;5;246;03m# ^D[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.com/todos[39m[38;5;252m [39m[38;5;252mContent-Type:text/plain[39m
+[38;5;252m    [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252mbuy[39m[38;5;252m [39m[38;5;252mmilk[39m
+[38;5;252m    [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252mcall[39m[38;5;252m [39m[38;5;252mparents[39m
+[38;5;252m    [39m[38;5;252m^D[39m
+
+[38;5;246;03m# On OS X, you can send the contents of the clipboard with pbpaste:[39;00m
+[38;5;252mpbpaste[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mexample.com[39m
+
+[38;5;246;03m# Passing data through stdin cannot be combined with data fields specified[39;00m
+[38;5;246;03m# on the command line:[39;00m
+[38;5;31mecho[39m[38;5;252m [39m[38;5;214m'data'[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;87mmore[39m[38;5;252m=[39m[38;5;252mdata[39m[38;5;252m   [39m[38;5;246;03m# This is invalid[39;00m
+
+
+[38;5;246;03m# AN ALTERNATIVE TO REDIRECTED stdin is specifying a filename (as[39;00m
+[38;5;246;03m# @/path/to/file) whose content is used as if it came from stdin.[39;00m
+
+[38;5;246;03m# It has the advantage that THE Content-Type HEADER IS AUTOMATICALLY SET[39;00m
+[38;5;246;03m# to the appropriate value based on the filename extension. For example,[39;00m
+[38;5;246;03m# the following request sends the verbatim contents of that XML file with[39;00m
+[38;5;246;03m# Content-Type: application/xml:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mhttpbin.org/put[39m[38;5;252m [39m[38;5;252m@/data/file.xml[39m
+
+[38;5;246;03m# Download a file:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org/Movie.mov[39m[38;5;252m [39m[38;5;252m>[39m[38;5;252m [39m[38;5;252mMovie.mov[39m
+
+[38;5;246;03m# Download an image of Octocat, resize it using ImageMagick, upload it[39;00m
+[38;5;246;03m# elsewhere:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252moctodex.github.com/images/original.jpg[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mconvert[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252m-resize[39m[38;5;252m [39m[38;5;67m25[39m[38;5;252m%[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m  [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org/Octocats[39m
+
+[38;5;246;03m# Force colorizing and formatting, and show both the request and the[39;00m
+[38;5;246;03m# response in less pager:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--pretty[39m[38;5;252m=[39m[38;5;252mall[39m[38;5;252m [39m[38;5;252m--verbose[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mless[39m[38;5;252m [39m[38;5;252m-R[39m
+
+[38;5;246;03m# When enabled using the --download, -d flag, response headers are printed[39;00m
+[38;5;246;03m# to the terminal (stderr), and a progress bar is shown while the response[39;00m
+[38;5;246;03m# body is being saved to a file.[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--download[39m[38;5;252m [39m[38;5;252mhttps://github.com/jkbrzt/httpie/tarball/master[39m
+
+[38;5;246;03m# You can also redirect the response body to another program while the[39;00m
+[38;5;246;03m# response headers and progress are still shown in the terminal:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;252mhttps://github.com/jkbrzt/httpie/tarball/master[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m  [39m[38;5;252mtar[39m[38;5;252m [39m[38;5;252mzxf[39m[38;5;252m [39m[38;5;252m-[39m
+
+[38;5;246;03m# If --output, -o is specified, you can resume a partial download using[39;00m
+[38;5;246;03m# the --continue, -c option. This only works with servers that support[39;00m
+[38;5;246;03m# Range requests and 206 Partial Content responses. If the server doesn't[39;00m
+[38;5;246;03m# support that, the whole file will simply be downloaded:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m-dco[39m[38;5;252m [39m[38;5;252mfile.zip[39m[38;5;252m [39m[38;5;252mexample.org/file[39m
+
+[38;5;246;03m# Prettified streamed response:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--stream[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252mYOUR-TWITTER-NAME[39m[38;5;252m [39m[38;5;252mhttps://stream.twitter.com/1/statuses/filter.json[39m[38;5;252m [39m[38;5;87mtrack[39m[38;5;252m=[39m[38;5;214m'Justin Bieber'[39m
+
+[38;5;246;03m# Send each new tweet (JSON object) mentioning "Apple" to another[39;00m
+[38;5;246;03m# server as soon as it arrives from the Twitter streaming API:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--stream[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252mYOUR-TWITTER-NAME[39m[38;5;252m [39m[38;5;252mhttps://stream.twitter.com/1/statuses/filter.json[39m[38;5;252m [39m[38;5;87mtrack[39m[38;5;252m=[39m[38;5;252mApple[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;70;01mwhile[39;00m[38;5;252m [39m[38;5;31mread[39m[38;5;252m [39m[38;5;252mtweet[39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdo[39;00m[38;5;252m [39m[38;5;31mecho[39m[38;5;252m [39m[38;5;214m"[39m[38;5;87m$tweet[39m[38;5;214m"[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPOST[39m[38;5;252m [39m[38;5;252mexample.org/tweets[39m[38;5;252m [39m[38;5;252m;[39m[38;5;252m [39m[38;5;70;01mdone[39;00m
+
+[38;5;246;03m# Create a new session named user1 for example.org:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252muser1[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252muser1:password[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;252mX-Foo:Bar[39m
+
+[38;5;246;03m# Now you can refer to the session by its name, and the previously used[39;00m
+[38;5;246;03m# authorization and HTTP headers will automatically be set:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252muser1[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# To create or reuse a different session, simple specify a different name:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252muser2[39m[38;5;252m [39m[38;5;252m-a[39m[38;5;252m [39m[38;5;252muser2:password[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;252mX-Bar:Foo[39m
+
+[38;5;246;03m# Instead of a name, you can also directly specify a path to a session[39;00m
+[38;5;246;03m# file. This allows for sessions to be re-used across multiple hosts:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252m/tmp/session.json[39m[38;5;252m [39m[38;5;252mexample.orghttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252m/tmp/session.json[39m[38;5;252m [39m[38;5;252madmin.example.orghttp[39m[38;5;252m [39m[38;5;252m--session[39m[38;5;252m=[39m[38;5;252m~/.httpie/sessions/another.example.org/test.json[39m[38;5;252m [39m[38;5;252mexample.orghttp[39m[38;5;252m [39m[38;5;252m--session-read-only[39m[38;5;252m=[39m[38;5;252m/tmp/session.json[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[48;5;8m[24m tldr:http [24m[0m
+[38;5;246;03m# http[39;00m
+[38;5;246;03m# HTTPie: HTTP client, aims to be easier to use than cURL.[39;00m
+[38;5;246;03m# More information: <https://httpie.org>.[39;00m
+
+[38;5;246;03m# Download a URL to a file:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--download[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# Send form-encoded data:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--form[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;214m'bob'[39m[38;5;252m [39m[38;5;252mprofile_picture@[39m[38;5;214m'bob.png'[39m
+
+[38;5;246;03m# Send JSON object:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;87mname[39m[38;5;252m=[39m[38;5;214m'bob'[39m
+
+[38;5;246;03m# Specify an HTTP method:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mHEAD[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# Include an extra header:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mexample.org[39m[38;5;252m [39m[38;5;252mX-MyHeader:123[39m
+
+[38;5;246;03m# Pass a username and password for server authentication:[39;00m
+[38;5;252mhttp[39m[38;5;252m [39m[38;5;252m--auth[39m[38;5;252m [39m[38;5;252musername:password[39m[38;5;252m [39m[38;5;252mexample.org[39m
+
+[38;5;246;03m# Specify raw request body via `stdin`:[39;00m
+[38;5;252mcat[39m[38;5;252m [39m[38;5;252mdata.txt[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhttp[39m[38;5;252m [39m[38;5;252mPUT[39m[38;5;252m [39m[38;5;252mexample.org[39m

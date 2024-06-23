@@ -1,0 +1,10 @@
+[38;5;246;03m# plocate[39;00m
+[38;5;246;03m# Find filenames quickly.[39;00m
+[38;5;246;03m# Make sure to run `sudo updatedb` to include new files.[39;00m
+[38;5;246;03m# More information: <https://plocate.sesse.net>.[39;00m
+
+[38;5;246;03m# Look for patterns in the database (recomputed periodically):[39;00m
+[38;5;252mplocate[39m[38;5;252m [39m[38;5;252mpattern[39m
+
+[38;5;246;03m# Look for a file by its exact filename (a pattern containing no globbing characters is interpreted as `*pattern*`):[39;00m
+[38;5;252mplocate[39m[38;5;252m [39m[38;5;252m*/filename[39m

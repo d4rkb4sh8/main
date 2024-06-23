@@ -1,0 +1,90 @@
+[48;5;8m[24m cheat.sheets:fdisk [24m[0m
+[38;5;246;03m# List partitions on BLKDEV, such as `/dev/sda`.[39;00m
+[38;5;252mfdisk[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mBLKDEV[39m[38;5;252m][39m
+
+[38;5;246;03m# Usage:[39;00m
+[38;5;246;03m#   fdisk [options] <disk>    change partition table[39;00m
+[38;5;246;03m#   fdisk [options] -l <disk> list partition table(s)[39;00m
+[38;5;246;03m#   fdisk -s <partition>      give partition size(s) in blocks[39;00m
+
+[38;5;246;03m# Options:[39;00m
+[38;5;246;03m#   -b <size>             sector size (512, 1024, 2048 or 4096)[39;00m
+[38;5;246;03m#   -c[=<mode>]           compatible mode: 'dos' or 'nondos' (default)[39;00m
+[38;5;246;03m#   -h                    print this help text[39;00m
+[38;5;246;03m#   -u[=<unit>]           display units: 'cylinders' or 'sectors' (default)[39;00m
+[38;5;246;03m#   -v                    print program version[39;00m
+[38;5;246;03m#   -C <number>           specify the number of cylinders[39;00m
+[38;5;246;03m#   -H <number>           specify the number of heads[39;00m
+[38;5;246;03m#   -S <number>           specify the number of sectors per track[39;00m
+
+[38;5;246;03m# To display partition table[39;00m
+[38;5;252mp[39m
+
+[38;5;246;03m# To delete a partition[39;00m
+[38;5;252md[39m
+
+[38;5;246;03m# To display a list of partition types[39;00m
+[38;5;252ml[39m[38;5;252m [39m[38;5;252mor[39m[38;5;252m [39m[38;5;252mL[39m
+
+[38;5;246;03m# To create a new partition[39;00m
+[38;5;252mn[39m
+
+[38;5;246;03m# To change the type of a partition[39;00m
+[38;5;252mt[39m
+
+[38;5;246;03m# To write changes to fdisk[39;00m
+[38;5;252mw[39m
+
+[38;5;246;03m# Adding a new physical disk[39;00m
+[38;5;252mlsblk[39m
+[38;5;252mfdisk[39m[38;5;252m [39m[38;5;252m/dev/sdd[39m
+
+[38;5;246;03m# create new partition in fdisk[39;00m
+[38;5;252mmkfs.xfs[39m[38;5;252m [39m[38;5;252m/dev/sdd1[39m
+[38;5;252mblkid[39m[38;5;252m [39m[38;5;252m/dev/sdd1[39m
+
+[38;5;246;03m# edit /etc/fstab[39;00m
+[38;5;87mUUID[39m[38;5;252m=[39m[38;5;252m<[39m[38;5;252mblkid#>[39m[38;5;252m [39m[38;5;252m/opt[39m[38;5;252m [39m[38;5;252mdefaults[39m[38;5;252m [39m[38;5;67m0[39m[38;5;252m [39m[38;5;67m0[39m[38;5;252m [39m[38;5;246;03m# 00 disable disk checking and metadata dumping[39;00m
+[38;5;252mmount[39m[38;5;252m [39m[38;5;252m-a[39m
+[38;5;252mdf[39m[38;5;252m [39m[38;5;252m-h[39m[38;5;252m [39m[38;5;252m/opt[39m
+
+[38;5;246;03m# Extending a physical disk (vm). Step 3 prints partitions on `/dev/sdc`. Step[39;00m
+[38;5;246;03m# 4 deletes the old partition, then creates a new one.[39;00m
+[38;5;67m1[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mUnmount[39m[38;5;252m [39m[38;5;252mdrive.[39m[38;5;252m [39m[38;5;252mComment[39m[38;5;252m [39m[38;5;252mout[39m[38;5;252m [39m[38;5;214m`[39m[38;5;252m/etc/fstab[39m[38;5;214m`[39m[38;5;252m [39m[38;5;252mentry[39m[38;5;252m [39m[38;5;70;01mfor[39;00m[38;5;252m [39m[38;5;214m`[39m[38;5;252m/dev/sdc[39m[38;5;214m`[39m[38;5;252m.[39m
+[38;5;67m2[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mIncrease[39m[38;5;252m [39m[38;5;252mdrive[39m[38;5;252m [39m[38;5;252mphysical[39m[38;5;252m [39m[38;5;252mspace[39m
+[38;5;67m3[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mparted[39m[38;5;252m [39m[38;5;252m/dev/sdc[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;214m'p'[39m
+[38;5;67m4[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mfdisk[39m[38;5;252m [39m[38;5;252m/dev/sdc[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;214m'p'[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;214m'd'[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;214m'n'[39m[38;5;252m [39m[38;5;252m([39m[38;5;252mdefaults[39m[38;5;252m)[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252mw[39m
+[38;5;67m5[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mreboot[39m
+[38;5;67m6[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252me2fsck[39m[38;5;252m [39m[38;5;252m-f[39m[38;5;252m [39m[38;5;252m/dev/sdc1[39m
+[38;5;67m7[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mresize2fs[39m[38;5;252m [39m[38;5;252m/dev/sdc1[39m
+[38;5;67m8[39m[38;5;252m.[39m[38;5;252m [39m[38;5;252mmount[39m[38;5;252m [39m[38;5;252m/dev/sdc1[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252muncomment[39m[38;5;252m [39m[38;5;252mfstab[39m
+
+[48;5;8m[24m tldr:fdisk [24m[0m
+[38;5;246;03m# fdisk[39;00m
+[38;5;246;03m# A program for managing partition tables and partitions on a hard disk.[39;00m
+[38;5;246;03m# See also: `partprobe`.[39;00m
+[38;5;246;03m# More information: <https://manned.org/fdisk>.[39;00m
+
+[38;5;246;03m# List partitions:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mfdisk[39m[38;5;252m [39m[38;5;252m-l[39m
+
+[38;5;246;03m# Start the partition manipulator:[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mfdisk[39m[38;5;252m [39m[38;5;252m/dev/sdX[39m
+
+[38;5;246;03m# Once partitioning a disk, create a partition:[39;00m
+[38;5;252mn[39m
+
+[38;5;246;03m# Once partitioning a disk, select a partition to delete:[39;00m
+[38;5;252md[39m
+
+[38;5;246;03m# Once partitioning a disk, view the partition table:[39;00m
+[38;5;252mp[39m
+
+[38;5;246;03m# Once partitioning a disk, write the changes made:[39;00m
+[38;5;252mw[39m
+
+[38;5;246;03m# Once partitioning a disk, discard the changes made:[39;00m
+[38;5;252mq[39m
+
+[38;5;246;03m# Once partitioning a disk, open a help menu:[39;00m
+[38;5;252mm[39m

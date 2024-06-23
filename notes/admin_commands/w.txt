@@ -1,0 +1,10 @@
+[38;5;246;03m# w[39;00m
+[38;5;246;03m# Show who is logged on and what they are doing.[39;00m
+[38;5;246;03m# Print user login, TTY, remote host, login time, idle time, current process.[39;00m
+[38;5;246;03m# More information: <https://manned.org/w>.[39;00m
+
+[38;5;246;03m# Show logged-in users info:[39;00m
+[38;5;252mw[39m
+
+[38;5;246;03m# Show logged-in users info without a header:[39;00m
+[38;5;252mw[39m[38;5;252m [39m[38;5;252m-h[39m

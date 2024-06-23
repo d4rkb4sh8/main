@@ -1,0 +1,23 @@
+[48;5;8m[24m cheat:mkdir [24m[0m
+[38;5;246;03m# To create nested directories:[39;00m
+[38;5;252mmkdir[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252mfoo/bar/baz[39m
+
+[38;5;246;03m# To create foo/bar and foo/baz directories:[39;00m
+[38;5;252mmkdir[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252mfoo/[39m[38;5;252m{[39m[38;5;252mbar,baz[39m[38;5;252m}[39m
+
+[38;5;246;03m# To create the foo/bar, foo/baz, foo/baz/zip and foo/baz/zap directories:[39;00m
+[38;5;252mmkdir[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252mfoo/[39m[38;5;252m{[39m[38;5;252mbar,baz/[39m[38;5;252m{[39m[38;5;252mzip,zap[39m[38;5;252m}[39m[38;5;252m}[39m
+
+[48;5;8m[24m tldr:mkdir [24m[0m
+[38;5;246;03m# mkdir[39;00m
+[38;5;246;03m# Create directories and set their permissions.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/mkdir>.[39;00m
+
+[38;5;246;03m# Create specific directories:[39;00m
+[38;5;252mmkdir[39m[38;5;252m [39m[38;5;252mpath/to/directory1[39m[38;5;252m [39m[38;5;252mpath/to/directory2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Create specific directories and their [p]arents if needed:[39;00m
+[38;5;252mmkdir[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252mpath/to/directory1[39m[38;5;252m [39m[38;5;252mpath/to/directory2[39m[38;5;252m [39m[38;5;252m...[39m
+
+[38;5;246;03m# Create directories with specific permissions:[39;00m
+[38;5;252mmkdir[39m[38;5;252m [39m[38;5;252m-m[39m[38;5;252m [39m[38;5;252mrwxrw-r--[39m[38;5;252m [39m[38;5;252mpath/to/directory1[39m[38;5;252m [39m[38;5;252mpath/to/directory2[39m[38;5;252m [39m[38;5;252m...[39m

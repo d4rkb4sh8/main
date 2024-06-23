@@ -1,0 +1,65 @@
+[48;5;8m[24m cheat:journalctl [24m[0m
+[38;5;246;03m# To actively follow log (like tail -f):[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-f[39m
+
+[38;5;246;03m# To display all errors since last boot:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-b[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252merr[39m
+
+[38;5;246;03m# To filter by time period:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m--since[39m[38;5;252m=[39m[38;5;67m2012[39m[38;5;252m-10-15[39m[38;5;252m [39m[38;5;252m--until[39m[38;5;252m=[39m[38;5;214m"2011-10-16 23:59:59"[39m
+
+[38;5;246;03m# To show list of systemd units logged in journal:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-F[39m[38;5;252m [39m[38;5;252m_SYSTEMD_UNIT[39m
+
+[38;5;246;03m# To filter by specific unit:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252mdbus[39m
+
+[38;5;246;03m# To filter by executable name:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m/usr/bin/dbus-daemon[39m
+
+[38;5;246;03m# To filter by PID:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;87m_PID[39m[38;5;252m=[39m[38;5;67m123[39m
+
+[38;5;246;03m# To filter by Command, e.g., sshd:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;87m_COMM[39m[38;5;252m=[39m[38;5;252msshd[39m
+
+[38;5;246;03m# To filter by Command and time period:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;87m_COMM[39m[38;5;252m=[39m[38;5;252mcrond[39m[38;5;252m [39m[38;5;252m--since[39m[38;5;252m [39m[38;5;214m'10:00'[39m[38;5;252m [39m[38;5;252m--until[39m[38;5;252m [39m[38;5;214m'11:00'[39m
+
+[38;5;246;03m# To list all available boots:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m--list-boots[39m
+
+[38;5;246;03m# To filter by specific User ID e.g., user id 1000:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;87m_UID[39m[38;5;252m=[39m[38;5;67m1000[39m
+
+[38;5;246;03m# To filter by specific SYSLOG_INDENTIFIER:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-t[39m[38;5;252m [39m[38;5;252msystemd-resolved[39m
+
+[48;5;8m[24m tldr:journalctl [24m[0m
+[38;5;246;03m# journalctl[39;00m
+[38;5;246;03m# Query the systemd journal.[39;00m
+[38;5;246;03m# More information: <https://manned.org/journalctl>.[39;00m
+
+[38;5;246;03m# Show all messages with priority level 3 (errors) from this [b]oot:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-b[39m[38;5;252m [39m[38;5;252m--priority[39m[38;5;252m=[39m[38;5;67m3[39m
+
+[38;5;246;03m# Show all messages from last [b]oot:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-b[39m[38;5;252m [39m[38;5;252m-1[39m
+
+[38;5;246;03m# Delete journal logs which are older than 2 days:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m--vacuum-time[39m[38;5;252m=[39m[38;5;252m2d[39m
+
+[38;5;246;03m# [f]ollow new messages (like `tail -f` for traditional syslog):[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-f[39m
+
+[38;5;246;03m# Show all messages by a specific [u]nit:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252munit[39m
+
+[38;5;246;03m# Filter messages within a time range (either timestamp or placeholders like "yesterday"):[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252m--since[39m[38;5;252m [39m[38;5;252mnow[39m[38;5;252m|[39m[38;5;252mtoday[39m[38;5;252m|[39m[38;5;252myesterday[39m[38;5;252m|[39m[38;5;252mtomorrow[39m[38;5;252m [39m[38;5;252m--until[39m[38;5;252m [39m[38;5;252mYYYY-MM-DD[39m[38;5;252m [39m[38;5;252mHH:MM:SS[39m
+
+[38;5;246;03m# Show all messages by a specific process:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;87m_PID[39m[38;5;252m=[39m[38;5;252mpid[39m
+
+[38;5;246;03m# Show all messages by a specific executable:[39;00m
+[38;5;252mjournalctl[39m[38;5;252m [39m[38;5;252mpath/to/executable[39m

@@ -1,0 +1,75 @@
+[48;5;8m[24m cheat.sheets:du [24m[0m
+[38;5;246;03m# du[39;00m
+[38;5;246;03m# Estimate file space usage[39;00m
+
+[38;5;246;03m# With 'root' privileges, use du(1), sort(1), and head(1) to display a list of[39;00m
+[38;5;246;03m# the top 20 space-consuming files in whichever storage medium '/' is mounted.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# Here, du(1) is using the `-x` flag to keep to the one filesystem, which is[39;00m
+[38;5;246;03m# important for getting accurate results on the filesystem on which you[39;00m
+[38;5;246;03m# might, for example, be needing to free space.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# In order to sort the human-readable file sizes, sort(1) is using the `-h`[39;00m
+[38;5;246;03m# flag, the `-k` flag to specify the column to sort (first), and its using[39;00m
+[38;5;246;03m# the `-r` flag to reverse the sorting, so we see the highest size first.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# To then show the top-20 lines, we use head(1) and specify the number of lines[39;00m
+[38;5;246;03m# via the `-n` flag. The default number of lines displayed by head(1) and[39;00m
+[38;5;246;03m# tail(1) is 10.[39;00m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# Root privileges are gained for this task by using sudo(8) on bash(1) in order[39;00m
+[38;5;246;03m# to have a new root-owned BASH session, which then executes the commands[39;00m
+[38;5;246;03m# proceeding the `-c` flag.[39;00m
+[38;5;252msudo[39m[38;5;252m [39m[38;5;252mbash[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;214m'du -xh / | sort -rhk 1 | head -n 20'[39m
+
+[38;5;246;03m# Display just the total human-readable size of the current working directory.[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-sh[39m
+
+[38;5;246;03m# Display the total human-readable size of the three provided directories, as[39;00m
+[38;5;246;03m# well as the grand total of the combined directories.[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-chs[39m[38;5;252m [39m[38;5;252m~/Desktop[39m[38;5;252m [39m[38;5;252m~/Pictures[39m[38;5;252m [39m[38;5;252m~/Videos[39m
+[38;5;246;03m# You could potentially make this task a bit easier with BASH brace expansion.[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-chs[39m[38;5;252m [39m[38;5;252m~/[39m[38;5;252m{[39m[38;5;252mDesktop,Pictures,Videos[39m[38;5;252m}[39m
+
+[48;5;8m[24m cheat:du [24m[0m
+[38;5;246;03m# To sort directories/files by size:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-sk[39m[38;5;252m [39m[38;5;252m*[39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msort[39m[38;5;252m [39m[38;5;252m-rn[39m
+
+[38;5;246;03m# To show cumulative human-readable size:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-sh[39m
+
+[38;5;246;03m# To show cumulative human-readable size and dereference symlinks:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-shL[39m
+
+[38;5;246;03m# Show apparent size instead of disk usage (so sparse files will show greater[39;00m
+[38;5;246;03m# than zero):[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-h[39m[38;5;252m [39m[38;5;252m--apparent-size[39m
+
+[38;5;246;03m# To sort directories/files by size (human-readable):[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-sh[39m[38;5;252m [39m[38;5;252m*[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msort[39m[38;5;252m [39m[38;5;252m-rh[39m[38;5;252m [39m
+
+[38;5;246;03m# To list the 20 largest files and folders under the current working directory:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-ma[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252msort[39m[38;5;252m [39m[38;5;252m-nr[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mhead[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;67m20[39m
+
+[48;5;8m[24m tldr:du [24m[0m
+[38;5;246;03m# du[39;00m
+[38;5;246;03m# Disk usage: estimate and summarize file and directory space usage.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/du>.[39;00m
+
+[38;5;246;03m# List the sizes of a directory and any subdirectories, in the given unit (B/KiB/MiB):[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-b[39m[38;5;252m|[39m[38;5;252mk[39m[38;5;252m|[39m[38;5;252mm[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# List the sizes of a directory and any subdirectories, in human-readable form (i.e. auto-selecting the appropriate unit for each size):[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-h[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# Show the size of a single directory, in human-readable units:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-sh[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# List the human-readable sizes of a directory and of all the files and directories within it:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-ah[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# List the human-readable sizes of a directory and any subdirectories, up to N levels deep:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-h[39m[38;5;252m [39m[38;5;252m--max-depth[39m[38;5;252m=[39m[38;5;252mN[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m
+
+[38;5;246;03m# List the human-readable size of all `.jpg` files in subdirectories of the current directory, and show a cumulative total at the end:[39;00m
+[38;5;252mdu[39m[38;5;252m [39m[38;5;252m-ch[39m[38;5;252m [39m[38;5;252m*/*.jpg[39m

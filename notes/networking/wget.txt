@@ -1,0 +1,86 @@
+[48;5;8m[24m cheat.sheets:wget [24m[0m
+[38;5;246;03m# wget[39;00m
+[38;5;246;03m# The non-interactive network downloader[39;00m
+
+[38;5;246;03m# Quietly download a file, continuing where it left of, if the connection[39;00m
+[38;5;246;03m# fails. The file will be downloaded to the current working directory.[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-qc[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mURL[39m[38;5;252m][39m
+
+[38;5;246;03m# Specify a location to download the given file.[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-qcO[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mPATH[39m[38;5;252m][39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mURL[39m[38;5;252m][39m
+
+[38;5;246;03m# Download URL using the user agent string provided to the `-U` flag.[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-U[39m[38;5;252m [39m[38;5;214m'Mozilla/5.0'[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252mURL[39m[38;5;252m][39m
+
+[48;5;8m[24m cheat:wget [24m[0m
+[38;5;246;03m# To download <url>:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+[38;5;246;03m#[39;00m
+[38;5;246;03m# To download multiples files with multiple URLs:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>...[39m
+
+[38;5;246;03m# To download <url> and change its name:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m[38;5;252m [39m[38;5;252m-O[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252moutfile>[39m
+
+[38;5;246;03m# To download <url> into <dir>:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-P[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdir>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[38;5;246;03m# To continue an aborted downloaded:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-c[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[38;5;246;03m# To parse a file that contains a list of URLs to fetch each one:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;252murl_list.txt[39m
+
+[38;5;246;03m# To mirror a whole page locally:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-pk[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[38;5;246;03m# To mirror a whole site locally:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-mk[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[38;5;246;03m# To download files according to a pattern:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252mhttp://example.com/files-[39m[38;5;252m{[39m[38;5;67m1[39m[38;5;252m..15[39m[38;5;252m}[39m[38;5;252m.tar.bz2[39m
+
+[38;5;246;03m# To download all the files in a directory with a specific extension if directory indexing is enabled:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-r[39m[38;5;252m [39m[38;5;252m-l1[39m[38;5;252m [39m[38;5;252m-A.extension[39m[38;5;252m [39m[38;5;252mhttp://example.com/directory[39m
+
+[38;5;246;03m# To download only response headers (-S --spider) and display them on stdout (-O -).:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-S[39m[38;5;252m [39m[38;5;252m--spider[39m[38;5;252m [39m[38;5;252m-O[39m[38;5;252m [39m[38;5;252m-[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[38;5;246;03m# To change the User-Agent to 'User-Agent: toto':[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m-U[39m[38;5;252m [39m[38;5;214m'toto'[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[38;5;246;03m# To download a file with specific speed EX:500kb/sec:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--limit-rate[39m[38;5;252m=[39m[38;5;252m500k[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252murl>[39m
+
+[48;5;8m[24m tldr:wget [24m[0m
+[38;5;246;03m# wget[39;00m
+[38;5;246;03m# Download files from the Web.[39;00m
+[38;5;246;03m# Supports HTTP, HTTPS, and FTP.[39;00m
+[38;5;246;03m# More information: <https://www.gnu.org/software/wget>.[39;00m
+
+[38;5;246;03m# Download the contents of a URL to a file (named "foo" in this case):[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252mhttps://example.com/foo[39m
+
+[38;5;246;03m# Download the contents of a URL to a file (named "bar" in this case):[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--output-document[39m[38;5;252m [39m[38;5;252mbar[39m[38;5;252m [39m[38;5;252mhttps://example.com/foo[39m
+
+[38;5;246;03m# Download a single web page and all its resources with 3-second intervals between requests (scripts, stylesheets, images, etc.):[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--page-requisites[39m[38;5;252m [39m[38;5;252m--convert-links[39m[38;5;252m [39m[38;5;252m--wait[39m[38;5;252m=[39m[38;5;67m3[39m[38;5;252m [39m[38;5;252mhttps://example.com/somepage.html[39m
+
+[38;5;246;03m# Download all listed files within a directory and its sub-directories (does not download embedded page elements):[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--mirror[39m[38;5;252m [39m[38;5;252m--no-parent[39m[38;5;252m [39m[38;5;252mhttps://example.com/somepath/[39m
+
+[38;5;246;03m# Limit the download speed and the number of connection retries:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--limit-rate[39m[38;5;252m=[39m[38;5;252m300k[39m[38;5;252m [39m[38;5;252m--tries[39m[38;5;252m=[39m[38;5;67m100[39m[38;5;252m [39m[38;5;252mhttps://example.com/somepath/[39m
+
+[38;5;246;03m# Download a file from an HTTP server using Basic Auth (also works for FTP):[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--user[39m[38;5;252m=[39m[38;5;252musername[39m[38;5;252m [39m[38;5;252m--password[39m[38;5;252m=[39m[38;5;252mpassword[39m[38;5;252m [39m[38;5;252mhttps://example.com[39m
+
+[38;5;246;03m# Continue an incomplete download:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--continue[39m[38;5;252m [39m[38;5;252mhttps://example.com[39m
+
+[38;5;246;03m# Download all URLs stored in a text file to a specific directory:[39;00m
+[38;5;252mwget[39m[38;5;252m [39m[38;5;252m--directory-prefix[39m[38;5;252m [39m[38;5;252mpath/to/directory[39m[38;5;252m [39m[38;5;252m--input-file[39m[38;5;252m [39m[38;5;252mURLs.txt[39m
+
+#DOWNLOAD A SPECIFIC FILE TYPE FROM A SITE
+wget -r -A '*.txt' http://url-to-webpage-with-txts/

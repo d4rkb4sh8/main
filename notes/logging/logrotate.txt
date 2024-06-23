@@ -1,0 +1,18 @@
+[38;5;246;03m# logrotate[39;00m
+[38;5;246;03m# Rotates, compresses, and mails system logs.[39;00m
+[38;5;246;03m# More information: <https://manned.org/logrotate>.[39;00m
+
+[38;5;246;03m# Trigger a run manually:[39;00m
+[38;5;252mlogrotate[39m[38;5;252m [39m[38;5;252mpath/to/logrotate.conf[39m[38;5;252m [39m[38;5;252m--force[39m
+
+[38;5;246;03m# Run using a specific command to mail reports:[39;00m
+[38;5;252mlogrotate[39m[38;5;252m [39m[38;5;252mpath/to/logrotate.conf[39m[38;5;252m [39m[38;5;252m--mail[39m[38;5;252m [39m[38;5;252m/usr/bin/mail_command[39m
+
+[38;5;246;03m# Run without using a state (lock) file:[39;00m
+[38;5;252mlogrotate[39m[38;5;252m [39m[38;5;252mpath/to/logrotate.conf[39m[38;5;252m [39m[38;5;252m--state[39m[38;5;252m [39m[38;5;252m/dev/null[39m
+
+[38;5;246;03m# Run and skip the state (lock) file check:[39;00m
+[38;5;252mlogrotate[39m[38;5;252m [39m[38;5;252mpath/to/logrotate.conf[39m[38;5;252m [39m[38;5;252m--skip-state-lock[39m
+
+[38;5;246;03m# Tell `logrotate` to log verbose output into the log file:[39;00m
+[38;5;252mlogrotate[39m[38;5;252m [39m[38;5;252mpath/to/logrotate.conf[39m[38;5;252m [39m[38;5;252m--log[39m[38;5;252m [39m[38;5;252mpath/to/log_file[39m

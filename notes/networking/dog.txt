@@ -1,0 +1,22 @@
+[38;5;246;03m# dog[39;00m
+[38;5;246;03m# DNS lookup utility.[39;00m
+[38;5;246;03m# It has colorful output, supports DNS-over-TLS and DNS-over-HTTPS protocols, and can emit JSON.[39;00m
+[38;5;246;03m# More information: <https://dns.lookup.dog>.[39;00m
+
+[38;5;246;03m# Lookup the IP(s) associated with a hostname (A records):[39;00m
+[38;5;252mdog[39m[38;5;252m [39m[38;5;252mexample.com[39m
+
+[38;5;246;03m# Query the MX records type associated with a given domain name:[39;00m
+[38;5;252mdog[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252mMX[39m
+
+[38;5;246;03m# Specify a specific DNS server to query (e.g. Cloudflare):[39;00m
+[38;5;252mdog[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252mMX[39m[38;5;252m [39m[38;5;252m@1.1.1.1[39m
+
+[38;5;246;03m# Query over TCP rather than UDP:[39;00m
+[38;5;252mdog[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252mMX[39m[38;5;252m [39m[38;5;252m@1.1.1.1[39m[38;5;252m [39m[38;5;252m--tcp[39m
+
+[38;5;246;03m# Query the MX records type associated with a given domain name over TCP using explicit arguments:[39;00m
+[38;5;252mdog[39m[38;5;252m [39m[38;5;252m--query[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252m--type[39m[38;5;252m [39m[38;5;252mMX[39m[38;5;252m [39m[38;5;252m--nameserver[39m[38;5;252m [39m[38;5;67m1[39m[38;5;252m.1.1.1[39m[38;5;252m [39m[38;5;252m--tcp[39m
+
+[38;5;246;03m# Lookup the IP(s) associated with a hostname (A records) using DNS over HTTPS (DoH):[39;00m
+[38;5;252mdog[39m[38;5;252m [39m[38;5;252mexample.com[39m[38;5;252m [39m[38;5;252m--https[39m[38;5;252m [39m[38;5;252m@https://cloudflare-dns.com/dns-query[39m

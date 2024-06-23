@@ -1,0 +1,15 @@
+[38;5;246;03m# md5[39;00m
+[38;5;246;03m# Calculate MD5 cryptographic checksums.[39;00m
+[38;5;246;03m# More information: <https://ss64.com/osx/md5.html>.[39;00m
+
+[38;5;246;03m# Calculate the MD5 checksum for a file:[39;00m
+[38;5;252mmd5[39m[38;5;252m [39m[38;5;252mfilename[39m
+
+[38;5;246;03m# Calculate MD5 checksums for multiple files:[39;00m
+[38;5;252mmd5[39m[38;5;252m [39m[38;5;252mfilename1[39m[38;5;252m [39m[38;5;252mfilename2[39m
+
+[38;5;246;03m# Output only the md5 checksum (no filename):[39;00m
+[38;5;252mmd5[39m[38;5;252m [39m[38;5;252m-q[39m[38;5;252m [39m[38;5;252mfilename[39m
+
+[38;5;246;03m# Print a checksum of the given string:[39;00m
+[38;5;252mmd5[39m[38;5;252m [39m[38;5;252m-s[39m[38;5;252m [39m[38;5;214m"string"[39m

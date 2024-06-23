@@ -1,0 +1,53 @@
+[48;5;8m[24m cheat:top [24m[0m
+[38;5;246;03m# To update every <interval> samples:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-i[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252minterval>[39m
+
+[38;5;246;03m# To set the delay between updates to <delay> seconds:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-s[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdelay>[39m
+
+[38;5;246;03m# To set event counting to accumulative mode:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-a[39m
+
+[38;5;246;03m# To set event counting to delta mode:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-d[39m
+
+[38;5;246;03m# To set event counting to absolute mode:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-e[39m
+
+[38;5;246;03m# To not calculate statistics on shared libraries, also known as frameworks:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-F[39m
+
+[38;5;246;03m# To calculate statistics on shared libraries, also known as frameworks (default):[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-f[39m
+
+[38;5;246;03m# To print command line usage information and exit:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-h[39m
+
+[38;5;246;03m# To order the display by sorting on <key> in descending order:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-o[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mkey>[39m
+
+[48;5;8m[24m tldr:top [24m[0m
+[38;5;246;03m# top[39;00m
+[38;5;246;03m# Display dynamic real-time information about running processes.[39;00m
+[38;5;246;03m# More information: <https://manned.org/top>.[39;00m
+
+[38;5;246;03m# Start top:[39;00m
+[38;5;252mtop[39m
+
+[38;5;246;03m# Do not show any idle or zombie processes:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-i[39m
+
+[38;5;246;03m# Show only processes owned by given user:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252musername[39m
+
+[38;5;246;03m# Sort processes by a field:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-o[39m[38;5;252m [39m[38;5;252mfield_name[39m
+
+[38;5;246;03m# Show the individual threads of a given process:[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-Hp[39m[38;5;252m [39m[38;5;252mprocess_id[39m
+
+[38;5;246;03m# Show only the processes with the given PID(s), passed as a comma-separated list. (Normally you wouldn't know PIDs off hand. This example picks the PIDs from the process name):[39;00m
+[38;5;252mtop[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;70;01m$([39;00m[38;5;252mpgrep[39m[38;5;252m [39m[38;5;252m-d[39m[38;5;252m [39m[38;5;214m','[39m[38;5;252m [39m[38;5;252mprocess_name[39m[38;5;70;01m)[39;00m
+
+[38;5;246;03m# Get help about interactive commands:[39;00m
+[38;5;252m?[39m
