@@ -97,6 +97,7 @@ sudo dpkg -i fastfetch-linux-amd64.deb
 log "Installing ulauncher..."
 wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
 sudo dpkg -i ulauncher_5.15.7_all.deb
+cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
 # Install GNOME extensions
 log "Installing GNOME extensions..."
