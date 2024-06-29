@@ -17,7 +17,7 @@ log "Updating and upgrading the system..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Define APT packages
-APT_PACKAGES="stow figlet lynis gawk curl wget git alacritty powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
+APT_PACKAGES="fastfetch stow figlet lynis gawk curl wget git alacritty powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
 
 # Install APT packages
 log "Installing APT packages..."
@@ -103,6 +103,12 @@ gnome-shell-extension-manager install -e custom-hot-corners-extended@G-dH.github
 gnome-shell-extension-manager install -e dash-to-dock@micxgx.gmail.com
 gnome-shell-extension-manager install -e quake-mode@nathan.bourgeois.gmail.com
 gnome-shell-extension-manager install -e Vitals@CoreCoding.com
+gnome-shell-extension-manager install -e user-theme@gnome-shell-extensions.gcampax.github.com
+
+# Install tgpt
+log "Installing tgpt..."
+wget https://github.com/nomic-ai/tgpt/releases/download/v0.3.1/tgpt_0.3.1_linux_amd64.deb
+sudo dpkg -i tgpt_0.3.1_linux_amd64.deb
 
 # Install Rust
 log "Installing Rust..."
