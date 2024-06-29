@@ -75,9 +75,7 @@ sudo usermod -aG vboxusers $USER
 log "Installing themes and fonts..."
 cd $HOME/Downloads
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/NerdFontsSymbols.zip
 unzip Hack.zip -d ~/.local/share/fonts
-unzip NerdFontsSymbols.zip -d ~/.local/share/fonts
 fc-cache -fv
 
 # Install GNOME themes
