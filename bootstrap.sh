@@ -7,7 +7,7 @@ log() {
 }
 
 # dependencies
-sudo apt install girl.2-keybinde* libkeybinde* curl git wget cmake gawk
+sudo apt install girl.2-keybinde* libkeybinde* 
 
 # Remove Debian games bloatware and clean up
 log "Removing bloatware and cleaning up..."
