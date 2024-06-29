@@ -96,8 +96,7 @@ cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
 # Install tgpt
 log "Installing tgpt..."
-wget https://github.com/nomic-ai/tgpt/releases/download/v0.3.1/tgpt_0.3.1_linux_amd64.deb
-sudo dpkg -i tgpt_0.3.1_linux_amd64.deb
+curl -sSL https://raw.githubusercontent.com/aandrew-me/tgpt/main/install | bash -s /usr/local/bin
 
 # Install Rust
 log "Installing Rust..."
