@@ -6,9 +6,6 @@ log() {
     echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')] $*"
 }
 
-# dependencies
-sudo apt install girl.2-keybinde* libkeybinde* 
-
 # Remove Debian games bloatware and clean up
 log "Removing bloatware and cleaning up..."
 sudo apt purge -y gnome-games libreoffice*
@@ -96,7 +93,6 @@ sudo dpkg -i fastfetch-linux-amd64.deb
 # Install ulauncher
 log "Installing ulauncher..."
 wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
-sudo dpkg -i ulauncher_5.15.7_all.deb
 cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
 # Install GNOME extensions
