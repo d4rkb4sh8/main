@@ -17,7 +17,7 @@ log "Updating and upgrading the system..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Define APT packages
-APT_PACKAGES="stow figlet lynis gawk curl wget git alacritty powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
+APT_PACKAGES="stow figlet lynis gawk curl wget git alacritty fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
 
 # Install APT packages
 log "Installing APT packages..."
@@ -43,8 +43,7 @@ echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Define Homebrew packages
-HOMEBREW_PACKAGES="lazygit gcc dust dog eza zellij neovim xh yazi ffmpegthumbnailer unar jq poppler fd ripgrep zoxide tlrc"
-
+HOMEBREW_PACKAGES="lazygit gcc dust dog eza zellij neovim xh yazi ripgrep zoxide tlrc"
 # Install Homebrew packages
 log "Installing Homebrew packages..."
 brew install $HOMEBREW_PACKAGES
