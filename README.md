@@ -15,7 +15,7 @@ the script will do the following:
 6.)  Install Starship command prompt
 7.)  Install Homebrew & packages
 8.)  Install ble.sh - bash
-9.)  Install VirtualBox - #comment out if installing on a virtual machine
+9.)  Install VirtualBox & guest extensions - ##comment out if installing on a virtual machine
 10.)  Download fonts and gnome themes
 11.)  Install fastfetch
 12.)  Install ulauncher with favorite extensions
