@@ -17,7 +17,7 @@ log "Updating and upgrading the system..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Define APT packages
-APT_PACKAGES="fastfetch stow figlet lynis gawk curl wget git alacritty powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev"
+APT_PACKAGES="fastfetch stow figlet lynis gawk curl wget git alacritty powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
 
 # Install APT packages
 log "Installing APT packages..."
@@ -39,7 +39,7 @@ log "Installing Homebrew..."
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" >> $HOME/.bashrc
 
 # Define Homebrew packages
-HOMEBREW_PACKAGES="gcc dust dog eza zellij neovim xh yazi ffmpegthumbnailer unar jq poppler fd ripgrep zoxide tlrc"
+HOMEBREW_PACKAGES="lazygit gcc dust dog eza zellij neovim xh yazi ffmpegthumbnailer unar jq poppler fd ripgrep zoxide tlrc"
 
 # Install Homebrew packages
 log "Installing Homebrew packages..."
@@ -85,6 +85,14 @@ echo 'source "$HOME/.cargo/env"' >> $HOME/.bashrc
 
 #bash_aliases
 cp $HOME/gitprojects/main/.bash_aliases $HOME/
+
+# setup UFW
+sudo ufw limit 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw enable
 
 
 # Upgrade system with nala
