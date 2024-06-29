@@ -17,7 +17,7 @@ log "Updating and upgrading the system..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Define APT packages
-APT_PACKAGES="python3-websocket wmctrl python3-levenshtein libkeybinder* girl.2-keybinder* stow figlet lynis gawk curl wget git alacritty fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
+APT_PACKAGES="python3-websocket wmctrl python3-levenshtein libkeybinde* girl.2-keybinde* stow figlet lynis gawk curl wget git alacritty fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
 
 # Install APT packages
 log "Installing APT packages..."
