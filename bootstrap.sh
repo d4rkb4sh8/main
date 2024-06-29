@@ -118,6 +118,10 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 echo 'source "$HOME/.cargo/env"' >> ~/.bashrc
 
+#install lazyvim
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
 # Copy bash aliases
 log "Copying bash aliases..."
 cp $HOME/gitprojects/main/.bash_aliases $HOME/
