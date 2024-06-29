@@ -6,9 +6,29 @@ This installs Homebrew on your debian linux for a few packages that are not on d
 
 Once complete you will have a system ready to apt, nala, brew with ai chat using tgpt. 
 
+the script will do the following:
+1.)  Remove Debian games bloatware and clean up
+2.)  Update and upgrade the system
+3.)  Install APT packages
+4.)  clone repo to a folder called gitprojects/main
+5.)  Add custom paths to .bashrc
+6.)  Install Starship command prompt
+7.)  Install Homebrew & packages
+8.)  Install ble.sh - bash
+9.)  Install VirtualBox - #comment out if installing on a virtual machine
+10.)  Download fonts and gnome themes
+11.)  Install fastfetch
+12.)  Install ulauncher with favorite extensions
+13.)  Install GNOME extensions
+14.)  Install tgpt
+15.)  Install Rust
+16.)  Copy bash aliases
+17.)  Setup UFW
+18.)  upgrade system & do final cleanup
+
 also check the .bash_aliases file tyo see some of the aliases available
 
-
+## HOW TO RUN INSTALL SCRIPT
 1.)  download bootstrap.sh file
 
 2.)  mv bootstrap.sh to $HOME folder
