@@ -19,12 +19,11 @@ the script will do the following:
 10.)  Download fonts and gnome themes
 11.)  Install fastfetch
 12.)  Install ulauncher with favorite extensions
-13.)  Install GNOME extensions
-14.)  Install tgpt
-15.)  Install Rust
-16.)  Copy bash aliases
-17.)  Setup UFW
-18.)  upgrade system & do final cleanup
+13.)  Install tgpt
+14.)  Install Rust
+15.)  Copy bash aliases
+16.)  Setup UFW
+17.)  upgrade system & do final cleanup
 
 also check the .bash_aliases file tyo see some of the aliases available
 
