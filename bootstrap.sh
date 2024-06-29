@@ -6,6 +6,9 @@ log() {
     echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')] $*"
 }
 
+# dependencies
+sudo apt install girl.2-keybinde* libkeybinde* curl git wget cmake gawk
+
 # Remove Debian games bloatware and clean up
 log "Removing bloatware and cleaning up..."
 sudo apt purge -y gnome-games libreoffice*
