@@ -28,7 +28,7 @@ sudo apt install -y $APT_PACKAGES
 
 #clone repo
 mkdir $HOME/gitprojects
-git clone https://github.com/d4rkb4sh8/main.git >> $HOME/gitprojects/*
+git clone https://github.com/d4rkb4sh8/main.git >> $HOME/gitprojects/
 
 # Add custom paths to .bashrc
 echo 'export PATH=$PATH:/opt:/usr/local/bin' >> ~/.bashrc
