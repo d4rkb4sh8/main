@@ -94,17 +94,6 @@ log "Installing ulauncher..."
 wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
 cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
-# Install GNOME extensions
-log "Installing GNOME extensions..."
-gnome-shell-extension-manager install -e blur-my-shell@aunetx
-gnome-shell-extension-manager install -e arc-menu@linxgem33.com
-gnome-shell-extension-manager install -e clipboard-indicator@tudmotu.com
-gnome-shell-extension-manager install -e custom-hot-corners-extended@G-dH.github.com
-gnome-shell-extension-manager install -e dash-to-dock@micxgx.gmail.com
-gnome-shell-extension-manager install -e quake-mode@nathan.bourgeois.gmail.com
-gnome-shell-extension-manager install -e Vitals@CoreCoding.com
-gnome-shell-extension-manager install -e user-theme@gnome-shell-extensions.gcampax.github.com
-
 # Install tgpt
 log "Installing tgpt..."
 wget https://github.com/nomic-ai/tgpt/releases/download/v0.3.1/tgpt_0.3.1_linux_amd64.deb
