@@ -107,9 +107,14 @@ echo 'source "$HOME/.cargo/env"' >> ~/.bashrc
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
+# source .bashrc
+source $HOME/.bashrc
+
 #install gtfolookup
 pipx install git+https://github.com/nccgroup/GTFOBLookup.git
 gtfoblookup.py update
+pipx ensurepath
+
 
 # Copy bash aliases
 log "Copying bash aliases..."
