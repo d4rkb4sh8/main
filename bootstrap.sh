@@ -23,8 +23,10 @@ APT_PACKAGES="python3-websocket wmctrl python3-levenshtein stow figlet lynis gaw
 log "Installing APT packages..."
 sudo apt install -y $APT_PACKAGES
 
-#clone repo
-mkdir $HOME/gitprojects; cd $HOME/gitprojects; git clone https://github.com/d4rkb4sh8/main.git 
+# Clone repo
+mkdir -p $HOME/gitprojects
+cd $HOME/gitprojects
+git clone https://github.com/d4rkb4sh8/main.git
 
 # Add custom paths to .bashrc
 echo 'export PATH=$PATH:/opt:/usr/local/bin' >> ~/.bashrc
@@ -50,23 +52,14 @@ brew install $HOMEBREW_PACKAGES
 # Install ble.sh
 log "Installing ble.sh..."
 git clone --recursive https://github.com/akinomyoga/ble.sh.git
-cd ble.sh
-make
+make -C ble.sh install
 echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
 # Install VirtualBox
 log "Installing VirtualBox..."
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-sudo apt-get update
-sudo apt-get install -y virtualbox-7.0
-
-# Install VBox Guest Extension
-log "Installing VBox Guest Extension..."
-vbox_version=$(vboxmanage -v | cut -dr -f1)
-wget https://download.virtualbox.org/virtualbox/$vbox_version/Oracle_VM_VirtualBox_Extension_Pack-$vbox_version.vbox-extpack
-sudo vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-$vbox_version.vbox-extpack
+sudo apt install -y virtualbox
+wget https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
+sudo vboxmanage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
 vboxmanage list extpacks
 sudo usermod -aG vboxusers $USER
 
@@ -92,6 +85,7 @@ sudo dpkg -i fastfetch-linux-amd64.deb
 # Install ulauncher
 log "Installing ulauncher..."
 wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
+sudo dpkg -i ulauncher_5.15.7_all.deb
 cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
 # Install tgpt
@@ -104,7 +98,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source "$HOME/.cargo/env"
 echo 'source "$HOME/.cargo/env"' >> ~/.bashrc
 
-#install lazyvim
+# Install lazyvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
@@ -130,4 +124,3 @@ log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Display message
-figlet "The Machine is Ready."
