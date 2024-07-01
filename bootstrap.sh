@@ -106,6 +106,10 @@ rm -rf ~/.config/nvim/.git
 log "Copying bash aliases..."
 cp $HOME/gitprojects/main/.bash_aliases $HOME/
 
+#install gtfolookup
+pipx install git+https://github.com/nccgroup/GTFOBLookup.git
+gtfoblookup.py update
+
 # Setup UFW
 log "Setting up UFW..."
 sudo ufw limit 22/tcp
@@ -124,3 +128,4 @@ log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Display message
+figlet "the machine is ready!"
