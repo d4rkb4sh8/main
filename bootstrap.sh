@@ -82,15 +82,15 @@ log "Installing fastfetch..."
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.13.2/fastfetch-linux-amd64.deb
 sudo dpkg -i fastfetch-linux-amd64.deb
 
-# Install ulauncher dependencies
-log "Installing ulauncher dependencies..."
-sudo apt install -y python3 python3-pip gir1.2-gtk-3.0 libglib2.0-bin
-
 # Install ulauncher
-log "Installing ulauncher..."
-wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
-sudo dpkg -i ulauncher_5.15.7_all.deb
-sudo apt -f install -y  # Fix missing dependencies
+sudo apt update && sudo apt install -y gnupg
+gpg --keyserver keyserver.ubuntu.com --recv 0xfaf1020699503176
+gpg --export 0xfaf1020699503176 | sudo tee /usr/share/keyrings/ulauncher-archive-keyring.gpg > /dev/null
+echo "deb [signed-by=/usr/share/keyrings/ulauncher-archive-keyring.gpg] \
+          http://ppa.launchpad.net/agornostal/ulauncher/ubuntu jammy main" \
+          | sudo tee /etc/apt/sources.list.d/ulauncher-jammy.list
+sudo apt update && sudo apt install ulauncher
+
 cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
 # Install tgpt
