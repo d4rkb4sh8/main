@@ -17,7 +17,7 @@ log "Updating and upgrading the system..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Define APT packages
-APT_PACKAGES="python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git alacritty fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
+APT_PACKAGES="pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git alacritty fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw"
 
 # Install APT packages
 log "Installing APT packages..."
@@ -82,10 +82,15 @@ log "Installing fastfetch..."
 wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.13.2/fastfetch-linux-amd64.deb
 sudo dpkg -i fastfetch-linux-amd64.deb
 
+# Install ulauncher dependencies
+log "Installing ulauncher dependencies..."
+sudo apt install -y python3 python3-pip gir1.2-gtk-3.0 libglib2.0-bin
+
 # Install ulauncher
 log "Installing ulauncher..."
 wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
 sudo dpkg -i ulauncher_5.15.7_all.deb
+sudo apt -f install -y  # Fix missing dependencies
 cp -r $HOME/gitprojects/main/ulauncher $HOME/.config/
 
 # Install tgpt
@@ -102,13 +107,13 @@ echo 'source "$HOME/.cargo/env"' >> ~/.bashrc
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
-# Copy bash aliases
-log "Copying bash aliases..."
-cp $HOME/gitprojects/main/.bash_aliases $HOME/
-
 #install gtfolookup
 pipx install git+https://github.com/nccgroup/GTFOBLookup.git
 gtfoblookup.py update
+
+# Copy bash aliases
+log "Copying bash aliases..."
+cp $HOME/gitprojects/main/.bash_aliases $HOME/
 
 # Setup UFW
 log "Setting up UFW..."
@@ -128,4 +133,4 @@ log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Display message
-figlet "the machine is ready!"
+figlet "The Machine is Ready."
