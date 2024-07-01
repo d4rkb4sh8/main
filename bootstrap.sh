@@ -111,9 +111,9 @@ rm -rf ~/.config/nvim/.git
 source $HOME/.bashrc
 
 #install gtfolookup
-pipx install git+https://github.com/nccgroup/GTFOBLookup.git
-gtfoblookup.py update
-pipx ensurepath
+#pipx install git+https://github.com/nccgroup/GTFOBLookup.git
+#gtfoblookup.py update
+#pipx ensurepath
 
 
 # Copy bash aliases
