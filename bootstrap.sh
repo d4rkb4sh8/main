@@ -55,14 +55,6 @@ git clone --recursive https://github.com/akinomyoga/ble.sh.git
 make -C ble.sh install
 echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
-# Install VirtualBox
-log "Installing VirtualBox..."
-sudo apt install -y virtualbox
-wget https://download.virtualbox.org/virtualbox/7.0.10/Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
-sudo vboxmanage extpack install --replace Oracle_VM_VirtualBox_Extension_Pack-7.0.10.vbox-extpack
-vboxmanage list extpacks
-sudo usermod -aG vboxusers $USER
-
 # Download fonts and themes
 log "Installing themes and fonts..."
 cd $HOME/Downloads
