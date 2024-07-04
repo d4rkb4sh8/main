@@ -18,7 +18,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt 
 
 # Define APT packages
 APT_PACKAGES=(
-    macchanger pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
+    pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     alacritty fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps
     file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
@@ -130,10 +130,13 @@ sudo apt install -y snapd
 sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
 
-# Install VirtualBox
+# Install VirtualBox from official .deb package
 log "Installing VirtualBox..."
-sudo apt update
-sudo apt install -y virtualbox virtualbox-ext-pack
+VBOX_VERSION=$(wget -qO- https://download.virtualbox.org/virtualbox/LATEST.TXT)
+wget https://download.virtualbox.org/virtualbox/$VBOX_VERSION/virtualbox-$VBOX_VERSION-$(lsb_release -cs)_amd64.deb
+sudo dpkg -i virtualbox-$VBOX_VERSION-$(lsb_release -cs)_amd64.deb
+sudo apt-get install -f -y  # Fix dependencies if any
+rm virtualbox-$VBOX_VERSION-$(lsb_release -cs)_amd64.deb
 
 # Final update and clean up
 log "Final update and clean up..."
