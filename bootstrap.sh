@@ -131,12 +131,7 @@ sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
 
 # Install VirtualBox from official .deb package
-log "Installing VirtualBox..."
-VBOX_VERSION=$(wget -qO- https://download.virtualbox.org/virtualbox/LATEST.TXT)
-wget https://download.virtualbox.org/virtualbox/$VBOX_VERSION/virtualbox-$VBOX_VERSION-$(lsb_release -cs)_amd64.deb
-sudo dpkg -i virtualbox-$VBOX_VERSION-$(lsb_release -cs)_amd64.deb
-sudo apt-get install -f -y  # Fix dependencies if any
-rm virtualbox-$VBOX_VERSION-$(lsb_release -cs)_amd64.deb
+
 
 # Final update and clean up
 log "Final update and clean up..."
