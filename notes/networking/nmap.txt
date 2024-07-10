@@ -227,3 +227,6 @@ nmap –sT <IP address of the target system>
 
 # to get a full picture of target ports, OS and services.
 nmap -sT -A <IP address of the target system>
+
+# IPsec preferred scanning - service scan(sV) & scripts save output to a folder called initial in an existing folder called nmap(if created already)
+nmap -sV -sC -p- 192.168.0.198 -oA nmap/initial
