@@ -18,7 +18,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt 
 
 # Define APT packages
 APT_PACKAGES=(
-    virtualbox* fastfetch pipx stow figlet lynis gawk curl wget git alacritty fd-find nala kali-linux-everything cpufetch btop gnome-shell-extension-manager
+    tilix virtualbox* fastfetch pipx stow figlet lynis gawk curl wget git alacritty fd-find nala kali-linux-everything cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential file httpie mitmproxy gpaste-2 font-manager gdebi ufw cmake          plocate bat most realtek-rtl88xxau-dkms firmware-realtek eza neovim
 )
 
