@@ -7,9 +7,11 @@ alias clean='sudo nala autopurge && sudo nala autoremove && sudo nala clean'
 # a better ls
 alias ls='eza --icons --git'
 alias ll='eza -l --icons --git --header'
+alias llog='eza -l --icons --git --header -og'
 alias lt='eza --tree --level=2 --icons'
 alias lsa='eza -a --icons --git'
 alias lla='eza -la --icons --git --header'
+alias llaog='eza -la --icons --git --header -og'
 alias lta='eza -a --tree --level=2 --icons'
 
 alias mproxy='curl --proxy http://127.0.0.1:8080 '
