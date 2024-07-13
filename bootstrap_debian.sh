@@ -154,7 +154,7 @@ log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Display message
-figlet "The Machine is Ready." | lolcat
+# figlet "The Machine is Ready." | lolcat
 
 # Source .bashrc
 source $HOME/.bashrc
