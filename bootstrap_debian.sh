@@ -18,11 +18,11 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt 
 
 # Define APT packages
 APT_PACKAGES=(
-    pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
+    zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps
     file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
-    libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw
+    libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
 )
 
 # Install APT packages
@@ -60,19 +60,22 @@ brew install "${HOMEBREW_PACKAGES[@]}"
 
 # Install ble.sh
 log "Installing ble.sh..."
-git clone --recursive https://github.com/akinomyoga/ble.sh.git
-cd ble.sh
-make
-sudo make install
-echo 'source /usr/local/share/blesh/ble.sh' >> ~/.bashrc
-cd ..
+git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
-# Install Orchis theme
+
+# Install Orchis Theme & Tela icons 
 log "Installing Orchis theme..."
+cd ~/Downloads
 git clone https://github.com/vinceliuice/Orchis-theme.git
 cd Orchis-theme
 ./install.sh --tweaks macos
-cd ..
+
+git clone https://github.com/vinceliuice/Tela-icon-theme.git
+cd Tela*
+./install.sh
+cd ~
 
 # Install fastfetch
 log "Installing fastfetch..."
@@ -123,6 +126,9 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
 
+#install gtfolookup
+pipx install git+https://github.com/nccgroup/GTFOBLookup.git
+
 # Install Flathub
 log "Installing Flathub..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -133,7 +139,12 @@ sudo apt install -y snapd
 sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
 
+
+
 # Install VirtualBox from official .deb package
+wget https://download.virtualbox.org/virtualbox/7.0.18/virtualbox-7.0_7.0.18-162988~Debian~bookworm_amd64.deb > $HOME/Downloads/virtualbox-7.0_7.0.18-162988~Debian~bookworm_amd64.deb
+
+wget https://download.virtualbox.org/virtualbox/7.0.18/Oracle_VM_VirtualBox_Extension_Pack-7.0.18.vbox-extpack > $HOME/Downloads/Oracle_VM_VirtualBox_Extension_Pack-7.0.18.vbox-extpack
 
 
 # Final update and clean up
