@@ -22,7 +22,7 @@ APT_PACKAGES=(
     tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps
     file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
-    libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
+    libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi dconf-cli uuid-runtime
 )
 
 # Install APT packages
@@ -139,13 +139,15 @@ sudo apt install -y snapd
 sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
 
-
-
 # Install VirtualBox from official .deb package
 wget https://download.virtualbox.org/virtualbox/7.0.18/virtualbox-7.0_7.0.18-162988~Debian~bookworm_amd64.deb > $HOME/Downloads/virtualbox-7.0_7.0.18-162988~Debian~bookworm_amd64.deb
 
 wget https://download.virtualbox.org/virtualbox/7.0.18/Oracle_VM_VirtualBox_Extension_Pack-7.0.18.vbox-extpack > $HOME/Downloads/Oracle_VM_VirtualBox_Extension_Pack-7.0.18.vbox-extpack
 
+cd ~
+
+#install gogh terminal profile theme
+bash -c "$(wget -qO- https://git.io/vQgMr)"
 
 # Final update and clean up
 log "Final update and clean up..."
