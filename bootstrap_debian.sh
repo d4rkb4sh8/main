@@ -157,4 +157,4 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt 
 figlet "The Machine is Ready." | lolcat
 
 # Source .bashrc
-source "$HOME/.bashrc"
+source $HOME/.bashrc
