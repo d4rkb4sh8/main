@@ -56,11 +56,6 @@ HOMEBREW_PACKAGES=(
 log "Installing Homebrew packages..."
 brew install "${HOMEBREW_PACKAGES[@]}"
 
-# Install additional software
-log "Installing additional software..."
-brew install --cask font-sauce-code-pro-nerd-font
-brew tap homebrew/cask-fonts
-
 # Install custom scripts and configurations
 log "Setting up custom scripts and configurations..."
 cp "$HOME/gitprojects/main/ulauncher" "$HOME/.config/"
