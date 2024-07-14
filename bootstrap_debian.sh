@@ -118,6 +118,12 @@ wget https://download.virtualbox.org/virtualbox/7.0.18/Oracle_VM_VirtualBox_Exte
 log "Installing Gogh terminal profile theme..."
 bash -c "$(wget -qO- https://git.io/vQgMr)"
 
+#Install ble.sh
+cd $HOME
+git clone --recursive --depth 1 --shallow-submodules https://github.com/akinomyoga/ble.sh.git
+make -C ble.sh install PREFIX=~/.local
+echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
+
 # Final update and clean up
 log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
