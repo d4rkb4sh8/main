@@ -19,7 +19,7 @@ APT_PACKAGES=(
     zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps
-    file net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
+    file fzf ytfzf net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
     libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi dconf-cli uuid-runtime linux-headers-$(uname -r)
 )
 
@@ -58,7 +58,7 @@ brew install "${HOMEBREW_PACKAGES[@]}"
 
 # Install custom scripts and configurations
 log "Setting up custom scripts and configurations..."
-cp "$HOME/gitprojects/main/ulauncher" "$HOME/.config/"
+cp -r "$HOME/gitprojects/main/ulauncher" "$HOME/.config/"
 
 # Install tgpt
 log "Installing tgpt..."
@@ -82,6 +82,9 @@ cp "$HOME/gitprojects/main/.bash_aliases" "$HOME/"
 # Copy nanorc
 log "Copying nanorc..."
 sudo cp "$HOME/gitprojects/main/nanorc" /etc/
+
+#install atuin
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 
 # Setup UFW
 log "Setting up UFW..."
