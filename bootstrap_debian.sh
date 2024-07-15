@@ -16,7 +16,7 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 
 # Define APT packages
 APT_PACKAGES=(
-    zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
+    dict wikipedia2text w3m zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps
     file fzf ytfzf net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
