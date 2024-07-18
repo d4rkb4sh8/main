@@ -106,6 +106,9 @@ sudo apt install -y snapd
 sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
 
+#Brightness control from keybaord
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['<Ctrl><Super>Up']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['<Ctrl><Super>Down']"
 
 # Final update and clean up
 log "Final update and clean up..."
