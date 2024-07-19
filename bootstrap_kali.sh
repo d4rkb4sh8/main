@@ -19,7 +19,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt 
 # Define APT packages
 APT_PACKAGES=(
     tilix virtualbox* fastfetch pipx stow figlet lynis gawk curl wget git alacritty fd-find nala kali-linux-everything cpufetch btop gnome-shell-extension-manager
-    flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential file httpie mitmproxy gpaste-2 font-manager gdebi ufw cmake          plocate bat most realtek-rtl88xxau-dkms firmware-realtek eza neovim
+    flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential file httpie mitmproxy gpaste-2 font-manager gdebi ufw cmake plocate bat most realtek-rtl88xxau-dkms firmware-realtek eza neovim
 )
 
 # Install APT packages
@@ -107,8 +107,8 @@ sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
 
 #Brightness control from keybaord
-gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['<Ctrl><Super>Up']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['<Ctrl><Super>Down']"
+echo 'gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['<Ctrl><Super>Up']"' >> ~/.bashrc
+echo 'gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['<Ctrl><Super>Down']"' >> ~/.bashrc
 
 # Final update and clean up
 log "Final update and clean up..."
