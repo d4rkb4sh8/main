@@ -8,7 +8,7 @@ log() {
 
 # Remove Debian games bloatware and clean up
 log "Removing bloatware and cleaning up..."
-sudo apt purge -y gnome-games libreoffice*
+sudo apt purge -y gnome-games libreoffice* 
 sudo apt autoremove -y
 sudo apt autoclean -y
 
@@ -18,7 +18,7 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt 
 
 # Define APT packages
 APT_PACKAGES=(
-    tilix virtualbox* fastfetch pipx stow figlet lynis gawk curl wget git alacritty fd-find nala kali-linux-everything cpufetch btop gnome-shell-extension-manager
+    tilix virtualbox* fastfetch pipx stow figlet lynis gawk curl wget git fd-find nala kali-linux-everything cpufetch btop gnome-shell-extension-manager
     flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential file httpie mitmproxy gpaste-2 font-manager gdebi ufw cmake plocate bat most realtek-rtl88xxau-dkms firmware-realtek eza neovim
 )
 
@@ -105,6 +105,16 @@ log "Installing Snap..."
 sudo apt install -y snapd
 sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
+
+# removing other terminal emulators
+sudo apt purge gnome-terminal xterm -y
+
+#set tilix as default gnome terminal
+gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/tilix.wrapper
+gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
+
+#config tilix as default 2nd step
+sudo update-alternatives --config x-terminal-emulator
 
 #Brightness control from keybaord
 echo 'gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['<Ctrl><Super>Up']"' >> ~/.bashrc
