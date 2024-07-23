@@ -50,10 +50,9 @@ alias lsockU='sudo lsof -nP | grep UDP'         # lsockU:       Display only ope
 alias lsockT='sudo lsof -nP | grep TCP'         # lsockT:       Display only open TCP sockets
 alias openPorts='sudo lsof -i | grep LISTEN'    # openPorts:    All listening connections
 alias showBlocked='sudo ipfw list'              # showBlocked:  All ipfw rules inc/ blocked IPs
-if _omb_util_binary_exists ifconfig; then
   alias ipInfo0='ifconfig getpacket en0'          # ipInfo0:      Get info on connections for en0
-  alias ipInfo1='ifconfig getpacket en1'          # ipInfo1:      Get info on connections for en1
-fi
+  alias ipInfo1='ifconfig getpacket wlan0'          # ipInfo1:      Get info on connections for wlan0
+
 
 
 #   ---------------------------------------
@@ -86,12 +85,11 @@ alias weeknum='date +%V'
 
 alias editHosts='sudo edit /etc/hosts'                  # editHosts:        Edit /etc/hosts file
 
-if _omb_util_binary_exists apachectl; then
   alias apacheEdit='sudo edit /etc/httpd/httpd.conf'      # apacheEdit:       Edit httpd.conf
   alias apacheRestart='sudo apachectl graceful'           # apacheRestart:    Restart Apache
   alias herr='tail /var/log/httpd/error_log'              # herr:             Tails HTTP error logs
   alias apacheLogs="less +F /var/log/apache2/error_log"   # Apachelogs:       Shows apache error logs
-fi
+
 
 #   ---------------------------------------
 #   9.  OTHER ALIASES
