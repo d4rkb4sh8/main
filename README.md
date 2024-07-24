@@ -1,4 +1,5 @@
 All notes can be read with cat or bat/batcat
+This script must be run from tilix/kitty/alacritty terminal emulator
 
 to run my custom Debian bootstrap on a clean build. This build has been tested on Debian stable but should work with other branhces (testing/unstable) and Ubuntu/Kali etc or other debian derivative distros as well.
 
