@@ -16,11 +16,13 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 
 # Define APT packages
 APT_PACKAGES=(
-    dict wikipedia2text w3m zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
-    tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
-    flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps tldr
-    file fzf ytfzf net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
-    libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi dconf-cli uuid-runtime linux-headers-$(uname -r)
+    dict wikipedia2text w3m neovim zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
+    tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak 
+    gh lolcat fd-find sd npm vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 
+    font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi 
+    dconf-cli uuid-runtime linux-headers-$(uname -r) gpgv2 autoconf bison build-essential postgresql libaprutil1 
+    libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev libsqlite3-dev libssl-dev locate libsvn1 libtool libxml2 libxml2-dev 
+    libxslt-dev wget libyaml-dev ncurses-dev  postgresql-contrib xsel zlib1g zlib1g-dev curl -y
 )
 
 # Install APT packages
@@ -49,7 +51,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Define Homebrew packages
 HOMEBREW_PACKAGES=(
-    lazygit gcc dust dog  neovim xh yazi ripgrep zoxide 
+     dust xh yazi   
 )
 
 # Install Homebrew packages
@@ -85,6 +87,16 @@ sudo cp "$HOME/gitprojects/main/nanorc" /etc/
 
 #install atuin
 curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+
+#install lazygit
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar xf lazygit.tar.gz lazygit
+sudo install lazygit /usr/local/bin
+
+#install Metasploit
+cd /opt ; sudo curl https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+chmod 755 msfinstall ; ./msfinstall
 
 # Setup UFW
 log "Setting up UFW..."
