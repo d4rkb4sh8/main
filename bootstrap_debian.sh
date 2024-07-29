@@ -18,7 +18,7 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 APT_PACKAGES=(
     dict wikipedia2text w3m zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     tilix fd-find powerline* nala net-tools forensics-all cpufetch btop gnome-shell-extension-manager
-    flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps
+    flatpak gnome-software-plugin-flatpak gh lolcat fd-find sd npm vlc build-essential procps tldr
     file fzf ytfzf net-tools httpie mitmproxy gpaste-2 font-manager gdebi ufw gawk cmake plocate bat most
     libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi dconf-cli uuid-runtime linux-headers-$(uname -r)
 )
@@ -49,7 +49,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Define Homebrew packages
 HOMEBREW_PACKAGES=(
-    lazygit gcc dust dog eza zellij neovim xh yazi ripgrep zoxide tlrc
+    lazygit gcc dust dog  neovim xh yazi ripgrep zoxide 
 )
 
 # Install Homebrew packages
@@ -134,9 +134,14 @@ gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
 #config tilix as default 2nd step
 sudo update-alternatives --config x-terminal-emulator
 
-#Brightness control from keybaord
-echo 'gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['<Ctrl><Super>Up']"' >> ~/.bashrc
-echo 'gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['<Ctrl><Super>Down']"' >> ~/.bashrc
+#install Eza
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+sudo apt update
+sudo apt install -y eza
+
 
 # Final update and clean up
 log "Final update and clean up..."
