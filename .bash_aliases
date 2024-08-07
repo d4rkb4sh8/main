@@ -8,6 +8,7 @@ alias make5mb='truncate -s 5m ./5MB.dat'     # make5mb:      Creates a file of 5
 alias make10mb='truncate -s 10m ./10MB.dat'  # make10mb:     Creates a file of 10mb size (all zeros)
 alias z='zoxide'
 alias bat='batcat --theme=Coldark-Dark  --style=full'
+alias ff='fastfetch -c all'
 
 #   ---------------------------
 #   2.  SEARCHING
