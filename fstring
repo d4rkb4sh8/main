@@ -1,2 +1,9 @@
 #!/usr/bin/env bash
 grep -ri $1 $2 | cut -d: -f1 | sort | uniq 2>/dev/null
+
+
+
+#bash tool for searching for a string within files
+
+#USAGE
+# fstring term location
