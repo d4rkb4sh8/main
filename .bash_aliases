@@ -15,7 +15,7 @@ alias ff='fastfetch -c all'
 #   ---------------------------
 
 alias qfind="find . -name "                 # qfind:    Quickly search for file
-
+alias grep='grep --color=always'
 
 #   ---------------------------
 #   3.  PROCESS MANAGEMENT
@@ -54,7 +54,7 @@ alias openPorts='sudo lsof -i | grep LISTEN'    # openPorts:    All listening co
 alias showBlocked='sudo ipfw list'              # showBlocked:  All ipfw rules inc/ blocked IPs
   alias ipInfo0='ifconfig getpacket en0'          # ipInfo0:      Get info on connections for en0
   alias ipInfo1='ifconfig getpacket wlan0'          # ipInfo1:      Get info on connections for wlan0
-
+alias myip='curl ip-api.com'
 
 
 #   ---------------------------------------
@@ -225,6 +225,14 @@ alias dxc='docker container exec'
 alias dxcit='docker container exec -it'
 
 #-------------------------------------------------------------------------
+# CTF's
+#-------------------------------------------------------------------------
+#pwn.college
+alias sshpwn='ssh -i $HOME/.keys/pwn.college hacker@dojo.pwn.college'
+
+
+
+#-------------------------------------------------------------------------
 #H4CK3R_TOOLS
 #-----------------------------------------------------------------------
 #mproxy
@@ -258,3 +266,4 @@ alias wads='gtfoblookup wadcoms search'
 alias wadl='gtfoblookup wadcoms list'
 alias hijacks='gtfoblookup hijacklibs search'
 alias hijackl='gtfoblookup hijacklibs list'
+alias gtfobs='gtfoblookup gtfobins search'
