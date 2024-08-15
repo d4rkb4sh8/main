@@ -30,7 +30,7 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 
 # Define APT packages
 APT_PACKAGES=(
-    debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
+    nikto sqlmap debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     tilix fd-find powerline nala net-tools forensics-all forensics-full cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak
     gh lolcat fd-find sd npm vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 dkms
     font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
@@ -56,6 +56,18 @@ log "Installing Starship..."
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
+# Install Golang
+log "Installing Golang..."
+sudo apt install -y golang-go
+mkdir -p $HOME/go
+
+# Install Tomnomnom's tools
+log "Installing waybackurls, assetfinder, and httprobe..."
+go install github.com/tomnomnom/waybackurls@latest >>
+go install github.com/tomnomnom/assetfinder@latest
+go install github.com/tomnomnom/httprobe@latest
+
+
 # Setup Flatpak and add Flathub
 log "Setting up Flatpak and adding Flathub..."
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -65,19 +77,6 @@ log "Installing Snap..."
 sudo apt install -y snapd
 sudo systemctl enable --now snapd apparmor
 sudo ln -s /var/lib/snapd/snap /snap
-
-# Install VirtualBox from the official website
-log "Installing VirtualBox..."
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/oracle_vbox_2016.gpg
-echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-sudo apt update
-sudo apt install -y virtualbox-7.0
-
-# Download and install VirtualBox Extension Pack
-log "Installing VirtualBox Extension Pack..."
-VBOX_VERSION=$(vboxmanage -v | cut -dr -f1)
-wget https://download.virtualbox.org/virtualbox/$VBOX_VERSION/Oracle_VM_VirtualBox_Extension_Pack-$VBOX_VERSION.vbox-extpack -O $HOME/Downloads/virtualbox-extpack.vbox-extpack
-sudo VBoxManage extpack install $HOME/Downloads/virtualbox-extpack.vbox-extpack --replace
 
 # Install Gogh terminal profile theme
 log "Installing Gogh terminal profile theme..."
