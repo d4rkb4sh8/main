@@ -56,17 +56,6 @@ log "Installing Starship..."
 curl -sS https://starship.rs/install.sh | sh -s -- -y
 echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
-# Install Golang
-log "Installing Golang..."
-sudo apt install -y golang-go
-mkdir -p $HOME/go
-
-# Install Tomnomnom's tools
-log "Installing waybackurls, assetfinder, and httprobe..."
-go install github.com/tomnomnom/waybackurls@latest >>
-go install github.com/tomnomnom/assetfinder@latest
-go install github.com/tomnomnom/httprobe@latest
-
 
 # Setup Flatpak and add Flathub
 log "Setting up Flatpak and adding Flathub..."
@@ -123,8 +112,6 @@ sudo apt-get install firefox -y
 
 # Verify installation
 firefox --version
-
-
 
 # Install Hack Nerd Font
 mkdir -p ~/.local/share/fonts
