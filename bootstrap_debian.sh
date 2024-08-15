@@ -103,6 +103,30 @@ sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.lis
 sudo apt update
 sudo apt install -y eza
 
+
+# Remove Firefox ESR
+sudo apt-get remove --purge firefox-esr -y
+
+# Install necessary packages
+sudo apt-get install wget gnupg2 -y
+
+# Add Mozilla's official signing key
+wget -O- https://mozilla.debian.net/archive.asc | sudo tee /etc/apt/trusted.gpg.d/mozilla-archive.gpg
+
+# Add Mozilla repository to the sources list
+echo "deb http://deb.debian.org/debian stable main" | sudo tee /etc/apt/sources.list.d/mozilla.list
+
+# Update package lists
+sudo apt-get update
+
+# Install the latest Firefox
+sudo apt-get install firefox -y
+
+# Verify installation
+firefox --version
+
+
+
 # Install Hack Nerd Font
 mkdir -p ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip -O /tmp/Hack.zip
