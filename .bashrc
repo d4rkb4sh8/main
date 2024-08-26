@@ -71,7 +71,8 @@ if ! shopt -oq posix; then
 fi
 
 # colorize output
-[[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
+GRC_ALIASES=true
+[[ -s "/etc/profile.d/grc.sh" ]] && source /etc/grc.sh
 
 #Brightness control from keybaord
 gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up "['<Ctrl><Super>Up']"
@@ -80,8 +81,12 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-dow
 #path
 export PATH=$PATH:/opt:/usr/local/bin:/home/h4ck3r/.local/bin:/home/h4ck3r/go/bin
 
-#starship prompt
+#starship prompt - shell prompt
 eval "$(starship init bash)"
+
+# preferred text editor
+EDITOR=nano
+
 
 #atuin
 . "$HOME/.atuin/bin/env"
@@ -103,3 +108,6 @@ eval "$(register-python-argcomplete pipx)"
 
 #most - colorful output for man
 export PAGER=most
+
+# greet me
+echo "w3lc0m3 h4ck3r - let the games begin!"  | lolcat
