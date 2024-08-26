@@ -9,6 +9,8 @@ alias make10mb='truncate -s 10m ./10MB.dat'  # make10mb:     Creates a file of 1
 alias z='zoxide'
 alias bat='batcat --theme=Coldark-Dark  --style=full'
 alias ff='fastfetch -c all'
+alias rcedit='$EDITOR $HOME/.bashrc'
+alias df='grc df -h'
 
 #   ---------------------------
 #   2.  SEARCHING
