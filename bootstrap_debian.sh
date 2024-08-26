@@ -30,7 +30,7 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 
 # Define APT packages
 APT_PACKAGES=(
-    grc nikto sqlmap debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
+    nikto sqlmap debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
     tilix fd-find powerline nala net-tools forensics-all forensics-full cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak
     gh lolcat fd-find sd npm vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 dkms
     font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
@@ -126,6 +126,8 @@ sudo ufw allow 443/tcp
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
+
+#install grc from github
 
 
 # Final update and clean up

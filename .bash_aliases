@@ -10,7 +10,10 @@ alias z='zoxide'
 alias bat='batcat --theme=Coldark-Dark  --style=full'
 alias ff='fastfetch -c all'
 alias rcedit='$EDITOR $HOME/.bashrc'
-alias df='grc df -h'
+
+#colorize output
+alias env='grc env'
+
 
 #   ---------------------------
 #   2.  SEARCHING
