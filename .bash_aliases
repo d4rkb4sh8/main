@@ -67,7 +67,7 @@ alias myip='curl ip-api.com'
 #   ---------------------------------------
 
 alias mountReadWrite='mount -uw /'    # mountReadWrite:   For use when booted into single-user
-
+alias showpath='echo $PATH | sed "s/:/\n/g" | sort'
 
 #   ---------------------------------------
 #   6.  DATE & TIME MANAGEMENT
