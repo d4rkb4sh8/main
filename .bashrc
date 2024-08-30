@@ -79,7 +79,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up 
 gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['<Ctrl><Super>Down']"
 
 #path
-export PATH=$PATH:/opt:/usr/local/bin:/home/h4ck3r/.local/bin:/home/h4ck3r/go/bin
+export PATH=/bin:/home/h4ck3r/.atuin/bin:/home/h4ck3r/.cargo/bin:/home/h4ck3r/go/bin:/home/h4ck3r/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/opt:/snap/bin:/usr/bin:/usr/games:/usr/local/bin:/usr/local/games
 
 #starship prompt - shell prompt
 eval "$(starship init bash)"
