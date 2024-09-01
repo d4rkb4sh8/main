@@ -59,3 +59,8 @@
 
 [38;5;246;03m# Search `stdin` for lines that do not match a pattern:[39;00m
 [38;5;252mcat[39m[38;5;252m [39m[38;5;252mpath/to/file[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mgrep[39m[38;5;252m [39m[38;5;252m--invert-match[39m[38;5;252m [39m[38;5;214m"search_pattern"[39m
+
+# PRO TIP
+# Grep for a string from a list of file paths
+
+grep "test" $(cat file_list.txt)
