@@ -1,55 +1,34 @@
-[48;5;8m[24m cheat:nc [24m[0m
-[38;5;252m---[39m
-[38;5;252mtags:[39m[38;5;252m [39m[38;5;252m[[39m[38;5;252m [39m[38;5;252mnetworking[39m[38;5;252m [39m[38;5;252m][39m
-[38;5;252m---[39m
-[38;5;246;03m# To open a TCP connection from <src-port> to <dest-port> of <dest-host>, with a timeout of <seconds>[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-p[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252msrc-port>[39m[38;5;252m [39m[38;5;252m-w[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mseconds>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-host>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-port>[39m
 
-[38;5;246;03m# To open a UDP connection to <dest-port> of <dest-host>:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-host>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-port>[39m
+  nc
 
-[38;5;246;03m# To open a TCP connection to port 42 of <host> using <source-host> as the IP for the local end of the connection:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-s[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252msource-host>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-host>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mport>[39m
+  Redirect I/O into a network stream through this versatile tool.
+  More information: https://manned.org/nc.1.
 
-[38;5;246;03m# To create and listen on a UNIX-domain stream socket:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-lU[39m[38;5;252m [39m[38;5;252m/var/tmp/dsocket[39m
+  Start a listener on the specified TCP port and send a file into it:
 
-[38;5;246;03m# To connect to <dest-port> of <dest-host> via an HTTP proxy at <proxy-host>,[39;00m
-[38;5;246;03m# <proxy-port>. This example could also be used by ssh(1); see the ProxyCommand[39;00m
-[38;5;246;03m# directive in ssh_config(5) for more information.[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-x[39m[38;5;252m<[39m[38;5;252mproxy-host>:[39m[38;5;252m<[39m[38;5;252mproxy-port>[39m[38;5;252m [39m[38;5;252m-Xconnect[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-host>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mdest-port>[39m
+    nc -l -p port < filename
 
-[38;5;246;03m# The same example again, this time enabling proxy authentication with username "ruser" if the proxy requires it:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-x[39m[38;5;252m<[39m[38;5;252mproxy-host>:[39m[38;5;252m<[39m[38;5;252mproxy-port>[39m[38;5;252m [39m[38;5;252m-Xconnect[39m[38;5;252m [39m[38;5;252m-Pruser[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mhost>[39m[38;5;252m [39m[38;5;252m<[39m[38;5;252mport>[39m
+  Connect to a target listener on the specified port and receive a file from it:
 
-[38;5;246;03m# To choose the source IP for the testing using the -s option[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-zv[39m[38;5;252m [39m[38;5;252m-s[39m[38;5;252m [39m[38;5;252msource_IP[39m[38;5;252m [39m[38;5;252mtarget_IP[39m[38;5;252m [39m[38;5;252mPort[39m
+    nc host port > received_filename
 
-[48;5;8m[24m tldr:nc [24m[0m
-[38;5;246;03m# nc[39;00m
-[38;5;246;03m# Netcat is a versatile utility for working with TCP or UDP data.[39;00m
-[38;5;246;03m# More information: <https://manned.org/man/nc.1>.[39;00m
+  Scan the open TCP ports of a specified host:
 
-[38;5;246;03m# Establish a TCP connection:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252mip_address[39m[38;5;252m [39m[38;5;252mport[39m
+    nc -v -z -w timeout_in_seconds host start_port-end_port
 
-[38;5;246;03m# Set a timeout:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-w[39m[38;5;252m [39m[38;5;252mtimeout_in_seconds[39m[38;5;252m [39m[38;5;252mipaddress[39m[38;5;252m [39m[38;5;252mport[39m
+  Start a listener on the specified TCP port and provide your local shell access to the connected party (this is dangerous and can be abused):
 
-[38;5;246;03m# Scan the open TCP ports of a specified host:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-v[39m[38;5;252m [39m[38;5;252m-z[39m[38;5;252m [39m[38;5;252mip_address[39m[38;5;252m [39m[38;5;252mport[39m
+    nc -l -p port -e shell_executable
 
-[38;5;246;03m# Listen on a specified TCP port and print any data received:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252mport[39m
+  Connect to a target listener and provide your local shell access to the remote party (this is dangerous and can be abused):
 
-[38;5;246;03m# Keep the server up after the client detaches:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-k[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252mport[39m
+    nc host port -e shell_executable
 
-[38;5;246;03m# Listen on a specified UDP port and print connection details and any data received:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-u[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252mport[39m
+  Act as a proxy and forward data from a local TCP port to the given remote host:
 
-[38;5;246;03m# Act as proxy and forward data from a local TCP port to the given remote host:[39;00m
-[38;5;252mnc[39m[38;5;252m [39m[38;5;252m-l[39m[38;5;252m [39m[38;5;252mlocal_port[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mnc[39m[38;5;252m [39m[38;5;252mhostname[39m[38;5;252m [39m[38;5;252mremote_port[39m
+    nc -l -p local_port | nc host remote_port
 
-[38;5;246;03m# Send a HTTP request:[39;00m
-[38;5;31mecho[39m[38;5;252m [39m[38;5;252m-e[39m[38;5;252m [39m[38;5;214m"GET / HTTP/1.1\nHost: hostname\n\n"[39m[38;5;252m [39m[38;5;252m|[39m[38;5;252m [39m[38;5;252mnc[39m[38;5;252m [39m[38;5;252mhostname[39m[38;5;252m [39m[38;5;67m80[39m
+  Send an HTTP GET request:
+
+    echo -e "GET / HTTP/1.1\nHost: host\n\n" | nc host 80
+
