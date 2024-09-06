@@ -30,8 +30,7 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 
 # Define APT packages
 APT_PACKAGES=(
-    nikto sqlmap debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git
-    tilix fd-find powerline nala net-tools forensics-all forensics-full cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak
+    ripgrep nikto sqlmap debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git  tilix fd-find powerline nala net-tools forensics-all forensics-full cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak
     gh lolcat fd-find sd npm vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 dkms
     font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
     dconf-cli uuid-runtime linux-headers-$(uname -r) gpgv2 autoconf bison build-essential postgresql libaprutil1
