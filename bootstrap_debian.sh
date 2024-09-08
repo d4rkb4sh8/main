@@ -30,12 +30,15 @@ sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo
 
 # Define APT packages
 APT_PACKAGES=(
-    ripgrep nikto sqlmap debian-goodies dict wikipedia2text w3m neovim netdiscover gpg pass zathura pipx python3-websocket wmctrl python3-levenshtein stow figlet lynis gawk curl wget git  tilix fd-find powerline nala net-tools forensics-all forensics-full cpufetch btop gnome-shell-extension-manager flatpak gnome-software-plugin-flatpak
-    imagemagick gh lolcat fd-find sd npm vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 dkms
-    font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
-    dconf-cli uuid-runtime linux-headers-$(uname -r) gpgv2 autoconf bison build-essential postgresql libaprutil1
-    libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev libsqlite3-dev libssl-dev locate libsvn1 libtool libxml2 libxml2-dev
-    libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib xsel zlib1g zlib1g-dev curl wireshark aircrack-ng macchanger sqlmap
+    	nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket 
+	wmctrl python3-levenshtein stow figlet lynis gawk curl wget git  tilix fd-find 
+	powerline nala net-tools forensics-all forensics-full cpufetch btop 
+	gnome-shell-extension-manager imagemagick gh lolcat fd-find sd npm 
+	vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 dkms
+    	font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
+    	dconf-cli uuid-runtime linux-headers-$(uname -r) gpgv2 autoconf bison build-essential postgresql libaprutil1
+    	libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev libsqlite3-dev libssl-dev locate libsvn1 libtool libxml2 libxml2-dev
+    	libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib xsel zlib1g zlib1g-dev curl wireshark aircrack-ng macchanger sqlmap
 )
 
 # Install APT packages
@@ -58,7 +61,25 @@ echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 # Setup Flatpak and add Flathub
 log "Setting up Flatpak and adding Flathub..."
-sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+
+# Install Homebrew
+log "Installing Homebrew..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# Define Homebrew packages
+HOMEBREW_PACKAGES=(
+    lazygit gcc dust xh yazi ripgrep neovim zoxide tlrc
+)
+
+# Install Homebrew packages
+log "Installing Homebrew packages..."
+brew install "${HOMEBREW_PACKAGES[@]}"
 
 # Install Snap
 log "Installing Snap..."
@@ -82,35 +103,6 @@ gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/tili
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
 sudo update-alternatives --set x-terminal-emulator /usr/bin/tilix.wrapper
 
-# Install Eza
-sudo mkdir -p /etc/apt/keyrings
-wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-sudo apt update
-sudo apt install -y eza
-
-
-# Remove Firefox ESR
-sudo apt-get remove --purge firefox-esr -y
-
-# Install necessary packages
-sudo apt-get install wget gnupg2 -y
-
-# Add Mozilla's official signing key
-wget -O- https://mozilla.debian.net/archive.asc | sudo tee /etc/apt/trusted.gpg.d/mozilla-archive.gpg
-
-# Add Mozilla repository to the sources list
-echo "deb http://deb.debian.org/debian stable main" | sudo tee /etc/apt/sources.list.d/mozilla.list
-
-# Update package lists
-sudo apt-get update
-
-# Install the latest Firefox
-sudo apt-get install firefox -y
-
-# Verify installation
-firefox --version
 
 # Install Hack Nerd Font
 mkdir -p ~/.local/share/fonts
@@ -128,18 +120,23 @@ sudo ufw enable
 
 #install grc from github
 
+# install Tela-circle-icons
+cd $HOME/Downloads; git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git;cd Tela*; ./install.sh
+
+# mv .bashrc  and .bash_aliases
+rm $HOME/.bashrc 
+cp $HOME/gitprojects/main/.bashrc $HOME/
+cp $HOME/gitprojects/main/.bash_aliases $HOME/
+
+# install grc
+cd $HOME/Downloads
+git clone https://github.com/garabik/grc.git; cd grc; sudo ./install.sh
+sudo cp /etc/profile.d/grc.sh /etc
 
 # Final update and clean up
 log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
-# Add keyboard shortcuts for brightness control to .bashrc
-log "Adding keyboard shortcuts for brightness control..."
-echo "
-# Brightness control from keyboard
-gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up \"['<Ctrl><Super>Up']\"
-gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down \"['<Ctrl><Super>Down']\"
-" >> ~/.bashrc
 
 # Source .bashrc
 source $HOME/.bashrc
