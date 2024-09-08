@@ -20,66 +20,24 @@ log "Updating GRUB and initramfs..."
 sudo update-grub
 sudo update-initramfs -u -k all
 
-# Remove Debian games bloatware and clean up
+# Remove bloatware and clean up
 log "Removing bloatware and cleaning up..."
 sudo apt purge -y gnome-games libreoffice* && sudo apt autoremove -y && sudo apt autoclean -y
 
-# Update and upgrade the system
-log "Updating and upgrading the system..."
-sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
-
 # Define APT packages
 APT_PACKAGES=(
-    	nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket 
-	wmctrl python3-levenshtein stow figlet lynis gawk curl wget git  tilix fd-find 
-	powerline nala net-tools forensics-all forensics-full cpufetch btop 
-	gnome-shell-extension-manager imagemagick gh lolcat fd-find sd npm 
-	vlc build-essential procps tldr file fzf ytfzf net-tools httpie mitmproxy gpaste-2 dkms
-    	font-manager gdebi ufw gawk cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev ufw gdebi
-    	dconf-cli uuid-runtime linux-headers-$(uname -r) gpgv2 autoconf bison build-essential postgresql libaprutil1
-    	libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev libsqlite3-dev libssl-dev locate libsvn1 libtool libxml2 libxml2-dev
-    	libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib xsel zlib1g zlib1g-dev curl wireshark aircrack-ng macchanger sqlmap
+    nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket
+    wmctrl python3-levenshtein stow figlet lynis gawk curl wget git tilix fd-find powerline nala net-tools
+    forensics-all forensics-full cpufetch btop gnome-shell-extension-manager imagemagick gh lolcat npm vlc 
+    build-essential procps tldr file fzf ytfzf httpie mitmproxy gpaste-2 dkms font-manager gdebi ufw gawk 
+    cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev dconf-cli uuid-runtime 
+    linux-headers-$(uname -r) gpgv2 autoconf bison postgresql libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev
+    libsqlite3-dev libsvn1 libtool libxml2-dev libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib grc
 )
 
-# Install APT packages
-log "Installing APT packages..."
-sudo apt update -y && sudo apt install -y "${APT_PACKAGES[@]}"
-
-# Clone repo
-log "Cloning repository..."
-mkdir -p "$HOME/gitprojects"
-git clone https://github.com/d4rkb4sh8/main.git "$HOME/gitprojects/main"
-
-# Add custom paths to .bashrc
-echo 'export PATH=$PATH:/opt:/usr/local/bin' >> ~/.bashrc
-
-# Install Starship
-log "Installing Starship..."
-curl -sS https://starship.rs/install.sh | sh -s -- -y
-echo 'eval "$(starship init bash)"' >> ~/.bashrc
-
-
-# Setup Flatpak and add Flathub
-log "Setting up Flatpak and adding Flathub..."
-sudo apt install flatpak
-sudo apt install gnome-software-plugin-flatpak
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-
-# Install Homebrew
-log "Installing Homebrew..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-# Define Homebrew packages
-HOMEBREW_PACKAGES=(
-    lazygit gcc dust xh yazi ripgrep neovim zoxide tlrc
-)
-
-# Install Homebrew packages
-log "Installing Homebrew packages..."
-brew install "${HOMEBREW_PACKAGES[@]}"
+# Update, upgrade and install APT packages in a single step
+log "Updating, upgrading, and installing packages..."
+sudo apt update -y && sudo apt full-upgrade -y && sudo apt install -y "${APT_PACKAGES[@]}" && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Install Snap
 log "Installing Snap..."
@@ -98,19 +56,21 @@ make -C ble.sh install PREFIX=~/.local
 echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
 # Remove other terminal emulators and set Tilix as default
-sudo apt purge gnome-terminal xterm -y
+log "Setting Tilix as the default terminal..."
+sudo apt purge -y gnome-terminal xterm
 gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/tilix.wrapper
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
 sudo update-alternatives --set x-terminal-emulator /usr/bin/tilix.wrapper
 
-
 # Install Hack Nerd Font
+log "Installing Hack Nerd Font..."
 mkdir -p ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Hack.zip -O /tmp/Hack.zip
 unzip /tmp/Hack.zip -d ~/.local/share/fonts
 fc-cache -fv
 
 # Set up UFW (Uncomplicated Firewall)
+log "Setting up UFW..."
 sudo ufw limit 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
@@ -118,28 +78,39 @@ sudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw enable
 
-#install grc from github
+# Install Homebrew
+log "Installing Homebrew..."
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# install Tela-circle-icons
-cd $HOME/Downloads; git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git;cd Tela*; ./install.sh
+# Add Homebrew to PATH
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ~/.bashrc
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# mv .bashrc  and .bash_aliases
-rm $HOME/.bashrc 
+# Install packages using Homebrew
+log "Installing Homebrew packages: eza, gcc, neovim, dust, zoxide, atuin, xh, yazi..."
+brew install eza gcc neovim dust zoxide atuin xh yazi
+
+
+# Install Tela-circle-icons
+log "Installing Tela-circle-icons..."
+cd $HOME/Downloads
+git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
+cd Tela-circle-icon-theme
+./install.sh
+
+# Update .bashrc and .bash_aliases
+log "Updating bash configurations..."
 cp $HOME/gitprojects/main/.bashrc $HOME/
 cp $HOME/gitprojects/main/.bash_aliases $HOME/
-
-# install grc
-cd $HOME/Downloads
-git clone https://github.com/garabik/grc.git; cd grc; sudo ./install.sh
-sudo cp /etc/profile.d/grc.sh /etc
 
 # Final update and clean up
 log "Final update and clean up..."
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
 
-
 # Source .bashrc
+log "Sourcing .bashrc..."
 source $HOME/.bashrc
 
 # Display message
 figlet "The Machine is Ready." | lolcat
+
