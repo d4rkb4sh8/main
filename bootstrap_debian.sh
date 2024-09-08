@@ -22,7 +22,7 @@ sudo update-initramfs -u -k all
 
 # Remove bloatware and clean up
 log "Removing bloatware and cleaning up..."
-sudo apt purge -y gnome-games libreoffice* && sudo apt autoremove -y && sudo apt autoclean -y
+sudo apt purge -y audacity gimp gnome-games libreoffice* && sudo apt autoremove -y && sudo apt autoclean -y
 
 # Define APT packages
 APT_PACKAGES=(
