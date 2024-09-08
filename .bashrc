@@ -87,12 +87,6 @@ eval "$(starship init bash)"
 # preferred text editor
 EDITOR=nano
 
-
-#atuin
-. "$HOME/.atuin/bin/env"
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
-
 #homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
@@ -114,3 +108,10 @@ export LESSOPEN="| /usr/bin/highlight %s --out-format xterm256 --force"
 
 # greet me
 echo "w3lc0m3 h4ck3r - let the games begin!"  | lolcat
+
+
+# atuin
+. "$HOME/.atuin/bin/env"
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
