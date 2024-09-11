@@ -88,7 +88,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Install packages using Homebrew
 log "Installing Homebrew packages: eza, gcc, neovim, dust, zoxide, atuin, xh, yazi..."
-brew install eza gcc neovim dust zoxide atuin xh yazi
+brew install eza gcc neovim dust zoxide atuin xh yazi fastfetch
 
 
 # Install Tela-circle-icons

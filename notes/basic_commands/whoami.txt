@@ -1,9 +1,0 @@
-[38;5;246;03m# whoami[39;00m
-[38;5;246;03m# Print the username associated with the current effective user ID.[39;00m
-[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/whoami>.[39;00m
-
-[38;5;246;03m# Display currently logged username:[39;00m
-[38;5;252mwhoami[39m
-
-[38;5;246;03m# Display the username after a change in the user ID:[39;00m
-[38;5;252msudo[39m[38;5;252m [39m[38;5;252mwhoami[39m

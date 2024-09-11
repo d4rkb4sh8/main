@@ -1,7 +1,0 @@
-[38;5;246;03m# nice[39;00m
-[38;5;246;03m# Execute a program with a custom scheduling priority (niceness).[39;00m
-[38;5;246;03m# Niceness values range from -20 (the highest priority) to 19 (the lowest).[39;00m
-[38;5;246;03m# More information: <https://www.gnu.org/software/coreutils/nice>.[39;00m
-
-[38;5;246;03m# Launch a program with altered priority:[39;00m
-[38;5;252mnice[39m[38;5;252m [39m[38;5;252m-n[39m[38;5;252m [39m[38;5;252mniceness_value[39m[38;5;252m [39m[38;5;31mcommand[39m

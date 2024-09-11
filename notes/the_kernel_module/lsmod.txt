@@ -1,7 +1,0 @@
-[38;5;246;03m# lsmod[39;00m
-[38;5;246;03m# Shows the status of Linux kernel modules.[39;00m
-[38;5;246;03m# See also `modprobe`, which loads kernel modules.[39;00m
-[38;5;246;03m# More information: <https://manned.org/lsmod>.[39;00m
-
-[38;5;246;03m# List all currently loaded kernel modules:[39;00m
-[38;5;252mlsmod[39m

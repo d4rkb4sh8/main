@@ -1,9 +1,0 @@
-[38;5;246;03m# unshadow[39;00m
-[38;5;246;03m# Utility provided by the John the Ripper project to obtain the traditional Unix password file if the system uses shadow passwords.[39;00m
-[38;5;246;03m# More information: <https://www.openwall.com/john/>.[39;00m
-
-[38;5;246;03m# Combine the `/etc/shadow` and `/etc/passwd` of the current system:[39;00m
-[38;5;252msudo[39m[38;5;252m [39m[38;5;252munshadow[39m[38;5;252m [39m[38;5;252m/etc/passwd[39m[38;5;252m [39m[38;5;252m/etc/shadow[39m
-
-[38;5;246;03m# Combine two arbitrary shadow and password files:[39;00m
-[38;5;252msudo[39m[38;5;252m [39m[38;5;252munshadow[39m[38;5;252m [39m[38;5;252mpath/to/passwd[39m[38;5;252m [39m[38;5;252mpath/to/shadow[39m

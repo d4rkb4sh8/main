@@ -1,9 +1,0 @@
-[38;5;246;03m# modinfo[39;00m
-[38;5;246;03m# Extract information about a Linux kernel module.[39;00m
-[38;5;246;03m# More information: <https://manned.org/modinfo>.[39;00m
-
-[38;5;246;03m# List all attributes of a kernel module:[39;00m
-[38;5;252mmodinfo[39m[38;5;252m [39m[38;5;252mkernel_module[39m
-
-[38;5;246;03m# List the specified attribute only:[39;00m
-[38;5;252mmodinfo[39m[38;5;252m [39m[38;5;252m-F[39m[38;5;252m [39m[38;5;252mauthor[39m[38;5;252m|[39m[38;5;252mdescription[39m[38;5;252m|[39m[38;5;252mlicense[39m[38;5;252m|[39m[38;5;252mparm[39m[38;5;252m|[39m[38;5;252mfilename[39m[38;5;252m [39m[38;5;252mkernel_module[39m

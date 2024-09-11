@@ -1,1 +1,0 @@
-dnsenum -f /usr/share/dnsenum/dns.txt <domain.com>
