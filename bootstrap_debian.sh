@@ -26,7 +26,7 @@ sudo apt purge -y audacity gimp gnome-games libreoffice* && sudo apt autoremove 
 
 # Define APT packages
 APT_PACKAGES=(
-    patchelf nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket
+    info patchelf nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket
     wmctrl python3-levenshtein stow figlet lynis gawk curl wget git tilix fd-find powerline nala net-tools
     forensics-all forensics-full cpufetch btop gnome-shell-extension-manager imagemagick gh lolcat npm vlc 
     build-essential procps tldr file fzf ytfzf httpie mitmproxy gpaste-2 dkms font-manager gdebi ufw gawk 
