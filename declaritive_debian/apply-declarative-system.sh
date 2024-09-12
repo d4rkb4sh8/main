@@ -2,6 +2,7 @@
 
 # Set the backup directory path
 BACKUP_DIR="$HOME/backup"
+LOG_FILE="$BACKUP_DIR/system-changes.log"
 
 # Set the config file path
 CONFIG_FILE="system-declaration.cfg"
@@ -12,6 +13,14 @@ create_backup_dir() {
         echo "Creating backup directory at $BACKUP_DIR..."
         mkdir -p "$BACKUP_DIR"
     fi
+}
+
+# Log system changes (installations, removals)
+log_system_change() {
+    local change_type=$1
+    local package_name=$2
+    TIMESTAMP=$(date "+%Y-%m-%d %H:%M:%S")
+    echo "[$TIMESTAMP] $change_type: $package_name" >> "$LOG_FILE"
 }
 
 # Backup current config
@@ -116,6 +125,7 @@ remove_missing_packages_from_config() {
         if echo "$installed_apt_packages" | grep -q "$(echo "$package" | cut -d '=' -f 1)"; then
             new_packages_install+=("$package")
         else
+            log_system_change "Removed apt/dpkg package" "$package"
             echo "Package $package has been removed from the system, removing from config..."
         fi
     done
@@ -126,6 +136,7 @@ remove_missing_packages_from_config() {
         if echo "$installed_flatpaks" | grep -q "$package"; then
             new_flatpak_install+=("$package")
         else
+            log_system_change "Removed flatpak package" "$package"
             echo "Flatpak $package has been removed from the system, removing from config..."
         fi
     done
@@ -136,6 +147,7 @@ remove_missing_packages_from_config() {
         if echo "$installed_snaps" | grep -q "$(echo "$package" | cut -d '=' -f 1)"; then
             new_snap_install+=("$package")
         else
+            log_system_change "Removed snap package" "$package"
             echo "Snap $package has been removed from the system, removing from config..."
         fi
     done
@@ -146,6 +158,7 @@ remove_missing_packages_from_config() {
         if echo "$installed_brew_formulas" | grep -q "$(echo "$formula" | cut -d '=' -f 1)"; then
             new_homebrew_formulas+=("$formula")
         else
+            log_system_change "Removed Homebrew formula" "$formula"
             echo "Homebrew formula $formula has been removed from the system, removing from config..."
         fi
     done
@@ -215,6 +228,7 @@ main() {
             echo "$package is already installed."
         else
             echo "Installing $package..."
+            log_system_change "Installed apt/dpkg package" "$package"
             sudo apt-get install -y "$package"
         fi
     done
@@ -223,18 +237,21 @@ main() {
     echo "Installing flatpak packages..."
     for package in "${flatpak_install[@]}"; do
         flatpak install -y "$package"
+        log_system_change "Installed flatpak package" "$package"
     done
 
     # Install snap packages
     echo "Installing snap packages..."
     for package in "${snap_install[@]}"; do
         snap install "$package"
+        log_system_change "Installed snap package" "$package"
     done
 
     # Install Homebrew formulas
     echo "Installing Homebrew formulas..."
     for formula in "${homebrew_formulas[@]}"; do
         brew install "$formula"
+        log_system_change "Installed Homebrew formula" "$formula"
     done
 
     echo "System configuration applied successfully!"
