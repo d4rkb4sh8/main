@@ -26,13 +26,13 @@ sudo apt purge -y audacity gimp gnome-games libreoffice* && sudo apt autoremove 
 
 # Define APT packages
 APT_PACKAGES=(
-    info patchelf nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket
+    ncal info patchelf nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket
     wmctrl python3-levenshtein stow figlet lynis gawk curl wget git tilix fd-find powerline nala net-tools
     forensics-all forensics-full cpufetch btop gnome-shell-extension-manager imagemagick gh lolcat npm vlc 
     build-essential procps tldr file fzf ytfzf httpie mitmproxy gpaste-2 dkms font-manager gdebi ufw gawk 
     cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev dconf-cli uuid-runtime 
     linux-headers-$(uname -r) gpgv2 autoconf bison postgresql libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev
-    libsqlite3-dev libsvn1 libtool libxml2-dev libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib grc
+    libsqlite3-dev libsvn1 libtool libxml2-dev libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib 
 )
 
 # Update, upgrade and install APT packages in a single step
