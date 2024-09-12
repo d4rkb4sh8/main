@@ -194,6 +194,47 @@ remove_missing_packages_from_config() {
     echo "Configuration file updated with remaining packages."
 }
 
+# Add new packages to config file (if not already present)
+add_new_packages_to_config() {
+    echo "Adding newly detected packages to the configuration file..."
+
+    # Add new apt/dpkg packages
+    for package in $(echo "$installed_apt_packages" | cut -d "=" -f 1); do
+        if ! [[ " ${packages_install[@]} " =~ " ${package} " ]]; then
+            packages_install+=("$package")
+            echo "Adding new apt/dpkg package $package to config..."
+            log_system_change "Added apt/dpkg package" "$package"
+        fi
+    done
+
+    # Add new flatpak packages
+    for package in $installed_flatpaks; do
+        if ! [[ " ${flatpak_install[@]} " =~ " ${package} " ]]; then
+            flatpak_install+=("$package")
+            echo "Adding new flatpak package $package to config..."
+            log_system_change "Added flatpak package" "$package"
+        fi
+    done
+
+    # Add new snap packages
+    for package in $(echo "$installed_snaps" | cut -d "=" -f 1); do
+        if ! [[ " ${snap_install[@]} " =~ " ${package} " ]]; then
+            snap_install+=("$package")
+            echo "Adding new snap package $package to config..."
+            log_system_change "Added snap package" "$package"
+        fi
+    done
+
+    # Add new Homebrew formulas
+    for formula in $(echo "$installed_brew_formulas" | cut -d "=" -f 1); do
+        if ! [[ " ${homebrew_formulas[@]} " =~ " ${formula} " ]]; then
+            homebrew_formulas+=("$formula")
+            echo "Adding new Homebrew formula $formula to config..."
+            log_system_change "Added Homebrew formula" "$formula"
+        fi
+    done
+}
+
 # Main function
 main() {
     # Ensure backup directory exists
@@ -213,6 +254,9 @@ main() {
 
     # Remove any packages that were uninstalled from the system
     remove_missing_packages_from_config
+
+    # Add any new packages detected to the configuration
+    add_new_packages_to_config
 
     # Backup the current state of the configuration
     backup_system_state
