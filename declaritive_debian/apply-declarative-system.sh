@@ -32,9 +32,6 @@ initialize_config_file() {
 # Installed apt/dpkg packages
 packages_install=()
 
-# Removed apt packages
-packages_remove=()
-
 # Installed flatpaks
 flatpak_install=()
 
@@ -130,14 +127,6 @@ update_config_file_with_packages() {
     done
     echo ")" >> "$CONFIG_FILE"
 
-    # Add removed apt packages
-    removed_packages=$(comm -23 <(dpkg --get-selections | grep -v deinstall | awk '{print $1}' | sort) <(dpkg --get-selections | grep deinstall | awk '{print $1}' | sort))
-    echo "packages_remove=(" >> "$CONFIG_FILE"
-    for package in $removed_packages; do
-        echo "    \"$package\"" >> "$CONFIG_FILE"
-    done
-    echo ")" >> "$CONFIG_FILE"
-
     # Add flatpak packages
     echo "flatpak_install=(" >> "$CONFIG_FILE"
     for package in $installed_flatpaks; do
@@ -207,17 +196,6 @@ main() {
         fi
     done
 
-    # Remove packages
-    echo "Removing packages..."
-    for package in "${packages_remove[@]}"; do
-        if is_package_installed "$package"; then
-            echo "Removing $package..."
-            sudo apt-get remove -y "$package"
-        else
-            echo "$package is not installed."
-        fi
-    done
-
     # Install flatpak packages
     echo "Installing flatpak packages..."
     for package in "${flatpak_install[@]}"; do
@@ -241,9 +219,6 @@ main() {
     for cask in "${homebrew_casks[@]}"; do
         brew install --cask "$cask"
     done
-
-    # Continue with file syncing, service management, etc.
-    # ...
 
     echo "System configuration applied successfully!"
 }
