@@ -97,7 +97,7 @@ detect_snap_packages() {
 detect_homebrew_packages() {
     if command -v brew &> /dev/null; then
         echo "Detecting Homebrew formulas..."
-        installed_brew_formulas=$(brew list --formula --versions)
+        installed_brew_formulas=$(brew list)
         echo "Found the following Homebrew formulas:"
         echo "$installed_brew_formulas"
     else
