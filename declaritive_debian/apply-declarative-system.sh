@@ -41,9 +41,6 @@ snap_install=()
 # Installed Homebrew formulas
 homebrew_formulas=()
 
-# Installed Homebrew casks
-homebrew_casks=()
-
 # Services, custom commands, etc.
 EOF
         echo "Configuration file created."
@@ -96,22 +93,16 @@ detect_snap_packages() {
     fi
 }
 
-# Detect installed Homebrew formulas and casks
+# Detect installed Homebrew formulas
 detect_homebrew_packages() {
     if command -v brew &> /dev/null; then
         echo "Detecting Homebrew formulas..."
         installed_brew_formulas=$(brew list --formula --versions)
         echo "Found the following Homebrew formulas:"
         echo "$installed_brew_formulas"
-
-        echo "Detecting Homebrew casks..."
-        installed_brew_casks=$(brew list --cask --versions)
-        echo "Found the following Homebrew casks:"
-        echo "$installed_brew_casks"
     else
         echo "Homebrew is not installed."
         installed_brew_formulas=""
-        installed_brew_casks=""
     fi
 }
 
@@ -144,13 +135,6 @@ update_config_file_with_packages() {
     # Add Homebrew formulas
     echo "homebrew_formulas=(" >> "$CONFIG_FILE"
     for package in $installed_brew_formulas; do
-        echo "    \"$package\"" >> "$CONFIG_FILE"
-    done
-    echo ")" >> "$CONFIG_FILE"
-
-    # Add Homebrew casks
-    echo "homebrew_casks=(" >> "$CONFIG_FILE"
-    for package in $installed_brew_casks; do
         echo "    \"$package\"" >> "$CONFIG_FILE"
     done
     echo ")" >> "$CONFIG_FILE"
@@ -212,12 +196,6 @@ main() {
     echo "Installing Homebrew formulas..."
     for formula in "${homebrew_formulas[@]}"; do
         brew install "$formula"
-    done
-
-    # Install Homebrew casks
-    echo "Installing Homebrew casks..."
-    for cask in "${homebrew_casks[@]}"; do
-        brew install --cask "$cask"
     done
 
     echo "System configuration applied successfully!"
