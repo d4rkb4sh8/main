@@ -14,6 +14,7 @@ alias rcedit='$EDITOR $HOME/.bashrc'
 #colorize output
 alias env='grc env'
 
+alias gitup='git add .; git commit -m "updated"; git push'
 
 #   ---------------------------
 #   2.  SEARCHING
