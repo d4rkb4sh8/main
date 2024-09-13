@@ -105,12 +105,12 @@ cp $HOME/gitprojects/main/.bash_aliases $HOME/
 
 # Final update and clean up
 log "Final update and clean up..."
-sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y && notify-send -e "success" || notify-send -e "failed"
 
 # Source .bashrc
 log "Sourcing .bashrc..."
-source $HOME/.bashrc
+source $HOME/.bashrc 
 
 # Display message
-figlet "The Machine is Ready." | lolcat
+figlet "The Machine is Ready." | lolcat 
 
