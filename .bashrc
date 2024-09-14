@@ -107,8 +107,8 @@ eval "$(register-python-argcomplete pipx)"
 export LESSOPEN="| /usr/bin/highlight %s --out-format xterm256 --force"
 
 # greet me
-echo "w3lc0m3 h4ck3r - let the games begin!"  | lolcat
-
+echo "w3lc0m3 h4ck3r - let the games begin! - m4ast3r y0ur cr4ft"  | lolcat
+asciiart --color --invert-chars Pictures/wallpapers/wallpaper_03.jpg -w 70
 
 # atuin
 . "$HOME/.atuin/bin/env"

@@ -141,7 +141,7 @@ alias lta='eza -a --tree --level=2 --icons'
 alias ip='ip -c'
 
 # ai  assistant
-alias ai='tgpt'
+alias ai='ollama run deepseek-coder-v2'
 
 # cheat sheet
 alias cheat='tldr'
@@ -192,6 +192,8 @@ alias drcf='sudo dpkg-reconfigure'
 alias upgrb='sudo update-grub'
 alias uirfs='sudo update-initramfs -u'
 
+
+#alias python='python3'
 
 #-------------------------------------------------------------------------
 #DOCKER_ALIASES
