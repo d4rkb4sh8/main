@@ -13,6 +13,10 @@ alias rcedit='$EDITOR $HOME/.bashrc'
 
 #colorize output
 alias env='grc env'
+alias w='grc w'
+alias who='grc who'
+alias free='free -h'
+
 
 alias gitup='git add .; git commit -m "updated"; git push'
 
