@@ -91,6 +91,14 @@ log "Installing Homebrew packages: eza, gcc, neovim, dust, zoxide, atuin, xh, ya
 brew install eza gcc neovim dust zoxide atuin xh yazi fastfetch
 
 
+# Install Orchis Theme
+log "Installing Orchis-theme..."
+cd $HOME/Downloads
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd Orchis-theme
+./install.sh -c dark -t pink -l --tweaks submenu
+
+
 # Install Tela-circle-icons
 log "Installing Tela-circle-icons..."
 cd $HOME/Downloads
@@ -98,8 +106,17 @@ git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git
 cd Tela-circle-icon-theme
 ./install.sh
 
+# setup gitprojects
+log "setting up gitprojects..."
+mkdir $HOME/gitprojects
+cd gitprojects
+git clone https://github.com/d4rkb4sh8/main.git
+git clone https://github.com/d4rkb4sh8/ctfs.git 
+git clone https://github.com/d4rkb4sh8/learn.git
+
 # Update .bashrc and .bash_aliases
 log "Updating bash configurations..."
+rm $HOME/.bashrc
 cp $HOME/gitprojects/main/.bashrc $HOME/
 cp $HOME/gitprojects/main/.bash_aliases $HOME/
 
