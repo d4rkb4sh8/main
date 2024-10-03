@@ -32,7 +32,7 @@ APT_PACKAGES=(
     build-essential procps tldr file fzf ytfzf httpie mitmproxy gpaste-2 dkms font-manager gdebi ufw gawk 
     cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev dconf-cli uuid-runtime 
     linux-headers-$(uname -r) gpgv2 autoconf bison postgresql libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev
-    libsqlite3-dev libsvn1 libtool libxml2-dev libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib 
+    v4l-utils libsqlite3-dev libsvn1 libtool libxml2-dev libxslt-dev wget libyaml-dev ncurses-dev postgresql-contrib 
 )
 
 # Update, upgrade and install APT packages in a single step
