@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration directory
-CONFIG_DIR="$HOME/.config"
+CONFIG_DIR="$HOME/.config/system.config"
 
 # Ensure CONFIG_DIR exists
 mkdir -p $CONFIG_DIR
