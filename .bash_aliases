@@ -16,7 +16,7 @@ alias env='grc env'
 alias w='grc w'
 alias who='grc who'
 alias free='free -h'
-
+alias ifconfig='grc ifconfig'
 
 alias gitup='git add .; git commit -m "updated"; git push'
 
@@ -145,7 +145,8 @@ alias lta='eza -a --tree --level=2 --icons'
 alias ip='ip -c'
 
 # ai  assistant
-alias ai='ollama run deepseek-coder-v2'
+alias aid='ollama run deepseek-coder-v2'
+alias aiw='ollama run ALIENTELLIGENCE/whiterabbitv2'
 
 # cheat sheet
 alias cheat='tldr'

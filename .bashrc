@@ -79,7 +79,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-up 
 gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-down "['<Ctrl><Super>Down']"
 
 #path
-export PATH=/bin:/home/h4ck3r/.atuin/bin:/home/h4ck3r/.cargo/bin:/home/h4ck3r/go/bin:/home/h4ck3r/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/opt:/snap/bin:/usr/bin:/usr/games:/usr/local/bin:/usr/local/games
+export PATH=$PATH:/home/h4ck3r/.atuin/bin:/home/h4ck3r/.cargo/bin:home/h4ck3r/go/bin:/home/h4ck3r/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/opt:/snap/bin:/usr/bin:/usr/games:/usr/local/bin:/usr/local/games
 
 #starship prompt - shell prompt
 eval "$(starship init bash)"
@@ -89,10 +89,6 @@ EDITOR=nano
 
 #homebrew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-#rust
-. "$HOME/.cargo/env"
-source "$HOME/.cargo/env"
 
 #ble.sh
 source ~/.local/share/blesh/ble.sh
@@ -108,10 +104,13 @@ export LESSOPEN="| /usr/bin/highlight %s --out-format xterm256 --force"
 
 # greet me
 echo "w3lc0m3 h4ck3r - let the games begin! - m4ast3r y0ur cr4ft"  | lolcat
-asciiart --color --invert-chars Pictures/wallpapers/wallpaper_03.jpg -w 70
 
 # atuin
 . "$HOME/.atuin/bin/env"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"
+
+. "$HOME/.cargo/env"
+
+
