@@ -8,7 +8,8 @@ alias make5mb='truncate -s 5m ./5MB.dat'     # make5mb:      Creates a file of 5
 alias make10mb='truncate -s 10m ./10MB.dat'  # make10mb:     Creates a file of 10mb size (all zeros)
 alias z='zoxide'
 alias bat='batcat --theme=Coldark-Dark  --style=full'
-alias ff='fastfetch -c all'
+alias ff='fastfetch --logo $HOME/.config/fastfetch/h4cker_ascii.txt'
+alias ffa='fastfetch -c all --logo $HOME/.config/fastfetch/h4cker_ascii.txt'
 alias rcedit='$EDITOR $HOME/.bashrc'
 
 #colorize output
@@ -145,8 +146,7 @@ alias lta='eza -a --tree --level=2 --icons'
 alias ip='ip -c'
 
 # ai  assistant
-alias aid='ollama run deepseek-coder-v2'
-alias aiw='ollama run ALIENTELLIGENCE/whiterabbitv2'
+alias ai='ollama run deepseek-coder-v2:latest'
 
 # cheat sheet
 alias cheat='tldr'
