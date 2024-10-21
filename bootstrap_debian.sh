@@ -174,6 +174,7 @@ cd $HOME/Downloads
 wget https://download.virtualbox.org/virtualbox/7.1.4/Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
 wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Debian~bookworm_amd64.deb
 sudo gdebi virtualbox-*.deb
+sudo usermod -aG vboxusers h4ck3r
 
 #ulauncher
 log "Installing ulauncher..."
