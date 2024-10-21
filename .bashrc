@@ -81,8 +81,6 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys screen-brightness-dow
 #path
 export PATH=$PATH:/home/h4ck3r/.atuin/bin:/home/h4ck3r/.cargo/bin:home/h4ck3r/go/bin:/home/h4ck3r/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/opt:/snap/bin:/usr/bin:/usr/games:/usr/local/bin:/usr/local/games
 
-#starship prompt - shell prompt
-eval "$(starship init bash)"
 
 # preferred text editor
 EDITOR=nano
@@ -114,3 +112,5 @@ eval "$(atuin init bash)"
 . "$HOME/.cargo/env"
 
 
+#starship prompt - shell prompt
+eval "$(starship init bash)"
