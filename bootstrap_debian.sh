@@ -146,6 +146,10 @@ cd $HOME/gitprojects/grub2-themes
 cp $HOME/Pictures/wallpapers/wallpaper_001.jpg $HOME/gitprojects/grub2-themes/background.jpg
 sudo ./install.sh -s 1080p -b -t whitesur
 
+# Install GTFOB lookup
+log "Installing GTFOB..."
+pipx install git+https://github.com/nccgroup/GTFOBLookup.git
+
 # install ollama
 #log "Installing ollama..."
 #curl -fsSL https://ollama.com/install.sh | sh
