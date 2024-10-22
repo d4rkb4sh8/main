@@ -15,11 +15,29 @@ if [ ! -d "$TIMESHIFT_DIR" ]; then
   exit 1
 fi
 
+# Get the distribution name
+DISTRO_NAME=$(lsb_release -ds)
+
+# Function to get the current root partition
+get_root_partition() {
+  local root_partition=$(findmnt -no SOURCE /)
+  echo "$root_partition"
+}
+
+# Function to get the GRUB device name for a given partition
+get_grub_device_name() {
+  local partition="$1"
+  local grub_device_name=$(grub-probe --target=device "$partition")
+  echo "$grub_device_name"
+}
+
 # Function to add a new entry to GRUB
 add_grub_entry() {
   local snapshot_dir="$1"
   local snapshot_name=$(basename "$snapshot_dir")
-  local grub_entry="menuentry 'Ubuntu (Timeshift - $snapshot_name)' {\n\tset root=(hd0,gpt1)\n\tlinux /$snapshot_name/boot/vmlinuz-$(uname -r) root=/dev/sda1 ro quiet splash\n\tinitrd /$snapshot_name/boot/initrd.img-$(uname -r)\n}"
+  local root_partition=$(get_root_partition)
+  local grub_device_name=$(get_grub_device_name "$root_partition")
+  local grub_entry="menuentry '$DISTRO_NAME (Timeshift - $snapshot_name)' {\n\tset root=$grub_device_name\n\tlinux /$snapshot_name/boot/vmlinuz-$(uname -r) root=$root_partition ro quiet splash\n\tinitrd /$snapshot_name/boot/initrd.img-$(uname -r)\n}"
 
   # Append the new entry to /etc/grub.d/40_custom
   echo -e "$grub_entry" >> /etc/grub.d/40_custom
