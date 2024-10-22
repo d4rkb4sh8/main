@@ -27,8 +27,9 @@ get_root_partition() {
 # Function to get the GRUB device name for a given partition
 get_grub_device_name() {
   local partition="$1"
-  local grub_device_name=$(grub-probe --target=device "$partition")
-  echo "$grub_device_name"
+  local device_name=$(df --output=source "$partition" | tail -n 1)
+  local grub_device_name=$(lsblk -no pkname "$device_name")
+  echo "(hd0,gpt1)"  # Adjust this line based on your actual partition scheme
 }
 
 # Function to add a new entry to GRUB
