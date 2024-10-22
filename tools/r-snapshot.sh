@@ -15,15 +15,6 @@ if [ ! -d "$TIMESHIFT_DIR" ]; then
   exit 1
 fi
 
-# Get the current GRUB menu entry
-CURRENT_GRUB_ENTRY=$(grep -m 1 "^menuentry 'Ubuntu" /boot/grub/grub.cfg | cut -d"'" -f2)
-
-# Check if the current GRUB entry is found
-if [ -z "$CURRENT_GRUB_ENTRY" ]; then
-  echo "Current GRUB entry not found in /boot/grub/grub.cfg"
-  exit 1
-fi
-
 # Function to add a new entry to GRUB
 add_grub_entry() {
   local snapshot_dir="$1"
