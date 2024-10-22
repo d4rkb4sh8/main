@@ -1,7 +1,0 @@
-python-is-python3 arp-scan asciiart  ncal info patchelf nikto sqlmap debian-goodies dict wikipedia2text w3m netdiscover gpg pass zathura pipx python3-websocket
-    wmctrl python3-levenshtein stow figlet lynis gawk curl wget git tilix fd-find powerline nala net-tools
-    forensics-all forensics-full cpufetch btop gnome-shell-extension-manager imagemagick gh lolcat npm vlc 
-    build-essential procps tldr file fzf ytfzf httpie mitmproxy gpaste-2 dkms font-manager gdebi ufw gawk 
-    cmake plocate bat most libssl-dev libvips-dev libsixel-dev libchafa-dev libtbb-dev dconf-cli uuid-runtime 
-    linux-headers-$(uname -r) gpgv2 autoconf bison postgresql libgmp3-dev libpcap-dev openssl libpq-dev libreadline6-dev
-    v4l-utils libsqlite3-dev libsvn1 libtool libxml2-dev libxslt-dev libyaml-dev ncurses-dev postgresql-contrib
