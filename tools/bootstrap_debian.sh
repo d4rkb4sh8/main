@@ -60,10 +60,11 @@ echo 'source ~/.local/share/blesh/ble.sh' >> ~/.bashrc
 
 # Remove other terminal emulators and set Tilix as default
 log "Setting Tilix as the default terminal..."
-sudo apt purge -y gnome-terminal xterm
+#sudo apt purge -y gnome-terminal xterm
 gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/tilix.wrapper
 gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
 sudo update-alternatives --set x-terminal-emulator /usr/bin/tilix.wrapper
+
 
 # Install Hack Nerd Font
 log "Installing Hack Nerd Font..."
@@ -91,7 +92,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Install packages using Homebrew
 log "Installing Homebrew packages: eza, gcc, neovim, dust, zoxide, atuin, xh, yazi..."
-brew install eza gcc neovim dust zoxide xh yazi fastfetch
+brew install eza gcc neovim dust xh yazi fastfetch
 
 # Install rust
 log "Installing Rust..."
@@ -151,9 +152,9 @@ log "Installing GTFOB..."
 pipx install git+https://github.com/nccgroup/GTFOBLookup.git
 
 # install ollama
-#log "Installing ollama..."
-#curl -fsSL https://ollama.com/install.sh | sh
-#ollama run deepseek-coder-v2
+log "Installing ollama..."
+curl -fsSL https://ollama.com/install.sh | sh
+ollama run deepseek-coder-v2
 
 #Install Mullvad
 log "Installing Mullvad..."
