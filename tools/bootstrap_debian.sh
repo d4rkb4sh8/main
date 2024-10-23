@@ -98,10 +98,6 @@ brew install eza gcc neovim dust xh yazi fastfetch
 log "Installing Rust..."
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-#install atuin
-log "Installing Atuin..."
-curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-
 # Install Tela-circle-icons
 log "Installing Tela-circle-icons..."
 cd $HOME/Downloads
@@ -151,37 +147,6 @@ sudo ./install.sh -s 1080p -b -t whitesur
 log "Installing GTFOB..."
 pipx install git+https://github.com/nccgroup/GTFOBLookup.git
 
-# install ollama
-log "Installing ollama..."
-curl -fsSL https://ollama.com/install.sh | sh
-ollama run deepseek-coder-v2
-
-#Install Mullvad
-log "Installing Mullvad..."
-# Download the Mullvad signing key
-sudo curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
-
-# Add the Mullvad repository server to apt
-echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/stable $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/mullvad.list
-
-# Install the package
-sudo apt update
-sudo apt install mullvad-vpn
-
-
-# Virtualbox
-log "Installing Virtualbox..."
-cd $HOME/Downloads
-wget https://download.virtualbox.org/virtualbox/7.1.4/Oracle_VirtualBox_Extension_Pack-7.1.4.vbox-extpack
-wget https://download.virtualbox.org/virtualbox/7.1.4/virtualbox-7.1_7.1.4-165100~Debian~bookworm_amd64.deb
-sudo gdebi virtualbox-*.deb
-sudo usermod -aG vboxusers h4ck3r
-
-#ulauncher
-log "Installing ulauncher..."
-cd $HOME/Downloads
-wget https://github.com/Ulauncher/Ulauncher/releases/download/5.15.7/ulauncher_5.15.7_all.deb
-sudo gdebi ulauncher*.deb
 
 # Final update and clean up
 log "Final update and clean up..."
