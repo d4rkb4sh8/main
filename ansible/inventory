@@ -1,2 +1,4 @@
 [debian]
 localhost ansible_connection=local
+debian1@127.0.0.1 -p 3021
+debian2@127.0.0.1 -p 3022
