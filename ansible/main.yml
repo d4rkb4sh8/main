@@ -1,0 +1,10 @@
+---
+- hosts: debian
+  become: yes
+  roles:
+    - apt_packages
+    - homebrew_packages
+    - flatpak_packages
+    - snap_packages
+    - source_builds
+    - gnome_customizations

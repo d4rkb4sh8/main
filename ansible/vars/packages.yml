@@ -1,0 +1,25 @@
+# vars/packages.yml
+apt_packages:
+  - git
+  - vim
+  - curl
+  - gnome-tweaks
+
+homebrew_packages:
+  - htop
+  - neofetch
+
+flatpak_packages:
+  - org.gimp.GIMP
+  - com.spotify.Client
+
+snap_packages:
+  - code
+  - postman
+
+source_builds:
+  - name: neovim
+    repo: https://github.com/neovim/neovim.git
+    build_commands:
+      - make CMAKE_BUILD_TYPE=Release
+      - sudo make install

@@ -1,0 +1,11 @@
+---
+- name: Ensure Flatpak is installed
+  apt:
+    name: flatpak
+    state: present
+
+- name: Install Flatpak packages
+  flatpak:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ flatpak_packages }}"

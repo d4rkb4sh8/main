@@ -1,0 +1,12 @@
+---
+- name: Ensure Snap is installed
+  apt:
+    name: snapd
+    state: present
+
+- name: Install Snap packages
+  snap:
+    name: "{{ item }}"
+    state: present
+    classic: yes
+  loop: "{{ snap_packages }}"

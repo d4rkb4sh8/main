@@ -1,0 +1,32 @@
+---
+- name: Install Gnome extensions
+  apt:
+    name: gnome-shell-extensions
+    state: present
+
+- name: Enable Gnome extensions
+  shell: gnome-extensions enable {{ item }}
+  loop:
+    - user-theme@gnome-shell-extensions.gcampax.github.com
+    - dash-to-dock@micxgx.gmail.com
+
+- name: Install Gnome tweaks
+  apt:
+    name: gnome-tweaks
+    state: present
+
+- name: Configure Gnome settings
+  gsettings:
+    schema: "org.gnome.desktop.interface"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  loop:
+    - { key: gtk-theme, value: "'Yaru-dark'" }
+    - { key: icon-theme, value: "'Yaru'" }
+    - { key: font-name, value: "'Cantarell 11'" }
+
+- name: Configure additional Gnome settings
+  gsettings:
+    schema: "org.gnome.shell.extensions.dash-to-dock"
+    key: dock-position
+    value: "'BOTTOM'"

@@ -1,0 +1,15 @@
+---
+- name: Clone source repository
+  git:
+    repo: "{{ item.repo }}"
+    dest: "/tmp/{{ item.name }}"
+  loop: "{{ source_builds }}"
+
+- name: Build and install from source
+  shell: "{{ cmd }}"
+  args:
+    chdir: "/tmp/{{ item.name }}"
+  loop: "{{ source_builds }}"
+  loop_control:
+    loop_var: item
+  with_items: "{{ item.build_commands }}"
