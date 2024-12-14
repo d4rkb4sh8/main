@@ -23,6 +23,7 @@ HELP_MESSAGE="
     -f, --flatpak         Backup flatpak packages
     -s, --snap            Backup snap packages
     -o, --output          Specify output directory for backup (default: /home/$USER/Backup)
+    -A, --all             Backup all and restore all
 "
 
 # Functions
@@ -64,6 +65,22 @@ function backup_user_config_files() {
   cp -r ~/* /home/$USER/Backup/user-config/
 }
 
+function backup_flatpak_packages() {
+  echo "Backing up flatpak packages..."
+  mkdir -p "$OUTPUT_DIR/flatpak"
+  for pkg in $(flatpak list --columns=app id); do
+    flatpak install --user $pkg --no-runtime
+  done
+}
+
+function backup_snap_packages() {
+  echo "Backing up snap packages..."
+  mkdir -p "$OUTPUT_DIR/snap"
+  for pkg in $(snap list --all | grep Name | cut -d' ' -f2-); do
+    snap install $pkg --classic
+  done
+}
+
 function restore_apt_packages() {
   echo "Restoring apt packages..."
   tar xzvf "$INPUT_DIR/apt-packages.tar.gz" -C /
@@ -100,30 +117,95 @@ function restore_user_config_files() {
   cp -r $INPUT_DIR/user-config/* /home/$USER/
 }
 
-# Main script
+function backup_all() {
+  backup_apt_packages && backup_custom_configurations && backup_gnome_settings && backup_keybopard_shortcuts && backup_extensions && backup_user_config_files
+  backup_flatpak_packages && backup_snap_packages
+}
 
+function restore_all() {
+  restore_apt_packages
+  restore_custom_configurations && restore_gnome_settings && restore_keybopard_shortcuts
+  restore_extensions
+  restore_user_config_files
+}
+
+# Set output directory
 OUTPUT_DIR="/home/$USER/Backup"
-INPUT_DIR="/home/$USER/Input"
+INPUT_DIR="$OUTPUT_DIR/backup"
 
-while getopts ":hbacrfgkeuofs" opt; do
-  case $opt in
-  h)
+# Check if backup directory exists, create it if not
+if [ ! -d "$OUTPUT_DIR" ]; then
+  mkdir -p "$OUTPUT_DIR"
+fi
+
+# Parse arguments
+while [[ $# -gt 1 ]]; do
+  case $1 in
+  --help | -h)
     echo "$HELP_MESSAGE"
-    exit
+    exit 0
     ;;
-  b) backup_custom_configurations && backup_gnome_settings && backup_keybopard_shortcuts && backup_extensions && backup_user_config_files && backup_apt_packages &&
-    backup_flatpak_packages && backup_snap_packages ;;
-  r) restore_custom_configurations && restore_gnome_settings && restore_keybopard_shortcuts && restore_extensions && restore_user_config_files && restore_apt_packages ;;
-  a) backup_apt_packages ;;
-  c) backup_custom_configurations ;;
-  g) backup_gnome_settings ;;
-  k) backup_keybopard_shortcuts ;;
-  e) backup_extensions ;;
-  u) backup_user_config_files ;;
-  f) backup_flatpak_packages ;;
-  s) backup_snap_packages ;;
-  o) OUTPUT_DIR=$OPTARG ;;
+  --backup | -b)
+    backup_all
+    exit 0
+    ;;
+  --restore | -r)
+    restore_all
+    exit 0
+    ;;
+  --all | -A)
+    if [ -d "$INPUT_DIR" ]; then
+      echo "Error: Backup directory already exists, use --restore instead"
+      exit 1
+    fi
+    backup_all && tar -czf "$INPUT_DIR.tar.gz" "$OUTPUT_DIR"
+    restore_all
+    exit 0
+    ;;
+  --apt | -a)
+    backup_apt_packages
+    exit 0
+    ;;
+  --custom-config | -c)
+    backup_custom_configurations
+    exit 0
+    ;;
+  --gnome-settings | -g)
+    backup_gnome_settings
+    exit 0
+    ;;
+  --keybopard | -k)
+    backup_keybopard_shortcuts
+    exit 0
+    ;;
+  --extensions | -e)
+    backup_extensions
+    exit 0
+    ;;
+  --user-config | -u)
+    backup_user_config_files
+    exit 0
+    ;;
+  --flatpak | -f)
+    backup_flatpak_packages
+    exit 0
+    ;;
+  --snap | -s)
+    backup_snap_packages
+    exit 0
+    ;;
+  --output | -o)
+    shift
+    OUTPUT_DIR=$1
+    INPUT_DIR="$OUTPUT_DIR/backup"
+    ;;
+  *)
+    echo "Error: Unknown option '$1'"
+    exit 1
+    ;;
   esac
+  shift
 done
 
-echo "Tool $migabu version $VERSION"
+echo "Error: No action specified, use --help for options"
+exit 1
