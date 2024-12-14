@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # Tool name
-migbu="System Backup & Restore"
+migabu="System Backup & Restore"
 
 # Version number
 VERSION="1.0"
 
 # Help message
 HELP_MESSAGE="
-  Usage: $migbu [OPTIONS]
+  Usage: $migabu [OPTIONS]
 
   Options:
     -h, --help            Show this help message and exit
@@ -35,13 +35,13 @@ function backup_apt_packages() {
 function backup_custom_configurations() {
   echo "Backing up custom configurations..."
   mkdir -p "$OUTPUT_DIR/config"
-  cp -r ~/.bashrc ~/.bash_profile ~/.bash_logout ~/.profile ~/.gnupg ~/.ssh ~/.vim ~/.vimrc ~/$migbu/backups/* /home/$USER/Backup/config/
+  cp -r ~/.bashrc ~/.bash_profile ~/.bash_logout ~/.profile ~/.gnupg ~/.ssh ~/.vim ~/.vimrc ~/$migabu/backups/* /home/$USER/Backup/config/
 }
 
 function backup_gnome_settings() {
   echo "Backing up Gnome settings..."
   mkdir -p "$OUTPUT_DIR/gnome"
-  cp -r ~/.config/gnome-3-2/settings.db ~/.gconf ~/.gnome2/dconf ~/.gsettingsd ~/$migbu/backups/* /home/$USER/Backup/gnome/
+  cp -r ~/.config/gnome-3-2/settings.db ~/.gconf ~/.gnome2/dconf ~/.gsettingsd ~/$migabu/backups/* /home/$USER/Backup/gnome/
 }
 
 function backup_keybopard_shortcuts() {
@@ -126,4 +126,4 @@ while getopts ":hbacrfgkeuofs" opt; do
   esac
 done
 
-echo "Tool $migbu version $VERSION"
+echo "Tool $migabu version $VERSION"
