@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # Tool name
-migabu="System Backup & Restore"
+#migabu="System Backup & Restore"
 
 # Version number
 VERSION="1.0"
 
 # Help message
 HELP_MESSAGE="
-  Usage: $migabu [OPTIONS]
+  Usage: migabu [OPTIONS]
 
   Options:
     -h, --help            Show this help message and exit
@@ -26,186 +26,178 @@ HELP_MESSAGE="
     -A, --all             Backup all and restore all
 "
 
-# Functions
+# Function to print help message
+function print_help() {
+  echo "$HELP_MESSAGE"
+}
 
+# Function to check if file exists
+function check_file_exists() {
+  [ -f "$1" ]
+}
+
+# Function to backup apt packages
 function backup_apt_packages() {
-  echo "Backing up apt packages..."
-  tar -czvf "$OUTPUT_DIR/apt-packages.tar.gz" /var/lib/dpkg/status /var/lib/dpkg/info
+  if ! tar czvf "${OUTPUT_DIR}/apt-packages.tar.gz" /var/lib/dpkg/status /var/lib/dpkg/info; then
+    echo "Error: Unable to create apt package backup."
+    return 1
+  fi
 }
 
+# Function to backup custom configurations
 function backup_custom_configurations() {
-  echo "Backing up custom configurations..."
-  mkdir -p "$OUTPUT_DIR/config"
-  cp -r ~/.bashrc ~/.bash_profile ~/.bash_logout ~/.profile ~/.gnupg ~/.ssh ~/.vim ~/.vimrc ~/$migabu/backups/* /home/$USER/Backup/config/
+  if ! mkdir -p "${OUTPUT_DIR}/config"; then
+    echo "Error: Unable to create config directory."
+    return 1
+  fi
+  cp -r ~/.bashrc ~/.bash_profile ~/.bash_logout ~/.profile ~/.gnupg ~/.ssh ~/.vim ~/.vimrc ~/migabu/backups/* "${OUTPUT_DIR}/config/"
 }
 
+# Function to backup Gnome settings
 function backup_gnome_settings() {
-  echo "Backing up Gnome settings..."
-  mkdir -p "$OUTPUT_DIR/gnome"
-  cp -r ~/.config/gnome-3-2/settings.db ~/.gconf ~/.gnome2/dconf ~/.gsettingsd ~/$migabu/backups/* /home/$USER/Backup/gnome/
+  if ! mkdir -p "${OUTPUT_DIR}/gnome"; then
+    echo "Error: Unable to create gnome directory."
+    return 1
+  fi
+  cp -r ~/.gconf ~/migabu/backups/* "${OUTPUT_DIR}/gnome/"
 }
 
+# Function to backup keyboard layout shortcuts
 function backup_keybopard_shortcuts() {
-  echo "Backing up keyboard shortcuts..."
-  mkdir -p "$OUTPUT_DIR/keybopard"
-  cp -r ~/.config/keyboard-layouts ~/.keybopard /home/$USER/Backup/keybopard/
+  if ! mkdir -p "${OUTPUT_DIR}/keybopard"; then
+    echo "Error: Unable to create keybopard directory."
+    return 1
+  fi
+  cp -r ~/.config/keyboard ~/$migabardu/backups/* "${OUTPUT_DIR}/keybopard/"
 }
 
+# Function to backup installed extensions
 function backup_extensions() {
-  echo "Backing up installed extensions..."
-  mkdir -p "$OUTPUT_DIR/extensions"
-  for ext in $(flatpak list --columns=app id); do
-    flatpak install --user $ext --no-runtime
+  if ! mkdir -p "${OUTPUT_DIR}/extensions"; then
+    echo "Error: Unable to create extensions directory."
+    return 1
+  fi
+  for extension in ~/.local/share/gnome-shell/extensions/; do
+    cp -r "$extension" "${OUTPUT_DIR}/extensions/"
   done
 }
 
+# Function to backup user config files
 function backup_user_config_files() {
-  echo "Backing up user config files..."
-  mkdir -p "$OUTPUT_DIR/user-config"
-  cp -r ~/* /home/$USER/Backup/user-config/
+  if ! mkdir -p "${OUTPUT_DIR}/user-config"; then
+    echo "Error: Unable to create user config directory."
+    return 1
+  fi
+  cp -r ~/.config ~/migabu/backups/* "${OUTPUT_DIR}/user-config/"
 }
 
+# Function to backup flatpak packages
 function backup_flatpak_packages() {
-  echo "Backing up flatpak packages..."
-  mkdir -p "$OUTPUT_DIR/flatpak"
-  for pkg in $(flatpak list --columns=app id); do
-    flatpak install --user $pkg --no-runtime
-  done
+  if ! tar czvf "${OUTPUT_DIR}/flatpak-packages.tar.gz" /var/lib/flatpak; then
+    echo "Error: Unable to create flatpak package backup."
+    return 1
+  fi
 }
 
+# Function to backup snap packages
 function backup_snap_packages() {
-  echo "Backing up snap packages..."
-  mkdir -p "$OUTPUT_DIR/snap"
-  for pkg in $(snap list --all | grep Name | cut -d' ' -f2-); do
-    snap install $pkg --classic
-  done
+  if ! tar czvf "${OUTPUT_DIR}/snap-packages.tar.gz" /var/lib/snapd; then
+    echo "Error: Unable to create snap package backup."
+    return 1
+  fi
 }
 
-function restore_apt_packages() {
-  echo "Restoring apt packages..."
-  tar xzvf "$INPUT_DIR/apt-packages.tar.gz" -C /
-}
-
-function restore_custom_configurations() {
-  echo "Restoring custom configurations..."
-  mkdir -p "/home/$USER"
-  cp -r $INPUT_DIR/config/* /home/$USER/
-}
-
-function restore_gnome_settings() {
-  echo "Restoring Gnome settings..."
-  mkdir -p "/home/$USER"
-  cp -r $INPUT_DIR/gnome/* /home/$USER/
-}
-
-function restore_keybopard_shortcuts() {
-  echo "Restoring keyboard shortcuts..."
-  mkdir -p "/home/$USER"
-  cp -r $INPUT_DIR/keybopard/* /home/$USER/
-}
-
-function restore_extensions() {
-  echo "Restoring installed extensions..."
-  for ext in $(flatpak list --columns=app id); do
-    flatpak remove $ext --no-runtime
-  done
-}
-
-function restore_user_config_files() {
-  echo "Restoring user config files..."
-  mkdir -p "/home/$USER"
-  cp -r $INPUT_DIR/user-config/* /home/$USER/
-}
-
-function backup_all() {
-  backup_apt_packages && backup_custom_configurations && backup_gnome_settings && backup_keybopard_shortcuts && backup_extensions && backup_user_config_files
-  backup_flatpak_packages && backup_snap_packages
-}
-
-function restore_all() {
-  restore_apt_packages
-  restore_custom_configurations && restore_gnome_settings && restore_keybopard_shortcuts
-  restore_extensions
-  restore_user_config_files
-}
-
-# Set output directory
-OUTPUT_DIR="/home/$USER/Backup"
-INPUT_DIR="$OUTPUT_DIR/backup"
-
-# Check if backup directory exists, create it if not
-if [ ! -d "$OUTPUT_DIR" ]; then
-  mkdir -p "$OUTPUT_DIR"
-fi
-
-# Parse arguments
-while [[ $# -gt 1 ]]; do
-  case $1 in
-  --help | -h)
-    echo "$HELP_MESSAGE"
-    exit 0
-    ;;
-  --backup | -b)
-    backup_all
-    exit 0
-    ;;
-  --restore | -r)
-    restore_all
-    exit 0
-    ;;
-  --all | -A)
-    if [ -d "$INPUT_DIR" ]; then
-      echo "Error: Backup directory already exists, use --restore instead"
-      exit 1
-    fi
-    backup_all && tar -czf "$INPUT_DIR.tar.gz" "$OUTPUT_DIR"
-    restore_all
-    exit 0
-    ;;
-  --apt | -a)
-    backup_apt_packages
-    exit 0
-    ;;
-  --custom-config | -c)
-    backup_custom_configurations
-    exit 0
-    ;;
-  --gnome-settings | -g)
-    backup_gnome_settings
-    exit 0
-    ;;
-  --keybopard | -k)
-    backup_keybopard_shortcuts
-    exit 0
-    ;;
-  --extensions | -e)
-    backup_extensions
-    exit 0
-    ;;
-  --user-config | -u)
-    backup_user_config_files
-    exit 0
-    ;;
-  --flatpak | -f)
-    backup_flatpak_packages
-    exit 0
-    ;;
-  --snap | -s)
-    backup_snap_packages
-    exit 0
-    ;;
-  --output | -o)
+# Function to restore from backup
+function restore_from_backup() {
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+    --help | -h) print_help && exit 0 ;;
+    --backup | -b)
+      backup_apt_packages || echo "Error: Unable to create apt package backup."
+      backup_custom_configurations || echo "Error: Unable to create config directory."
+      backup_gnome_settings || echo "Error: Unable to create gnome directory."
+      backup_keybopard_shortcuts || echo "Error: Unable to create keybopard directory."
+      backup_extensions || echo "Error: Unable to create extensions directory."
+      backup_user_config_files || echo "Error: Unable to create user config directory."
+      backup_flatpak_packages || echo "Error: Unable to create flatpak package backup."
+      backup_snap_packages || echo "Error: Unable to create snap package backup."
+      ;;
+    --restore | -r)
+      if ! check_file_exists "${OUTPUT_DIR}/backup.tar.gz"; then
+        echo "Error: Backup file not found."
+        exit 1
+      fi
+      tar xzf "${OUTPUT_DIR}/backup.tar.gz"
+      ;;
+    --all | -A)
+      backup_apt_packages || echo "Error: Unable to create apt package backup."
+      backup_custom_configurations || echo "Error: Unable to create config directory."
+      backup_gnome_settings || echo "Error: Unable to create gnome directory."
+      backup_keybopard_shortcuts || echo "Error: Unable to create keybopard directory."
+      backup_extensions || echo "Error: Unable to create extensions directory."
+      backup_user_config_files || echo "Error: Unable to create user config directory."
+      backup_flatpak_packages || echo "Error: Unable to create flatpak package backup."
+      backup_snap_packages || echo "Error: Unable to create snap package backup."
+      ;;
+    --apt | -a)
+      backup_apt_packages || echo "Error: Unable to create apt package backup."
+      ;;
+    --custom-config | -c)
+      backup_custom_configurations || echo "Error: Unable to create config directory."
+      ;;
+    --gnome-settings | -g)
+      backup_gnome_settings || echo "Error: Unable to create gnome directory."
+      ;;
+    --keybopard | -k)
+      backup_keybopard_shortcuts || echo "Error: Unable to create keybopard directory."
+      ;;
+    --extensions | -e)
+      backup_extensions || echo "Error: Unable to create extensions directory."
+      ;;
+    --user-config | -u)
+      backup_user_config_files || echo "Error: Unable to create user config directory."
+      ;;
+    --flatpak | -f)
+      backup_flatpak_packages || echo "Error: Unable to create flatpak package backup."
+      ;;
+    --snap | -s)
+      backup_snap_packages || echo "Error: Unable to create snap package backup."
+      ;;
+    --output | -o)
+      shift
+      OUTPUT_DIR=$1
+      INPUT_DIR="${OUTPUT_DIR}/backup"
+      ;;
+    *)
+      print_help && exit 0
+      ;;
+    esac
     shift
-    OUTPUT_DIR=$1
-    INPUT_DIR="$OUTPUT_DIR/backup"
-    ;;
-  *)
-    echo "Error: Unknown option '$1'"
-    exit 1
-    ;;
-  esac
-  shift
-done
+  done
+}
 
-echo "Error: No action specified, use --help for options"
-exit 1
+main() {
+  while getopts "hb:rua:g:k:e:f:s:o:" opt; do
+    case $opt in
+    h) print_help && exit 0 ;;
+    b) OUTPUT_DIR=$OPTARG ;;
+    r) restore_from_backup ;;
+    u) backup_user_config_files ;;
+    a) backup_apt_packages ;;
+    g) backup_gnome_settings ;;
+    k) backup_keybopard_shortcuts ;;
+    e) backup_extensions ;;
+    f) backup_flatpak_packages ;;
+    s) backup_snap_packages ;;
+    o) OUTPUT_DIR=$OPTARG ;;
+    esac
+  done
+
+  if [ -n "$OUTPUT_DIR" ]; then
+    INPUT_DIR="${OUTPUT_DIR}/backup"
+  else
+    INPUT_DIR="backup"
+  fi
+}
+
+main
